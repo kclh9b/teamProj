@@ -1,0 +1,142 @@
+@charset "UTF-8";
+
+body {
+	margin: 0;
+}
+/* 래퍼 */
+.itemWrapper {
+	width: 1200px;
+	min-height: 1000px;
+	margin: 0 auto;
+	margin-top: 40px;
+}
+.itemWrapper a{
+	color: #000;
+	text-decoration: none;
+}
+
+/* 검색박스 */
+.schBox {
+	box-sizing: border-box;
+	border : 3px solid lightgray;
+	width: 100%;
+	padding: 25px;
+}
+/* 맞춤상품 */
+div.customWrapper {
+	border : 2px solid lightgray;
+	padding: 20px;
+}
+table.customCdt {
+	width: 500px;
+	margin: 0 auto;
+}
+table.customCdt tr {
+	height: 25px;
+}
+.schBox>div {
+	width: 500px;
+	margin: 15px auto;
+}
+span.schTitle {
+	display: inline-block;
+	width: 100px;
+}
+input.schSubmit {
+	border: none;
+	color: #fff;
+	background-color: #232323;
+	width: 100px;
+	height: 40px;
+	cursor: pointer;
+}
+
+/* 정렬버튼 */
+div.itemCntOrderBox {
+	margin-top: 30px;
+	margin-bottom: 40px;
+	overflow: auto;
+	border: 1px solid lightgray;
+	border-width: 1px 0;
+}
+span.itemCnt {
+	float:left;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.orderButton {
+	float: right;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.orderButton>input {
+	border: none;
+	background-color: #fff;
+	cursor: pointer;
+}
+.orderButton>input.active {
+	color: #e25804;
+}
+.orderButton>input:hover {
+	color: #e25804;
+}
+
+/* 탭 활성화 */
+a.active {
+	color: #e25804;
+}
+
+/* 상품리스트 */
+ul.itemList {
+	clear: both;
+	list-style: none;
+	padding-left: 0;
+}
+ul.itemList>li {
+	float: left;
+	width: 300px;
+	height: 300px;
+	box-sizing: border-box;
+	padding: 0px 20px;
+	margin-bottom: 80px;
+}
+
+div.thum {
+	box-sizing: border-box;
+	width: 260px;
+	height: 260px;
+	text-align: center;
+	border: 1px solid lightgray;
+	/*border-radius: 8px;*/
+	margin-bottom: 5px;
+}
+div.thum>a>img {
+	box-sizing: border-box;
+	width: 258px;
+	height: 258px;
+	/*border-radius: 6px;*/
+}
+div.itemName {
+	font-size: 14px;
+	line-height: 25px;
+	word-break: keep-all;
+}
+
+div.pageBox {
+	clear: both;
+	padding-top: 30px;
+	text-align: center;
+}
+div.pageBox>input {
+	background-color: #fff;
+	border: none;
+	cursor: pointer;
+	
+}
+div.pageBox>input.active {
+	color: #e25804;
+	font-weight: bold;
+}
+
+
+

@@ -1,0 +1,142 @@
+@charset "UTF-8";
+body {
+	margin: 0;
+}
+div.content {
+	width: 1400px;
+	margin: 0 auto;
+	padding-top: 40px;
+	margin-bottom: 60px;
+	list-style: none;
+}
+div.new {
+	display: inline-block;
+	width: 720px;
+}
+.new h2 {
+	text-align: center;	
+}
+
+
+/* 상품 공통 ==================================================*/
+ul.itemList {
+	clear: both;
+	list-style: none;
+	padding-left: 0;
+}
+ul.itemList>li {
+	float: left;
+	width: 240px;
+	height: 260px;
+	box-sizing: border-box;
+	padding: 0px 20px;
+	margin-bottom: 60px;
+}
+
+div.thum {
+	box-sizing: border-box;
+	width: 200px;
+	height: 200px;
+	text-align: center;
+	border: 1px solid lightgray;
+	/*border-radius: 8px;*/
+	margin-bottom: 5px;
+}
+div.thum>a>img {
+	box-sizing: border-box;
+	width: 198px;
+	height: 198px;
+	/*border-radius: 6px;*/
+}
+div.itemLabel {
+	width: 40px;
+	font-size: 14px;
+	text-align: center;
+	border: 1px solid lightgray;
+}
+div.itemName {
+	width: 200px;
+	min-height: 25px;
+	max-height: 50px;
+	overflow: hidden;
+	font-size: 14px;
+	line-height: 25px;
+	word-break: keep-all;
+}
+/* 상품 공통 ==================================================*/
+
+
+
+div.notice {
+	float: right;
+	width: 460px;
+	height: 360px; 
+	/*border: 1px solid lightgray;*/
+	border-radius: 20px;
+	text-align: center;
+}
+div.recommend, div.hot {
+	padding-top: 40px;
+	width: 1200px;
+	margin: 0 auto;
+	overflow: auto;
+}
+.recommend h2, .hot h2 {
+	text-align: center;
+}
+div.hot {
+	height: 720px;
+}
+div.recommend>div, div.hot>div {
+	width: 1200px;
+	height: 400px;
+	margin: 0 auto;
+	border: 1px solid black;
+}
+
+
+
+
+
+
+
+/* 공지사항 ==================================================*/
+
+.spc1   {
+    color: black;
+    width: 230px;
+    font-size: 18px;
+    margin: 10px;
+    float: left;
+ 
+    font-weight: bold;
+}
+#ahover:hover {
+    color: #ff9999;
+}
+.spc2   {
+    width: 120px;
+    font-size: 16px;
+    margin: 10px;
+    float: right;
+
+}
+.spc3   {
+    width: 50px;
+    font-size: 16px;
+    margin: 10px;
+    float: left;
+    overflow: auto;
+    clear: left;
+}
+
+.spc1 , .spc2 , .spc3 {
+    height: 20px;
+    line-height: 20px;
+}
+
+.th123 {
+    color: gray;
+}
+
+/* 공지사항 ==================================================*/

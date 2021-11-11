@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dog.mapper.SettleMapper">
+	
+	<select id="checkoutByDay" resultType="SettleVO">
+		select sum(totalprice) pay from orderitemv where itemstate='배송완료' and regdate between date_add(now(), interval -1 day ) and now();
+	</select>
+	
+	<select id="checkoutByWeek" resultType="SettleVO">
+		select sum(totalprice) pay from orderitemv where itemstate='배송완료' and regdate between date_add(now(), interval -1 week ) and now();
+	</select>
+	
+	<select id="checkoutByMonth" resultType="SettleVO">
+		select sum(totalprice) pay from orderitemv where itemstate='배송완료' and regdate between date_add(now(), interval -1 month ) and now();
+	</select>
+	
+	<select id="checkoutByYear" resultType="SettleVO">
+		select sum(totalprice) pay from orderitemv where itemstate='배송완료' and regdate between date_add(now(), interval -1 year ) and now();
+	</select>
+	
+	
+	
+	<select id="viewDay" resultType="SettleVO" parameterType="Map">
+		select d, 
+		ifnull(oiv.pay, 0) pay,
+		ifnull(oiv.cnt, 0) cnt,
+		ifnull(oiv.quantity, 0) quantity
+		from date_t d left join 
+		(select date_format(regdate, '%Y-%m-%d') day, sum(totalprice) pay, count(oino) cnt, sum(quantity) quantity from 
+		orderitemvsettle where itemstate ='배송완료' 
+		<if test="cateid!=null">
+			and cateid like '%${cateid}%'
+		</if>
+		<if test="keyword!=null">
+			and ${schKind} = #{keyword}  
+		</if>
+		group by date_format(regdate, '%Y-%m-%d')) oiv 
+		on d.d = oiv.day 
+		where d between #{start} and #{end} order by d desc;
+	</select>
+	
+	<select id="viewMonth" resultType="SettleVO" parameterType="Map">
+		select date_format(d,'%Y-%m') d, 
+		ifnull(oiv.pay, 0) pay,
+		ifnull(oiv.cnt, 0) cnt,
+		ifnull(oiv.quantity, 0) quantity
+		from date_t d left join 
+		(select date_format(regdate, '%Y-%m') day, sum(totalprice) pay, count(oino) cnt, sum(quantity) quantity from 
+		orderitemvsettle where itemstate ='배송완료' 
+		<if test="cateid!=null">
+			and cateid like '%${cateid}%'
+		</if>
+		<if test="keyword!=null">
+			and ${schKind} = #{keyword}  
+		</if>
+		group by date_format(regdate, '%Y-%m')) oiv 
+		on date_format(d,'%Y-%m') = oiv.day
+		group by date_format(d,'%Y-%m') having d between #{start} and #{end} order by d desc;
+	</select>
+	
+	<select id="viewYear" resultType="SettleVO" parameterType="Map">
+		select date_format(d,'%Y') d, 
+		ifnull(oiv.pay, 0) pay,
+		ifnull(oiv.cnt, 0) cnt,
+		ifnull(oiv.quantity, 0) quantity
+		from date_t d left join 
+		(select date_format(regdate, '%Y') day, sum(totalprice) pay, count(oino) cnt, sum(quantity) quantity from 
+		orderitemvsettle where itemstate ='배송완료' 
+		<if test="cateid!=null">
+			and cateid like '%${cateid}%'
+		</if>
+		
+		<if test="keyword!=null">
+			and ${schKind} = #{keyword}  
+		</if>
+		group by date_format(regdate, '%Y')) oiv 
+		on date_format(d,'%Y') = oiv.day
+		group by date_format(d,'%Y') having d between #{start} and #{end} order by d desc;
+	</select>
+	
+	
+	<select id="getInfoByKeyword" resultType="itemVO" parameterType="settleSchCondition">
+		select name, gname, sname from itemv where ${schKind} = #{keyword}
+	</select>
+	
+	<select id="getGnameByCateid" resultType="itemVO" parameterType="settleSchCondition">
+		select gname from category where cateid like '%${cateid}%' limit 1
+	</select>
+	
+	<select id="getGnameSnameByCateid" resultType="itemVO" parameterType="settleSchCondition">
+		select gname, sname from category where cateid like '%${cateid}%'
+	</select>
+
+	
+	
+
+</mapper>

@@ -1,0 +1,89 @@
+@charset "UTF-8";
+
+body {
+	margin: 0;
+}
+/* 래퍼 */
+.recWrapper {
+	width: 1200px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+div.itemWrapper {
+	width: 400px;
+	min-height: 400px;
+	border: 1px solid lightgray;
+	overflow: auto;
+	/*border-radius: 20px;*/
+	padding: 20px;
+	box-sizing: border-box;
+	float: left;
+	margin-top: -1px;
+	margin-left: -1px;
+}
+select.inoSel {
+	width: 60px;
+	height: 25px;
+}
+
+
+/* 상품 공통 ==================================================*/
+ul.itemList {
+	clear: both;
+	list-style: none;
+	padding-left: 0;
+}
+ul.itemList>li {
+	float: left;
+	width: 350px;
+	height: 220px;
+	box-sizing: border-box;
+	padding: 0px 20px;
+	margin-bottom: 60px;
+}
+
+div.thum {
+	box-sizing: border-box;
+	width: 200px;
+	height: 200px;
+	text-align: center;
+	border: 1px solid lightgray;
+	/*border-radius: 8px;*/
+	margin: 0 auto;
+	margin-bottom: 5px;
+}
+div.itemInfo {
+	width: 200px;
+	margin: 0 auto;
+}
+div.thum>a>img {
+	box-sizing: border-box;
+	width: 198px;
+	height: 198px;
+	/*border-radius: 6px;*/
+}
+div.itemName {
+	font-size: 14px;
+	line-height: 25px;
+}
+/* 상품 공통 ==================================================*/
+
+
+.actionButtonBox {
+	clear: both;
+	text-align: center;
+	
+}
+input.actionButton {
+	background-color: #fff;
+	border: 1px solid black;
+	width: 150px;
+	height: 45px;
+	cursor: pointer;
+	margin-top: 50px;
+}
+
+
+
+

@@ -1,0 +1,20 @@
+@charset "UTF-8";
+.adminList {
+	float: left;
+	margin: 100px 0 0 100px;
+	padding: 30px;
+}
+
+.adminList a#title {
+	font-weight: bold;
+	padding-left: 30px;
+}
+
+.adminList li {
+	padding-bottom: 10px;
+	font-weight: normal;
+}
+
+.adminList a{
+	color: #000000;
+}

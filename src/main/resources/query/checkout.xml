@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dog.mapper.CheckoutMapper">
+	
+	<!-- 서버 날짜 가져옴 -->
+	<select id="getDate" resultType="java.lang.String">
+		select date_format(now(), '%Y%m%d') as date
+	</select>
+	
+	<!-- 마지막 oino 가져옴 -->
+	<select id="getLastOINO" resultType="OIListVO">
+		select * from oilist order by regdate desc limit 1;
+	</select>
+	
+	<insert id="addOIList" parameterType="Map"> <!-- , regdate, now() -->
+		insert into oilist(oino, uid) values(#{oino}, #{mv.uid})
+	</insert>
+	
+	<insert id="addOrderItem" parameterType="Map">
+		insert into orderitem(oino, ino, quantity, itemstate) values 
+		<foreach collection="list" item="list" index="index" separator=",">
+            (#{oino}, #{list.ino}, #{list.quantity}, '결제완료')
+        </foreach>
+	</insert>
+	
+	<insert id="addOrder" parameterType="Map">
+		insert into ordertable(ono, oino, uid, reciever, dno, dstate, address1, address2, phn, payway, cardnum, paystate, price, etc, delifee) values 
+		(#{ov.ono}, #{ov.oino}, #{ov.uid}, #{ov.reciever}, #{ov.dno}, '', #{mv.address1}, #{mv.address2}, #{mv.phn}, #{ov.payway}, #{ov.cardNum}, '결제완료', #{ov.price}, #{ov.etc}, #{ov.delifee})
+	</insert>
+	
+	<update id="updateItem" parameterType="java.util.ArrayList">
+		<foreach collection="list" item="list" index="index" separator=";">
+			update item set quantity = quantity - #{list.quantity}, sellcnt = sellcnt + #{list.quantity} where ino = #{list.ino}
+        </foreach>
+	</update>
+	
+	<delete id="delCartItem" parameterType="Map">
+		delete from cartitem where uid = #{mv.uid} and ino in (
+		<foreach collection="list" item="list" index="index" separator=",">
+            (#{list.ino})
+        </foreach>
+		)
+	</delete>
+	
+</mapper>

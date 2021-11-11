@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+					<!-- 인터페이스 -->
+<mapper namespace="dog.mapper.ReviewMapp">	
+	
+	<select id="revDetail" resultType="reviewVO" parameterType="reviewVO">
+		select * from review where revno = #{revno }
+	</select>
+	
+	<update id="addCount" parameterType="reviewVO">		
+		update review set views = views+1 where revno = #{revno}
+	</update>	
+	
+			<select id="rvlist2" resultType="reviewVO" parameterType="reviewVO">
+				select * from review where content like '%${sch}%' and available='y'
+				order by revno desc limit #{start} , #{limit}
+			</select>
+		
+			<select id="bbTotal" resultType="Integer" parameterType="reviewVO">	
+				select count(*) from review where content like '%${sch}%' and available='y'
+				order by revno desc
+			</select>	
+	
+	<select id="itemlist" resultType="itemVO">
+		select * from review_view order by ino asc
+	</select>	
+	
+	<insert id="revinsert" parameterType="reviewVO">
+		insert into review
+		(ino,uid,content,score,file1,file2,file3) values
+		(#{ino},#{uid},#{content},#{score},#{file1},#{file2},#{file3})		
+	</insert>
+	
+	<update id="revDel" parameterType="reviewVO">
+		update review set available='n' where revno = #{revno}
+	</update>
+	
+	<insert id="revModify" parameterType="reviewVO">
+		update review set ino = #{ino},	content = #{content}, 
+		score = #{score}	where revno = #{revno}
+	</insert>
+
+	<select id="bringrv" resultType="reviewVO" parameterType="reviewVO">
+		select * from review where ino= #{ino} and available='y'
+	</select>
+
+</mapper>

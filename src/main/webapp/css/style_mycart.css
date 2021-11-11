@@ -1,0 +1,95 @@
+@charset "UTF-8";
+body {
+	margin: 0;
+}
+
+.cartWrapper {
+	width: 1200px;
+	margin: 0 auto;
+	margin-top: 40px;
+}
+
+table.cartTable {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 30px;
+}
+table.cartTable tr.title {
+	text-align:center;
+	background-color: #f7f7f7;
+	border-top: 1px solid black;
+	border-bottom: 1px solid lightgray;
+	height: 40px;
+}
+table.cartTable tr.cartRow {
+	border-bottom: 1px solid lightgray;
+	height: 80px;
+}
+table.cartTable tr.noItem {
+	text-align: center;
+	height: 150px;
+	border-bottom: 1px solid lightgray;
+}
+
+ table.cartTable tr td.textCenter {
+ 	text-align:center;
+ }
+ 
+ span.quantity {
+ 	display: inline-block;
+ 	width: 40px;
+ 	height: 22px;
+ 	border: 1px solid lightgray;
+ }
+ input.addButton {
+ 	border: none;
+ 	background-color: #fff;
+ 	cursor: pointer;
+ 	width: 20px;
+ 	height: 20px;
+ }
+ 
+ 
+ 
+ /* 결과박스 */
+ .resultBox {
+ 	width: 100%;
+ 	height: 115px;
+ 	border: 3px solid #e5e5e5;
+ 	padding: 20px 10px;
+ 	box-sizing: border-box;
+ }
+ table.result {
+ 	float:right;
+ 	text-align: center;
+ }
+ table.result tr {
+	height: 30px;
+ }
+  
+  
+ /* 버튼박스 */
+ .cartButtonBox {
+ 	padding: 20px 0;
+ }
+ .action1 {
+ 	border: 1px solid black;
+ 	background-color: #fff;
+ 	width: 150px;
+ 	height: 40px;
+ 	cursor: pointer;
+ 	font-size: 14px;
+ }
+ .action2 {
+ 	width: 200px;
+ 	height: 40px;
+ 	border: none;
+ 	float: right;
+ 	background-color: #f15d03;
+ 	color: #fff;
+ 	font-weight: bold;
+ 	cursor: pointer;
+ 	font-size: 14px;
+ }
+ 
+ 

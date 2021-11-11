@@ -1,0 +1,99 @@
+@charset "UTF-8";
+body {
+	margin: 0;
+}
+.checkoutWrapper {
+	padding-top: 20px;
+	width: 1200px;
+	margin: 0 auto;
+}
+
+/* 상품테이블 */
+table.itemTable {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 30px;
+}
+table.itemTable tr.title {
+	text-align:center;
+	background-color: #f7f7f7;
+	border-top: 1px solid black;
+	border-bottom: 1px solid lightgray;
+	height: 40px;
+}
+table.itemTable tr.itemRow {
+	border-bottom: 1px solid lightgray;
+	height: 80px;
+}
+ table.itemTable tr td.textCenter {
+ 	text-align:center;
+ }
+ 
+ /* 결과박스 */
+ .resultBox {
+ 	width: 100%;
+ 	height: 115px;
+ 	border: 3px solid #e5e5e5;
+ 	padding: 20px 10px;
+ 	box-sizing: border-box;
+ 	margin-bottom: 30px;
+ }
+ table.result {
+ 	float:right;
+ 	text-align: center;
+ }
+ table.result tr {
+	height: 30px;
+ }
+ 
+ /* 정보테이블 */
+ table.infoTable {
+ 	width: 100%;
+ 	border-collapse: collapse;
+ 	border-top: 1px solid black;
+ 	margin-bottom: 50px;
+ }
+  table.infoTable tr {
+  	height: 50px;
+  	border-bottom: 1px solid lightgray;
+  }
+ table.infoTable tr td.infoTitle {
+ 	background-color: #f7f7f7;
+ 	text-align: center;
+ 	font-size: 14px;
+ }
+  table.infoTable tr td.infoContent {
+ 	padding-left: 20px;
+ }
+button#zipsearch {
+ 	width: 100px;
+ 	height: 30px;
+ 	background-color: #d0d0d0;
+ 	color: #121212;
+ 	border: none;
+ 	cursor: pointer;
+ }
+ td.infoContent>input {
+ 	font-size: 16px;
+ 	height: 26px;
+ 	border: 1px solid lightgray;
+ }
+ input.payway {
+ 	margin: 0;
+ 	vertical-align: middle;
+ }
+ 
+ input.actionButton {
+ 	display: block;
+ 	width: 160px;
+ 	height: 50px;
+ 	margin: 0 auto;
+ 	border: none;
+ 	background-color: #939393;
+ 	color: #fff;
+ 	font-size: 20px;
+ 	font-weight: bold;
+ 	cursor: pointer;
+ }
+ 
+ 

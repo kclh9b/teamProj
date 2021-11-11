@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+					<!-- 인터페이스 -->
+<mapper namespace="dog.mapper.CBoardMapp">
+
+				<select id="cblist2" resultType="cboardVO" parameterType="cboardVO">
+					select * from cboard where title like '%${sch}%'
+					and available = 'y'
+					order by comuno desc limit #{start} , #{limit}
+				</select>
+				
+				<select id="bbTotal" resultType="Integer" parameterType="cboardVO">	
+					select count(*) from cboard where title like '%${sch}%'	and available='y'
+					order by comuno desc
+				</select>
+	
+	<update id="addCount" parameterType="CboardVO">		
+		update cboard set views = views+1 where comuno = #{comuno}
+	</update>
+
+	<select id="cbDetail" resultType="CboardVO" parameterType="CboardVO">
+		select * from cboard where comuno = #{comuno }	<!-- preparedStatement -->
+	</select>
+	
+	<insert id="cbinsert" parameterType="CboardVO">
+		insert into cboard
+		(title,	 	uid,	content,	file_1_str,file_2_str,file_3_str) values
+		(#{title},	#{uid},	#{content},	#{file_1_str},#{file_2_str},#{file_3_str})
+	</insert>
+	
+	<insert id="cbModify" parameterType="CboardVO">
+		update cboard set title = #{title},	content = #{content} , regdate = current_timestamp
+		where comuno = #{comuno}
+	</insert>
+
+	<update id="cbDelete" parameterType="CboardVO">
+		update cboard set available = 'n' where comuno = #{comuno}
+	</update>
+	
+</mapper>

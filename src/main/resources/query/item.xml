@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dog.mapper.ItemMapper">
+	
+	<select id="itemList" resultType="itemVO" parameterType="Map">
+	
+		select * from itemv
+		
+		where cateid like '%${cate}%' 
+		
+		<if test="keyword!=null">
+		
+		and ${schkind} like '%${keyword}%'
+		
+		</if>
+		
+		<if test="min!=null">
+		
+		and <![CDATA[calprice >= #{min}]]> 
+		
+		</if>
+		
+		<if test="max!=null">
+		
+		and <![CDATA[calprice <= #{max}]]> 
+		
+		</if>
+		
+		<if test="size!=null">
+		
+		and <![CDATA[size like '%${size}%']]> 
+		
+		</if>
+		
+		<if test="fur!=null">
+		
+		and <![CDATA[fur like '%${fur}%']]> 
+		
+		</if>
+		
+		<if test="age!=null">
+		
+		and <![CDATA[age like '%${age}%']]> 
+		
+		</if>
+		
+		and available = 'y' 
+		<choose>
+			<when test="order=='new'">
+				order by regdate desc 
+			</when>
+			<when test="order=='sellcnt'">
+				order by sellcnt desc 
+			</when>
+			<when test="order=='high'">
+				order by calprice desc 
+			</when>
+			<when test="order=='row'">
+				order by calprice 
+			</when>
+			<otherwise>
+				order by regdate desc 
+			</otherwise>
+		</choose>
+		
+
+		limit #{page}, #{limit}
+		
+		
+	</select>
+	
+	<select id="getItemCnt" resultType="Integer" parameterType="Map">
+	
+		select count(*) from itemv
+		
+		where cateid like '%${cate}%' 
+		
+		<if test="keyword!=null">
+		
+		and ${schkind} like '%${keyword}%'
+		
+		</if>
+		
+		<if test="min!=null">
+		
+		and <![CDATA[calprice >= #{min}]]> 
+		
+		</if>
+		
+		<if test="max!=null">
+		
+		and <![CDATA[calprice <= #{max}]]> 
+		
+		</if>
+		
+		<if test="size!=null">
+		
+		and <![CDATA[size like '%${size}%']]> 
+		
+		</if>
+		
+		<if test="fur!=null">
+		
+		and <![CDATA[fur like '%${fur}%']]> 
+		
+		</if>
+		
+		<if test="age!=null">
+		
+		and <![CDATA[age like '%${age}%']]> 
+		
+		</if>
+		
+		and available = 'y' 
+		<choose>
+			<when test="order=='new'">
+				order by regdate desc 
+			</when>
+			<when test="order=='sellcnt'">
+				order by sellcnt desc 
+			</when>
+			<when test="order=='high'">
+				order by price desc 
+			</when>
+			<when test="order=='row'">
+				order by price 
+			</when>
+			<otherwise>
+				order by regdate desc 
+			</otherwise>
+		</choose>
+		
+	</select>
+	
+	
+	<select id="itemDetail" resultType="itemVO" parameterType="itemVO">
+	
+		select * from itemv where ino = #{ino}
+		
+	</select>
+	
+	<!-- 추천상품 -->
+	<!-- 상품코드 가져오기 -->
+	<select id="getInos" resultType="itemVO">
+		select ino from itemv where available='y' order by ino desc;
+	</select>
+	
+	<!-- 추천상품 코드 가져오기 -->
+	<select id="getRecInos" resultType="recItemVO">
+		select * from recommenditem order by recno
+	</select>
+	
+	<!-- 추천상품 코드 가져오기 -->
+	<update id="updateRecInos" parameterType="java.util.ArrayList">
+		<foreach collection="list" item="list" index="index" separator=";">
+			<if test="list.ino==0">
+				update recommenditem set ino = null where recno = ${list.recno}
+			</if>
+			<if test="list.ino!=0">
+				update recommenditem set ino = ${list.ino} where recno = ${list.recno}
+			</if>
+        </foreach>
+	</update>
+	
+	<!-- 추천상품 가져오기(선정화면) -->
+	<select id="recItemAllList" resultType="itemVO" parameterType="java.util.ArrayList">
+		select recno, i.* from recommenditem r left join itemv i on r.ino = i.ino order by recno;
+	</select>
+	
+	<!-- 추천상품 가져오기(메인화면) -->
+	<select id="recItemList" resultType="itemVO" parameterType="java.util.ArrayList">
+		select recno, i.* from recommenditem r left join itemv i on r.ino = i.ino where i.ino in (
+		<foreach collection="list" item="list" index="index" separator=",">
+		#{list.ino}
+		</foreach>
+		)
+		order by recno;
+	</select>
+	
+</mapper>

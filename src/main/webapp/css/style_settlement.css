@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+body {
+	margin: 0;
+}
+/* 래퍼 */
+.settleWrapper {
+	width: 1200px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+.schCondition {
+	width: 530px;
+	margin: 0 auto;
+	margin-bottom: 40px;
+}
+.cdt1 {
+
+	margin-bottom: 10px;
+}
+.cdt1>select {
+	width: 55px;
+	height: 30px;
+	margin-right: 5px;
+}
+.cdt1 input {
+	height: 25px;
+	margin-right: 5px;
+}
+
+.cdt2>select {
+	width: 80px;
+	height: 30px;
+	margin-right: 5px;
+}
+.cdt2>input[type="text"] {
+	height: 25px;
+}
+.cdt2>input[type="button"] {
+	vertical-align: bottom;
+	width: 70px;
+	height: 30px;
+	background-color: #fff;
+	border: 1px solid black;
+	cursor: pointer;
+}
+.showCate {
+	width: 800px;
+	margin: 0 auto;
+	margin-bottom: 30px;
+}
+
+
+
+
+table.settle {
+	width: 800px;
+	margin: 0 auto;
+	margin-bottom: 50px;
+	text-align: center;
+	border-collapse: collapse;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+}
+table.settle>thead tr {
+	height: 40px !important;
+	background-color: #f7f7f7;
+	
+}
+table.settle tr {
+	height: 32px !important;
+}
+table.settle th, table.settle tr, table.settle tr td {
+	border: 1px solid lightgray;
+}
+
+#myChart {
+	margin: 0 auto;
+}
+

@@ -1,0 +1,146 @@
+@charset "UTF-8";
+.mems_list {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+img {
+	width: 100px;
+	height: 100px;
+}
+
+.search {
+	text-align:center;
+	margin-bottom: 10px;
+	margin-top : 10px;
+}
+
+.btn {
+	width: 72px;
+	height: 28px;
+	padding: 0 0 0 0px;
+	border: 1px solid #d0d0d0;
+	color: #000000;
+}
+
+.btn2 {
+	float:center;
+	width: 150px;
+	height: 40px;
+	margin: 15px 0 0 0;
+	padding: 0 0 0 0px;
+	border: 1px solid #d0d0d0;
+	background-color : #474A51;
+	color: white;
+}
+
+.btn3 {
+	float:center;
+	width: 150px;
+	height: 40px;
+	margin: 15px 0 0 0;
+	padding: 0 0 0 0px;
+	border: 1px solid #d0d0d0;
+	background-color : #ffffff;
+	color: #000000;
+}
+
+div.search input[type="text"] {
+	padding:3px;
+}
+table {
+	width: 1200px;
+}
+
+
+.member_tit h2 {
+	font-size: 28px;
+	margin: 15px 40px 20px -900px;
+	text-align:center;
+}
+
+table.basic {
+	text-align: center;
+	border-spacing : 0;
+	margin-top: 5px;
+    border-bottom: 2px solid #b1b1b1;
+}
+
+table.basic th {
+	background-color: #f7f7f7;
+	border-top: 1px solid #b1b1b1;
+	border-bottom: 3px double #b1b1b1;
+	padding-top: 10px;
+	height: 25px;
+	vertical-align: top;
+	text-align: center;
+	font-size: 13px;
+    font-weight: bold;
+    color: #323232;
+    font-family: Malgun Gothic, dotum, verdana;
+}
+
+table.basic td {
+	padding: 7px;
+	height: 36px;
+	border: 1px solid #e8e8e8;
+    vertical-align: middle;
+    font-size: 13px;
+}
+
+h3 {
+	color: rgb(17, 17, 17);
+	font-size: 16px;
+}
+
+table.information {
+	border-top: 2px solid rgb(51, 51, 51);
+	border-bottom: 1px solid rgb(204, 204, 204);
+	font-size: 13px;
+}
+
+table.information th {
+	width: 120px;
+	font-weight: normal;
+	text-align: left;
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+
+table.information td {
+	text-align: left;
+}
+
+div.order {
+	font-size: 13px;
+	font-family: Malgun Gothic, dotum, verdana;
+}
+
+div.orderlist {
+	background-color: white;
+	border: 1px solid black;
+	width: 150px;
+	height: 40px;
+	margin-top: 40px;
+	float: right;
+	text-align: center;
+	line-height: 40px;
+}
+
+div.orderlist a {
+	color: black;
+	font-size: 13px;
+}
+
+div.button {
+	margin-top: 20px;
+	float: right;
+}
+
+div.button button {
+	border: 1px solid black;
+	background: white;
+	width: 150px;
+	height: 40px;
+}
+

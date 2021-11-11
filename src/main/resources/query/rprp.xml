@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+					<!-- 인터페이스 -->
+<mapper namespace="dog.mapper.ReviewReplyMapp">	
+	
+	<insert id="rrplyinsert" parameterType="reviewReplyVO">
+		insert into rreply
+		(revno,content,uid) values
+		(#{revno},#{content},#{uid})
+	</insert>
+	
+	<select id="rrplist" resultType="reviewReplyVO">
+		select * from rreply where available ='y' and revno = #{revno}
+	</select>
+	
+	<update id="rrpdel" parameterType="reviewReplyVO">
+		update rreply set available = 'n' where repno = #{repno}
+	</update>
+	
+	<select id="bringrvrp" resultType="reviewReplyVO" parameterType="reviewVO">
+		select * from rreply where revno= #{revno}
+	</select>
+
+</mapper>

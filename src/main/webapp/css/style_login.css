@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+
+
+body {
+	margin:0;
+}
+strong {
+	font-weight: bold;
+}
+
+dl, ul, ol, li {
+	list-style: none;
+}
+
+.content_box {
+	margin-top: 100px;
+}
+
+.member_wrap {
+	width: 800px;
+	margin: 0px auto 10px auto;
+}
+
+.member_tit h2 {
+	font-size: 28px;
+	margin: 0 0 20px 0;
+}
+
+.member_cont {
+	padding: 200px 60px;
+	border: 1px solid #dbdbdb;
+}
+
+.member_login_box
+{
+	margin-top:-140px;
+}
+.member_cont .member_login_box h3 {
+	font-weight: normal;
+	font-size: 18px;
+	color: #222222;
+}
+
+.member_cont .member_login_box .login_input > div {
+    float: left;
+}
+
+.member_cont .member_login_box .login_input input {
+	display: block;
+	width: 292px;
+	height: 36px;
+	margin: 15px 0 0 0;
+	padding: 0 0 0 0px;
+	border: 1px solid #d0d0d0;
+	color: #979d9d;
+}
+
+.member_cont .member_login_box .login_input button {
+	float: right;
+	width: 295px;
+	height: 91px;
+	margin: 15px 0 0 0;
+	border: 1px solid #f15d03;
+	background: #f15d03;
+	color: #ffffff;
+	font-size: 25px;
+
+	cursor: pointer;
+}
+
+.member_cont .id_chk {
+	clear: both;
+	padding: 0 0 5px 0;
+}
+
+
+.btn_login_box {
+	margin: 20px 0 0 0;
+	padding: 20px 0 0 0;
+	border-top: 1px solid #dcdcdc;
+}
+
+.btn_login_box li {
+	float: left;
+	margin-left: 15px;
+}
+
+.btn_member_join {
+	width: 100px;
+	height: 45px;
+	margin: 0;
+	color: #ffffff;
+	font-size: 14px;
+	border: 1px solid #666666;
+	background: #666666;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.btn_member_white {
+	width: 100px;
+	height: 45px;
+	font-weight: bold;
+	color: #3e3d3c;
+	font-size: 13px;
+	border: 1px solid #cccccc;
+	background: #ffffff;
+	cursor: pointer;
+}
+

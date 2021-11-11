@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+.member_tit h2 {
+	font-size: 28px;
+	margin: 15px 40px 20px -900px;
+	text-align:center;
+}
+
+
+span#essential {
+	color: red;
+}
+
+table.regTable {
+	width:60%;
+	height:100%;
+    border-collapse: separate;
+    text-indent: initial;
+   	border-top : 1px solid black; 
+    white-space: normal;
+    line-height: normal;
+    font-weight: normal;
+    font-size: medium;
+    font-style: normal;
+    color: black;
+    text-align: start;
+    border-spacing: 2px;
+    font-variant: normal;
+    margin-left:auto; 
+    margin-right:auto;
+ 
+}
+
+.btn {
+	width: 102px;
+	height: 36px;
+	padding: 0 0 0 0px;
+	border: 1px solid #d0d0d0;
+	color: #979d9c;
+}
+
+.btn2 {
+	float:center;
+	width: 150px;
+	height: 40px;
+	margin: 15px 0 0 0;
+	padding: 0 0 0 0px;
+	border: 1px solid #d0d0d0;
+	background-color : #474A51;
+	color: white;
+}
+
+th, td {
+    border: 0;
+    vertical-align: top;
+}
+td {
+    display: table-cell;
+}
+
+
+.tit {
+    overflow: hidden;
+}
+
+.table_box input[type="text"], input[type="password"] {
+    height: 40px;
+    width:350px;
+    padding: 0 5px;
+    color: #333333;
+    border: 1px solid #dcdcdc;
+    line-height: 31px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+ .content_box {
+	margin-top:60px;
+}
+
+
+body {
+	margin:0;
+}
+.memberCols1 {
+    width: 140px;
+    text-align: center;
+    padding: 10px 0 10px 10px;
+    line-height:38px;
+    font-size: 14pt;
+    color: #5D5D5D;
+    background: #f9f9f9;
+}
+
+.memberCols2 {
+    text-align: left;
+    line-height:38px;
+    padding: 10px;
+    width:200px;
+}

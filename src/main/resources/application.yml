@@ -1,0 +1,25 @@
+server :
+    port : 9062
+    
+
+spring :
+    mvc :
+        view :
+            prefix : /views/
+            suffix : .jsp
+            
+    servlet :
+        multipart :
+            max-file-size : 10MB
+            max-request-size : 10MB
+
+            
+    datasource :
+        driver-class-name : com.mysql.cj.jdbc.Driver
+        url : jdbc:mysql://localhost:3306/project3?characterEncoding=utf-8&autoReconnect=true&allowMultiQueries=true
+        username : jsp
+        password : '1234'
+        
+mybatis :
+    mapper-locations : query/**/*.xml
+    type-aliases-package : dog.model
