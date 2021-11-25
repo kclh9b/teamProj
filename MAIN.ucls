@@ -10,7 +10,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="2" language="java" name="dog.mapper.BoardMapp" project="teamProj3" 
+  <interface id="2" language="java" name="dog.domain.board.mapper.BoardMapp" project="teamProj3"
     file="/teamProj3/src/main/java/dog/mapper/BoardMapp.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="771" y="241"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -19,7 +19,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="3" language="java" name="dog.mapper.ItemMapper" project="teamProj3" 
+  <interface id="3" language="java" name="dog.domain.item.mapper.ItemMapper" project="teamProj3"
     file="/teamProj3/src/main/java/dog/mapper/ItemMapper.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="380" y="230"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -28,7 +28,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="4" language="java" name="dog.model.ItemVO" project="teamProj3" 
+  <class id="4" language="java" name="dog.domain.item.ItemVO" project="teamProj3"
     file="/teamProj3/src/main/java/dog/model/ItemVO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="99" y="250"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -37,7 +37,7 @@
       <operations public="false" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="dog.model.NoticeVO" project="teamProj3" 
+  <class id="5" language="java" name="dog.domain.board.NoticeVO" project="teamProj3"
     file="/teamProj3/src/main/java/dog/model/NoticeVO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1002" y="267"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 

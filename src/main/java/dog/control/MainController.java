@@ -11,10 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import dog.mapper.BoardMapp;
-import dog.mapper.ItemMapper;
-import dog.model.RecItemVO;
-import dog.model.SchCondition;
+import dog.domain.board.mapper.BoardMapp;
+import dog.domain.item.mapper.ItemMapper;
+import dog.domain.item.RecItemVO;
+import dog.domain.item.SchCondition;
 
 @Controller
 public class MainController {

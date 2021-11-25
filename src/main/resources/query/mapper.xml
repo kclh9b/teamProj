@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="dog.domain.item.mapper.DogMapp">
+	<!-- 회원가입 -->
+	<select id="productList" resultType="itemVO" parameterType="itemVO">
+		
+		select * from itemv 
+		
+		<if test="searchType == 'n'.toString()">where name like '%${sch}%' </if>
+		<if test="searchType == 'i'.toString()">where ino like '%${sch}%' </if>
+		<if test="searchType == 'g'.toString()">where gname like '%${sch}%' </if>
+		
+		order by ino desc limit #{start}, #{limit}
+		
+		<!-- <where> name like concat('%', #{sch}, '%') </where> -->
+		
+	</select>
+	
+	<select id="productTotal" resultType="Integer" parameterType="itemVO">
+		select count(*) from itemv
+		
+		<if test="searchType == 'n'.toString()">where name like '%${sch}%' </if>
+		<if test="searchType == 'i'.toString()">where ino like '%${sch}%' </if>
+		<if test="searchType == 'g'.toString()">where gname like '%${sch}%' </if>
+		
+	</select>
+	
+	<select id="ckname" parameterType="itemVO" resultType="Integer">
+        select count(*) from item where name = #{name}
+    </select>
+	
+	<select id="productDetail" resultType="itemVO" parameterType="itemVO">
+		select * from itemv where ino = #{ino}
+	</select>
+	
+	<insert id="productInsert" parameterType="itemVO">
+		insert into item 
+		(ino,      cateid,    name,    price,   discount,    origin,    manufac,    quantity,    main_img,    detail_img,    size,    fur,     age,    fatyn,   regdate) values
+		(#{ino}, #{cateid}, #{name}, #{price}, #{discount}, #{origin}, #{manufac}, #{quantity}, #{main_img}, #{detail_img}, #{size}, #{fur}, #{age}, #{fatyn}, now())
+		
+		<selectKey keyProperty="ino" resultType="Integer" order="BEFORE">
+			
+			select max(ino)+1 from item
+			
+		</selectKey>
+		
+	</insert>
+	
+	<update id="productModify" parameterType="itemVO">
+		update item set 
+		ino = #{ino}, cateid = #{cateid}, name = #{name}, price = #{price}, discount = #{discount}, origin = #{origin}, manufac = #{manufac}, quantity = #{quantity}, size = #{size}, fur = #{fur}, age = #{age}, fatyn = #{fatyn}  
+		where ino = #{ino}
+	</update>
+	
+	<update id="productDelete" parameterType="itemVO">
+		update item set available = 'n' where ino = #{ino}
+	</update>
+	
+	
+<!-- 주문  -->	
+	
+	
+	<select id="orderList" resultType="orderVO" parameterType="orderVO">
+		select * from ordertable
+		
+		<if test="searchType == 'o'.toString()">where ono like '%${sch}%'</if>
+		<if test="searchType == 'u'.toString()">where uid = #{sch}</if>
+		<if test="searchType == 'p'.toString()">where paystate like '%${sch}%'</if>
+		<if test="searchType == 'd'.toString()">where date_format(regdate,'%Y-%m-%d') = #{day}</if>
+		<if test="searchType == '1'.toString()">where paystate = #{sch}</if>
+		<if test="searchType == '2'.toString()">where paystate = #{sch}</if>
+		<if test="searchType == '3'.toString()">where paystate = #{sch}</if>
+		<if test="searchType == '4'.toString()">where paystate = #{sch}</if>
+		<if test="searchType == '5'.toString()">where paystate = #{sch}</if>
+		<if test="searchType == '6'.toString()">where paystate = #{sch}</if>
+		<if test="searchType == '7'.toString()">where paystate = #{sch}</if>
+		
+		 order by regdate desc limit #{start}, #{limit}
+		
+	</select>
+	
+	<select id="orderTotal" resultType="Integer" parameterType="orderVO">
+		select count(*) from ordertable
+		
+		<if test="searchType == 'o'.toString()">where ono like '%${sch}%'</if>
+		<if test="searchType == 'u'.toString()">where uid = #{sch}</if>
+		<if test="searchType == 'p'.toString()">where paystate like '%${sch}%'</if>
+		<if test="searchType == 'd'.toString()">where date_format(regdate,'%Y-%m-%d') = #{day}</if>
+		<if test="searchType == '1'.toString()">where paystate = #{sch}</if>
+		<if test="searchType == '2'.toString()">where paystate = #{sch}</if>
+		<if test="searchType == '3'.toString()">where paystate = #{sch}</if>
+		<if test="searchType == '4'.toString()">where paystate = #{sch}</if>
+		<if test="searchType == '5'.toString()">where paystate = #{sch}</if>
+		<if test="searchType == '6'.toString()">where paystate = #{sch}</if>
+		<if test="searchType == '7'.toString()">where paystate = #{sch}</if>
+		
+	</select>
+	
+	<select id="orderitemList" resultType="orderitemVO">
+		select * from orderitemv
+	</select>
+	
+	<select id="orderDetail" resultType="orderVO" parameterType="orderVO">
+		select * from ordertable where ono = #{ono}
+	</select>
+	
+	<select id="orderitemDetail" resultType="orderitemVO" parameterType="orderVO">
+		select * from orderitemv where oino = #{oino}
+	</select>
+	
+	<update id="updateItemstate" parameterType="orderitemVO">
+		update orderitemv
+			set itemstate = #{itemstate}
+		where oino = #{oino}
+	</update>
+	
+	<update id="updatePaystate" parameterType="orderVO">
+		update ordertable
+			set paystate = #{itemstate}
+		where oino = #{oino }
+	</update>
+	
+	<update id="updateDno" parameterType="orderVO">
+		update ordertable
+			set dno = #{dno}
+		where oino = #{oino }	
+	</update>
+	
+	<update id="updateCanceldate" parameterType="orderVO">
+		update ordertable
+			set canceldate = now()
+		where oino = #{oino}	
+	</update>
+	
+	
+	<update id="updateRefunddate" parameterType="orderVO">
+		update ordertable
+			set refunddate = now()
+		where oino = #{oino}	
+	</update>
+	
+	<update id="updateRefundokdate" parameterType="orderVO">
+		update ordertable
+			set refundokdate = now()
+		where oino = #{oino}	
+	</update>
+	
+	<!-- <update id="updateDelivery" parameterType="orderitemVO">
+		update orderitemv
+			set itemstate = #{itemstate}
+		where oino = #{oino}
+	</update> -->
+	
+	
+	<select id="userorderList" resultType="orderVO" parameterType="memberVO">
+		select * from ordertable where uid = #{uid} 
+		
+		<if test="searchType == 'd'.toString()"> and date_format(regdate,'%Y-%m-%d') = #{day}</if>
+		<if test="searchType == 'n'.toString()"> and ono like '%${sch}%'</if>
+		<if test="searchType == '1'.toString()"> and paystate = #{sch}</if>
+		<if test="searchType == '2'.toString()"> and paystate = #{sch}</if>
+		<if test="searchType == '3'.toString()"> and paystate = #{sch}</if>
+		<if test="searchType == '4'.toString()"> and paystate = #{sch}</if>
+		<if test="searchType == '5'.toString()"> and paystate = #{sch}</if>
+		<if test="searchType == '6'.toString()"> and paystate = #{sch}</if>
+		<if test="searchType == '7'.toString()"> and paystate = #{sch}</if>
+		
+		order by regdate desc
+		
+	</select>
+	
+	<select id="userorderTotal" resultType="Integer" parameterType="memberVO">
+		select count(*) from ordertable where uid = #{uid}
+		
+		<if test="searchType == 'd'.toString()"> and date_format(regdate,'%Y-%m-%d') = #{day}</if>
+		<if test="searchType == 'n'.toString()"> and ono like '%${sch}%'</if>
+		<if test="searchType == '1'.toString()"> and paystate = #{sch}</if>
+		<if test="searchType == '2'.toString()"> and paystate = #{sch}</if>
+		<if test="searchType == '3'.toString()"> and paystate = #{sch}</if>
+		<if test="searchType == '4'.toString()"> and paystate = #{sch}</if>
+		<if test="searchType == '5'.toString()"> and paystate = #{sch}</if>
+		<if test="searchType == '6'.toString()"> and paystate = #{sch}</if>
+		<if test="searchType == '7'.toString()"> and paystate = #{sch}</if>
+		
+	</select>
+	
+	<!-- <select id="userorderList" resultType="orderitemVO" parameterType="orderitemVO">
+		select * from orderitemv where oino = #{oino}
+	</select> -->
+	
+	<select id="useroino" resultType="orderVO" parameterType="memberVO">
+		select oino from ordertable where uid = #{uid}
+	</select>
+	
+	<!-- <select id="userorderList" resultType="orderVO" parameterType="memberVO">
+		select * from orderitemv v join ordertable o
+		on o.oino = v.oino
+		where uid = #{uid};
+	</select> -->
+	
+	<!-- <select id="userorderDetail" resultType="orderVO" parameterType="orderVO">
+		select * from ordertable where ono = #{ono}
+	</select>
+	
+	<select id="userorderitemDetail" resultType="orderitemVO" parameterType="orderVO">
+		select * from orderitemv where oino = #{oino}
+	</select> -->
+	
+	<!-- <select id="orderitemCancel" resultType="orderitemVO" parameterType="orderVO">
+		select * from orderitemv where oino = #{oino} and ino = #{ino}
+	</select> -->
+	
+	<select id="orderitemDetailList" resultType="orderitemVO">
+		select * from orderitemv where oino = #{oino} and ino = #{ino}
+	</select>
+	
+	<select id="outputOno" resultType="java.lang.String">
+		<!-- select ono, orderitemv.oino from orderitemv join ordertable 
+			on orderitemv.oino = ordertable.oino
+			where orderitemv.oino = #{oino} and orderitemv.ino = #{ino} -->
+		select ono from ordertable 
+			where oino = #{oino}			
+	</select>
+			
+	<select id="getOrderItems" resultType="orderitemVO" parameterType="orderVO">
+		select * from orderitemv where oino = #{oino} <!-- and ino = #{ino} -->
+	</select>
+	
+	<update id="orderCancel" parameterType="Map">
+		update orderitem a inner join item b
+			on a.ino = b.ino
+			set b.quantity = b.quantity + a.quantity, b.sellcnt = b.sellcnt - (a.quantity + a.refundcnt)
+			where a.oino = #{ov.oino} and b.ino in (
+			<foreach collection="list" item="list" separator=",">
+				#{list.ino}
+			</foreach>
+			)
+	</update>
+	
+	<!-- <update id="updateSellcnt" parameterType="Map">
+		update orderitem a inner join item b
+			on a.ino = b.ino
+			set b.sellcnt = b.sellcnt - a.quantity
+			where a.oino = #{ov.oino} and b.ino in (
+			<foreach collection="list" item="list" separator=",">
+				#{list.ino}
+			</foreach>
+			)
+	</update> -->
+	
+		
+	<!-- 
+	<update id="orderCancel" parameterType="itemVO">
+		update orderitemv a inner join item b
+			on a.ino = b.ino
+			set b.quantity = b.quantity + a.quantity
+			where a.oino = #{oino} and b.ino = #{ino};
+	</update>
+	-->
+	
+	<update id="updateStates" parameterType="orderVO">
+		update ordertable a inner join orderitemv b
+			on a.oino = b.oino
+			set a.paystate = b.itemstate
+	</update>
+	
+	<update id="updateRefundState" parameterType="orderVO">
+		update ordertable set paystate = '반품신청' where oino = #{oino};
+	</update>
+	
+	<!-- 반품신청시 주문수량빠지고 반품수량증가  -->
+	<update id="updateRefundcnt" parameterType="OrderitemVO">
+		update orderitem 
+			set refundcnt = quantity, quantity = 0
+			where oino = #{oino} and ino = #{ino} and refund = 'n'
+	</update>
+	
+	<!-- 반품사유 확인해서 refund컬럼에 y 또는 n 넣기 -->
+	<update id="updateRefund" parameterType="OrderitemVO">
+		update orderitem 
+			set refund = #{refund}
+			where oino = #{oino} and ino = #{ino}
+	</update>
+	
+	<update id="updateRefundprice" parameterType="OrderitemVO">
+		update orderitemv 
+			set refundprice = #{refundprice}
+			where oino = #{oino} and ino = #{ino}
+	</update>
+
+	<!-- 관리자가 반품승인 시에 고객변심(y) 재고수량 증가 -->
+	<update id="updateQuantity" parameterType="OrderitemVO">
+		update orderitem a inner join item b
+			on a.ino = b.ino
+			set b.quantity = b.quantity + a.refundcnt
+			where a.oino = #{oino} and b.ino = #{ino} and a.refund = 'y'
+	</update>
+
+	<select id="orderCancellist" resultType="orderVO" parameterType="orderVO">
+	
+		select * from ordertable where paystate = '주문취소'
+		
+		<if test="searchType == 'o'.toString()">and ono like '%${sch}%'</if>
+		<if test="searchType == 'u'.toString()">and uid = #{sch}</if>		
+		<if test="searchType == 'd'.toString()">and date_format(canceldate,'%Y-%m-%d') = #{day}</if>
+		
+		order by regdate desc
+		
+	</select>
+	
+	<select id="orderCancelTotal" resultType="Integer" parameterType="orderVO">
+		select count(*) from ordertable where paystate = '주문취소'
+		
+		<if test="searchType == 'o'.toString()">and ono like '%${sch}%'</if>
+		<if test="searchType == 'u'.toString()">and uid = #{sch}</if>		
+		<if test="searchType == 'd'.toString()">and date_format(canceldate,'%Y-%m-%d') = #{day}</if>
+		
+	</select>
+	
+	<select id="orderRefundllist" resultType="orderVO" parameterType="orderVO">
+	
+		select * from ordertable where paystate in ('반품신청', '환불완료')
+		
+		<if test="searchType == 'o'.toString()">and ono like '%${sch}%'</if>
+		<if test="searchType == 'u'.toString()">and uid = #{sch}</if>
+		<if test="searchType == 'p'.toString()">and paystate like '%${sch}%'</if>
+		<if test="searchType == 'd'.toString()">and date_format(refunddate,'%Y-%m-%d') = #{day}</if>
+		<if test="searchType == 'rd'.toString()">and date_format(refundokdate,'%Y-%m-%d') = #{day}</if>
+		<if test="searchType == '1'.toString()">and paystate = #{sch}</if>
+		<if test="searchType == '2'.toString()">and paystate = #{sch}</if>
+		
+		order by regdate desc
+		
+	</select>
+	
+	<select id="orderRefundTotal" resultType="Integer" parameterType="orderVO">
+		
+		select count(*) from ordertable where paystate in ('반품신청', '환불완료')
+		
+		<if test="searchType == 'o'.toString()">and ono like '%${sch}%'</if>
+		<if test="searchType == 'u'.toString()">and uid = #{sch}</if>
+		<if test="searchType == 'p'.toString()">and paystate like '%${sch}%'</if>
+		<if test="searchType == 'd'.toString()">and date_format(refunddate,'%Y-%m-%d') = #{day}</if>
+		<if test="searchType == 'rd'.toString()">and date_format(refundokdate,'%Y-%m-%d') = #{day}</if>
+		<if test="searchType == '1'.toString()">and paystate = #{sch}</if>
+		<if test="searchType == '2'.toString()">and paystate = #{sch}</if>
+		
+	</select>
+
+	
+	
+</mapper>

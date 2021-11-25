@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.4" icons="true" always-add-relationships="true" generalizations="true" realizations="true" 
   associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
-  <interface id="1" language="java" name="dog.mapper.ItemMapper" project="teamProj3" 
+  <interface id="1" language="java" name="dog.domain.item.mapper.ItemMapper" project="teamProj3"
     file="/teamProj3/src/main/java/dog/mapper/ItemMapper.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="352" y="786"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -10,7 +10,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="2" language="java" name="dog.model.ItemVO" project="teamProj3" 
+  <class id="2" language="java" name="dog.domain.item.ItemVO" project="teamProj3"
     file="/teamProj3/src/main/java/dog/model/ItemVO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="62" y="484"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -28,7 +28,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="dog.service.CheckoutAction" project="teamProj3" 
+  <class id="4" language="java" name="dog.domain.item.CheckoutAction" project="teamProj3"
     file="/teamProj3/src/main/java/dog/service/CheckoutAction.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1003" y="113"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -37,7 +37,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="dog.model.MemberVO" project="teamProj3" 
+  <class id="5" language="java" name="dog.domain.member.MemberVO" project="teamProj3"
     file="/teamProj3/src/main/java/dog/model/MemberVO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1000" y="513"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -46,7 +46,7 @@
       <operations public="false" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="6" language="java" name="dog.mapper.MemberMapp" project="teamProj3" 
+  <interface id="6" language="java" name="dog.domain.member.MemberMapp" project="teamProj3"
     file="/teamProj3/src/main/java/dog/mapper/MemberMapp.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="752" y="865"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -55,7 +55,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="7" language="java" name="dog.model.CartItemList" project="teamProj3" 
+  <class id="7" language="java" name="dog.domain.cart.CartItemList" project="teamProj3"
     file="/teamProj3/src/main/java/dog/model/CartItemList.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="559" y="40"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -64,7 +64,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="dog.model.CartItemVO" project="teamProj3" 
+  <class id="8" language="java" name="dog.domain.cart.CartItemVO" project="teamProj3"
     file="/teamProj3/src/main/java/dog/model/CartItemVO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="233" y="164"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 

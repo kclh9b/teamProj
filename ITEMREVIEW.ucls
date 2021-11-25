@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.4" icons="true" always-add-relationships="true" generalizations="true" realizations="true" 
   associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
-  <interface id="1" language="java" name="dog.mapper.ItemMapper" project="teamProj3" 
+  <interface id="1" language="java" name="dog.domain.item.mapper.ItemMapper" project="teamProj3"
     file="/teamProj3/src/main/java/dog/mapper/ItemMapper.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="756" y="784"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -10,7 +10,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="2" language="java" name="dog.model.ItemVO" project="teamProj3" 
+  <class id="2" language="java" name="dog.domain.item.ItemVO" project="teamProj3"
     file="/teamProj3/src/main/java/dog/model/ItemVO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="66" y="544"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -28,7 +28,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="4" language="java" name="dog.mapper.ReviewMapp" project="teamProj3" 
+  <interface id="4" language="java" name="dog.domain.board.mapper.ReviewMapp" project="teamProj3"
     file="/teamProj3/src/main/java/dog/mapper/ReviewMapp.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="341" y="788"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -37,7 +37,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="5" language="java" name="dog.mapper.ReviewReplyMapp" project="teamProj3" 
+  <interface id="5" language="java" name="dog.domain.board.mapper.ReviewReplyMapp" project="teamProj3"
     file="/teamProj3/src/main/java/dog/mapper/ReviewReplyMapp.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="613" y="35"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -46,7 +46,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="6" language="java" name="dog.model.ReviewVO" project="teamProj3" 
+  <class id="6" language="java" name="dog.domain.board.ReviewVO" project="teamProj3"
     file="/teamProj3/src/main/java/dog/model/ReviewVO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="846" y="323"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 

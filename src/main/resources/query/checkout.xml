@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org/DTD Mapper3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="dog.mapper.CheckoutMapper">
+<mapper namespace="dog.domain.item.mapper.CheckoutMapper">
 	
 	<!-- 서버 날짜 가져옴 -->
 	<select id="getDate" resultType="java.lang.String">

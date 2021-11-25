@@ -1,24 +1,17 @@
 package dog.control;
 
-import java.io.FileNotFoundException;
-
-
-import java.io.FileOutputStream;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import dog.mapper.ReviewMapp;
-import dog.mapper.ReviewReplyMapp;
-import dog.model.ItemVO;
-import dog.model.ReviewReplyVO;
-import dog.model.ReviewVO;
+import dog.domain.board.mapper.ReviewMapp;
+import dog.domain.board.mapper.ReviewReplyMapp;
+import dog.domain.board.ReviewReplyVO;
+import dog.domain.board.ReviewVO;
 
 @Controller
 public class ReviewReplyController {

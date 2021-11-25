@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org/DTD Mapper3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="dog.mapper.SettleMapper">
+<mapper namespace="dog.domain.settle.SettleMapper">
 	
 	<select id="checkoutByDay" resultType="SettleVO">
 		select sum(totalprice) pay from orderitemv where itemstate='배송완료' and regdate between date_add(now(), interval -1 day ) and now();

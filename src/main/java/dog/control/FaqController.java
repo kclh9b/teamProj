@@ -7,9 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import dog.mapper.FaqMapp;
-import dog.model.FaqVO;
-import dog.model.PageInfoCHS;
+import dog.domain.board.mapper.FaqMapp;
+import dog.domain.board.FaqVO;
+import dog.domain.board.PageInfoCHS;
 
 @Controller
 public class FaqController {

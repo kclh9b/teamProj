@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.4" icons="true" always-add-relationships="true" generalizations="true" realizations="true" 
   associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="dog.model.ItemVO" project="teamProj3" 
+  <class id="1" language="java" name="dog.domain.item.ItemVO" project="teamProj3"
     file="/teamProj3/src/main/java/dog/model/ItemVO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="204" y="506"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -19,7 +19,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="dog.model.SettleSchCondition" project="teamProj3" 
+  <class id="3" language="java" name="dog.domain.settle.SettleSchCondition" project="teamProj3"
     file="/teamProj3/src/main/java/dog/model/SettleSchCondition.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="921" y="362"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -28,7 +28,7 @@
       <operations public="false" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="dog.model.SettleVO" project="teamProj3" 
+  <class id="4" language="java" name="dog.domain.settle.SettleVO" project="teamProj3"
     file="/teamProj3/src/main/java/dog/model/SettleVO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="910" y="704"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -37,7 +37,7 @@
       <operations public="false" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="5" language="java" name="dog.mapper.SettleMapper" project="teamProj3" 
+  <interface id="5" language="java" name="dog.domain.settle.SettleMapper" project="teamProj3"
     file="/teamProj3/src/main/java/dog/mapper/SettleMapper.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="522" y="620"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 

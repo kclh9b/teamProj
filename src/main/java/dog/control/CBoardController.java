@@ -12,12 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import dog.mapper.CBoardMapp;
-import dog.mapper.CBoardReplyMapp;
-import dog.model.CboardReplyVO;
-import dog.model.CboardVO;
-import dog.model.NoticeVO;
-import dog.model.PageInfoCHS;
+import dog.domain.board.mapper.CBoardMapp;
+import dog.domain.board.mapper.CBoardReplyMapp;
+import dog.domain.board.CboardReplyVO;
+import dog.domain.board.CboardVO;
+import dog.domain.board.PageInfoCHS;
 
 @Controller
 public class CBoardController {

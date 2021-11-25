@@ -1,25 +1,19 @@
 package dog.control;
 
-import java.util.HashMap;
-import java.util.Random;
-
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import dog.mapper.MemberMapp;
-import dog.model.CboardVO;
-import dog.model.MemberVO;
-import dog.model.QnaVO;
-import dog.model.ReviewVO;
+import dog.domain.member.MemberMapp;
+import dog.domain.board.CboardVO;
+import dog.domain.member.MemberVO;
+import dog.domain.board.QnaVO;
+import dog.domain.board.ReviewVO;
 @Controller
 public class MemberController {
    

@@ -11,13 +11,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import ch.qos.logback.core.recovery.ResilientSyslogOutputStream;
-import dog.mapper.SettleMapper;
-import dog.model.ItemVO;
-import dog.model.SettleSchCondition;
-import dog.model.SettleVO;
+import dog.domain.settle.SettleMapper;
+import dog.domain.item.ItemVO;
+import dog.domain.settle.SettleSchCondition;
+import dog.domain.settle.SettleVO;
 
 @Controller
 public class SettelController {
@@ -120,6 +118,6 @@ public class SettelController {
 		
 		
 		
-		return "settlement";
+		return "settle/settlement";
 	}
 }

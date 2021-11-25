@@ -6,40 +6,33 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import ch.qos.logback.core.recovery.ResilientSyslogOutputStream;
-import dog.mapper.CheckoutMapper;
-import dog.mapper.CommentMapp;
-import dog.mapper.ItemMapper;
-import dog.mapper.MemberMapp;
-import dog.mapper.QnaMapp;
-import dog.mapper.ReviewMapp;
-import dog.mapper.ReviewReplyMapp;
-import dog.mapper.SettleMapper;
-import dog.model.CartVO;
-import dog.model.CartItemList;
-import dog.model.CartItemVO;
-import dog.model.ItemVO;
-import dog.model.MemberVO;
-import dog.model.OrderVO;
-import dog.model.QnaVO;
-import dog.model.RecItemList;
-import dog.model.RecItemVO;
-import dog.model.ReviewVO;
-import dog.model.SchCondition;
-import dog.service.AddCart;
-import dog.service.CheckoutAction;
+import dog.domain.item.mapper.CheckoutMapper;
+import dog.domain.board.mapper.CommentMapp;
+import dog.domain.item.mapper.ItemMapper;
+import dog.domain.member.MemberMapp;
+import dog.domain.board.mapper.QnaMapp;
+import dog.domain.board.mapper.ReviewMapp;
+import dog.domain.board.mapper.ReviewReplyMapp;
+import dog.domain.cart.CartItemList;
+import dog.domain.cart.CartItemVO;
+import dog.domain.item.ItemVO;
+import dog.domain.member.MemberVO;
+import dog.domain.order.OrderVO;
+import dog.domain.board.QnaVO;
+import dog.domain.item.RecItemList;
+import dog.domain.item.RecItemVO;
+import dog.domain.board.ReviewVO;
+import dog.domain.item.SchCondition;
+import dog.domain.item.AddCart;
+import dog.domain.item.CheckoutAction;
 
 
 
@@ -164,7 +157,7 @@ public class ItemController {
 		
 		System.out.println("itemlist/~진입");
 
-		return "itemList";
+		return "item/itemList";
 	}
 	
 	@RequestMapping("/item/{ino}")
@@ -185,7 +178,7 @@ public class ItemController {
 			qnaVO.setQncm(cmmapp.bringcm(qnaVO));
 		}		
 		mm.addAttribute("rp", qnlist);
-		return "item";
+		return "item/item";
 	}
 	
 	@RequestMapping("/item/addCartAction")
@@ -197,13 +190,13 @@ public class ItemController {
 		AddCart ac = new AddCart();
 		int result = ac.addCartItem(im, mv, il.getArr().get(0));
 		
-		return "cartResult";
+		return "item/cartResult";
 	}
 	
 	@RequestMapping("/item/addCart")
 	String addCart() {
 		System.out.println("addCart 진입");
-		return "cartResult";
+		return "item/cartResult";
 	}
 	
 	@RequestMapping("/mypage/cart")
@@ -214,7 +207,7 @@ public class ItemController {
 		
 		mm.addAttribute("cl", im.getCartList(mv));
 		mm.addAttribute("black", session.getAttribute("black"));
-		return "myCart";
+		return "item/myCart";
 	}
 	
 	@RequestMapping(value="/updateCart")
@@ -242,6 +235,9 @@ public class ItemController {
 			if(im.updateCartItem(map)!=0) {
 				mm.addAttribute("url", "/mypage/cart");
 				return "redirect:mypage/cart";
+			}else {
+				mm.addAttribute("msg", "업데이트 실패.");
+				mm.addAttribute("url", "/mypage/cart");
 			}
 		}
 		return "alert";
@@ -278,7 +274,7 @@ public class ItemController {
 		mm.addAttribute("allPrice", allPrice);
 		mm.addAttribute("delifee", delifee);
 		mm.addAttribute("endPrice", endPrice);
-		return "checkout";
+		return "item/checkout";
 	}
 	
 	@RequestMapping(value="/checkoutAction", method=RequestMethod.POST)
@@ -327,7 +323,7 @@ public class ItemController {
 	@RequestMapping("/checkoutResult")
 	String checkoutResult() {
 		
-		return "checkoutResult";
+		return "item/checkoutResult";
 	}
 	
 	@RequestMapping("/adminRecommend")
@@ -338,7 +334,7 @@ public class ItemController {
 		
 		mm.addAttribute("inos",im.getInos());
 		mm.addAttribute("recinos",im.getRecInos());
-		return "recommend";
+		return "item/recommend";
 	}
 	
 	@RequestMapping("/recItemAction")

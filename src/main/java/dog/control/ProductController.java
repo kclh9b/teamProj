@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import dog.mapper.DogMapp;
-import dog.model.ItemVO;
-import dog.model.PageInfo;
+import dog.domain.item.mapper.DogMapp;
+import dog.domain.item.ItemVO;
+import dog.domain.item.PageInfo;
 
 @Controller
 public class ProductController {

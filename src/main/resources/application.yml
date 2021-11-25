@@ -22,4 +22,4 @@ spring :
         
 mybatis :
     mapper-locations : query/**/*.xml
-    type-aliases-package : dog.model
+    type-aliases-package : dog.domain.*

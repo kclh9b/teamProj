@@ -11,12 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import dog.mapper.DogMapp;
-import dog.model.ItemVO;
-import dog.model.MemberVO;
-import dog.model.OrderVO;
-import dog.model.OrderitemVO;
-import dog.model.PageInfo;
+import dog.domain.item.mapper.DogMapp;
+import dog.domain.item.ItemVO;
+import dog.domain.member.MemberVO;
+import dog.domain.order.OrderVO;
+import dog.domain.order.OrderitemVO;
+import dog.domain.item.PageInfo;
 
 @Controller
 public class OrderController {

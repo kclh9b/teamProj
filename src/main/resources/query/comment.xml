@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+					<!-- 인터페이스 -->
+<mapper namespace="dog.domain.board.mapper.CommentMapp">
+	
+	<insert id="commentinsert" parameterType="commentVO">
+		insert into comment
+		(qnano,content) values
+		(#{qnano},#{content})
+	</insert>
+	
+	<select id="commentlist" resultType="commentVO">
+		select * from comment where available ='y' and qnano = #{qnano}
+	</select>
+	
+	<update id="delcomment" parameterType="commentVO">
+		update comment set available = 'n' where comno = #{comno}
+	</update>
+
+	<select id="bringcm" resultType="commentVO" parameterType="qnaVO">
+		select * from comment where qnano= #{qnano}
+	</select>
+
+</mapper>

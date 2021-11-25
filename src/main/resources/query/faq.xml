@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dog.domain.board.mapper.FaqMapp">
+
+			<select id="fqlist" resultType="faqVO" parameterType="faqVO">
+				select * from faq where title like '%${sch}%' and available='y'
+				order by faqno desc limit #{start} , #{limit}
+			</select>	
+			
+			<select id="bbTotal" resultType="Integer" parameterType="faqVO">	
+				select count(*) from faq where title like '%${sch}%' and available='y'
+				order by faqno desc
+			</select>	
+			
+	
+	<insert id="faqinsert" parameterType="faqVO">
+		insert into faq
+		(title,	 	content,	category) values
+		(#{title},	#{content},	#{category})
+	</insert>
+	
+	<select id="faqdetail" resultType="faqVO" parameterType="faqVO">
+		select * from faq where faqno = #{faqno }	<!-- preparedStatement -->
+	</select>
+
+	<!-- <delete id="faqDel" parameterType="faqVO">
+		delete from faq where faqno = #{faqno}
+	</delete> -->
+	
+	<update id="faqDel" parameterType="faqVO">
+		update faq set available='n' where faqno = #{faqno}
+	</update>
+	
+	<insert id="faqModify" parameterType="faqVO">
+		update faq set title = #{title},	content = #{content}, 
+		category = #{category} , regdate = current_timestamp	where faqno = #{faqno}
+	</insert>
+
+</mapper>

@@ -1,20 +1,16 @@
 package dog.control;
 
-import java.io.FileOutputStream;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import dog.mapper.CBoardMapp;
-import dog.mapper.CBoardReplyMapp;
-import dog.model.CboardReplyVO;
-import dog.model.CboardVO;
-import dog.model.NoticeVO;
+import dog.domain.board.mapper.CBoardMapp;
+import dog.domain.board.mapper.CBoardReplyMapp;
+import dog.domain.board.CboardReplyVO;
+import dog.domain.board.CboardVO;
 
 @Controller
 public class CBoardReplyController {

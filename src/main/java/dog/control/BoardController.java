@@ -1,7 +1,5 @@
 package dog.control;
 
-import java.io.FileNotFoundException;
-
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
@@ -14,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import dog.mapper.BoardMapp;
-import dog.model.NoticeVO;
-import dog.model.PageInfoCHS;
+import dog.domain.board.mapper.BoardMapp;
+import dog.domain.board.NoticeVO;
+import dog.domain.board.PageInfoCHS;
 
 @Controller
 public class BoardController {

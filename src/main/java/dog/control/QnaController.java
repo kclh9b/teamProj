@@ -8,14 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import dog.mapper.CommentMapp;
-import dog.mapper.ItemMapper;
-import dog.mapper.QnaMapp;
-import dog.mapper.ReviewMapp;
-import dog.model.CommentVO;
-import dog.model.ItemVO;
-import dog.model.PageInfoCHS;
-import dog.model.QnaVO;
+import dog.domain.board.mapper.CommentMapp;
+import dog.domain.board.mapper.QnaMapp;
+import dog.domain.board.mapper.ReviewMapp;
+import dog.domain.board.CommentVO;
+import dog.domain.item.ItemVO;
+import dog.domain.board.PageInfoCHS;
+import dog.domain.board.QnaVO;
 
 @Controller
 public class QnaController {
