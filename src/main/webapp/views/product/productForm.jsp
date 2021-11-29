@@ -171,210 +171,210 @@ input[type="radio"] {width:50px;}
 	</form>
 </div>
 <jsp:include page="../footer.jsp"/>
-		<script>
-		
-			function categoryChange(e) {
-			    var x = ["소분류"];
-			    var food = ["퍼피용", "성견용", "노견용", "소형견용", "중형견용","대형견용", "비만견용", "간식"];
-			    var clean = ["배변판/패드", "기저귀", "털제거용품", "이발기구"];
-			    var toy = ["봉제장난감", "고무", "공", "원반", "중대형견용"];
-			    var outdoor = ["자동줄", "목줄", "하네스", "이동가방", "유모차"];
-			    var target = document.getElementById("good");
-		
-			    if(e.value == "x") {
-			        var d = x;
-			        var val = [""];
-			    }else if(e.value == "a") {
-			        var d = food;
-			        var val = [101, 102, 103, 104, 105, 106, 107, 108];
-			    }
-			    else if(e.value == "b") {
-			        var d = clean;
-			        var val = [201, 202, 203, 204];
-			    }
-			    else if(e.value == "c") {
-			        var d = toy;
-			        var val = [301, 302, 303, 304, 305];
-			    }else if(e.value == "d") {
-			        var d = outdoor;
-			        var val = [401, 402, 403, 404, 405];
-			    }
-		
-			    target.options.length = 0;
-		
-			    for (x in d) {
-			        var opt = document.createElement("option");
-			        opt.value = val[x];
-			        opt.innerHTML = d[x];
-			        target.appendChild(opt);
-			    }
-			}
-			
-			$("#btn_sb").on("click",function(){
-				var nameckVal = $("#nmck").val();
-				var selectChk = $('select option:selected').val();
+<script>
 
-				if(selectChk == 'x') {
-					alert("카테고리를 선택해주세요");
-					$("#category").focus();
-					return false;
-					
-				}else if($("#name").val()==""){
-					alert("상품명을 입력해주세요");
-				   $("#name").focus();
-				   return false; 
-				   
-				}else if(nameValidator($("#name").val())==false) {
-                	alert("허용되지 않은 양식입니다");
-                	$("#name").focus();
+    function categoryChange(e) {
+        var x = ["소분류"];
+        var food = ["퍼피용", "성견용", "노견용", "소형견용", "중형견용","대형견용", "비만견용", "간식"];
+        var clean = ["배변판/패드", "기저귀", "털제거용품", "이발기구"];
+        var toy = ["봉제장난감", "고무", "공", "원반", "중대형견용"];
+        var outdoor = ["자동줄", "목줄", "하네스", "이동가방", "유모차"];
+        var target = document.getElementById("good");
+
+        if(e.value == "x") {
+            var d = x;
+            var val = [""];
+        }else if(e.value == "a") {
+            var d = food;
+            var val = [101, 102, 103, 104, 105, 106, 107, 108];
+        }
+        else if(e.value == "b") {
+            var d = clean;
+            var val = [201, 202, 203, 204];
+        }
+        else if(e.value == "c") {
+            var d = toy;
+            var val = [301, 302, 303, 304, 305];
+        }else if(e.value == "d") {
+            var d = outdoor;
+            var val = [401, 402, 403, 404, 405];
+        }
+
+        target.options.length = 0;
+
+        for (x in d) {
+            var opt = document.createElement("option");
+            opt.value = val[x];
+            opt.innerHTML = d[x];
+            target.appendChild(opt);
+        }
+    }
+
+    $("#btn_sb").on("click",function(){
+        var nameckVal = $("#nmck").val();
+        var selectChk = $('select option:selected').val();
+
+        if(selectChk == 'x') {
+            alert("카테고리를 선택해주세요");
+            $("#category").focus();
+            return false;
+
+        }else if($("#name").val()==""){
+            alert("상품명을 입력해주세요");
+           $("#name").focus();
+           return false;
+
+        }else if(nameValidator($("#name").val())==false) {
+            alert("허용되지 않은 양식입니다");
+            $("#name").focus();
+            return false;
+
+        }else if($("#price").val()==""){
+            alert("가격을 입력해주세요");
+            $("#price").focus();
+             return false;
+
+        }else if(priceValidator($("#price").val())==false){
+            alert("8자리 숫자만 가능합니다");
+            $("#price").focus();
+             return false;
+
+        }else if($("#discount").val()==""){
+                alert("할인율을 입력해주세요");
+                $("#discount").focus();
+                 return false;
+
+        }else if(discountValidator($("#discount").val())==false){
+                alert("3자리 숫자만 가능합니다");
+                $("#discount").focus();
+                 return false;
+
+        }else if($("#origin").val()==""){
+                alert("원산지를 입력해주세요");
+                $("#origin").focus();
+                 return false;
+
+        }else if(originValidator($("#origin").val())==false){
+                alert("한글만 입력 가능합니다");
+                $("#origin").focus();
+                 return false;
+
+        }else if($("#manufac").val()==""){
+                alert("제조사를 입력해주세요");
+                $("#manufac").focus();
+                 return false;
+
+        }else if(manufacValidator($("#manufac").val())==false){
+                alert("한글만 입력 가능합니다");
+                $("#manufac").focus();
+                 return false;
+
+        }else if($("#quantity").val()==""){
+                alert("수량을 입력해주세요");
+                $("#quantity").focus();
+                 return false;
+
+        }else if(quantityValidator($("#quantity").val())==false){
+                alert("3자리 숫자만 가능합니다");
+                $("#quantity").focus();
+                 return false;
+
+        }else if($("#mfile").val()==""){
+                alert("메인이미지를 등록해주세요");
+                $("#mfile").focus();
+                 return false;
+
+        }else if($("#dfile").val()==""){
+                alert("상세이미지를 등록해주세요");
+                $("#dfile").focus();
+                 return false;
+
+        }else if(nameckVal == "N")  {
+                alert("상품명 중복확인을 해주세요!");
+                return false;
+
+        }else if(nameckVal == "Y") {
+            $(".productRegForm").submit();
+        }
+
+
+    });
+
+
+    function nameck(){
+        $.ajax({
+        url : "/nameck",
+        type : "post",
+        dataType : "json",
+        data : {"name" : $("#name").val()},
+        success : function(data){
+            if(data == 1){
+                alert("중복된 상품명입니다.");
+            }else if(data == 0){
+                $("#nmck").attr("value", "Y");
+                if( $("#name").val()=="") {
+                    alert("상품명 입력해주세요.");
+                    $("#name").focus();
                     return false;
-                    
-                }else if($("#price").val()==""){
-					alert("가격을 입력해주세요");
-				    $("#price").focus();
-				     return false; 
-				     
-				}else if(priceValidator($("#price").val())==false){
-					alert("8자리 숫자만 가능합니다");
-				    $("#price").focus();
-				     return false; 
-				     
-				}else if($("#discount").val()==""){
-						alert("할인율을 입력해주세요");
-					    $("#discount").focus();
-					     return false;
-				
-				}else if(discountValidator($("#discount").val())==false){
-						alert("3자리 숫자만 가능합니다");
-					    $("#discount").focus();
-					     return false;
-			
-				}else if($("#origin").val()==""){
-						alert("원산지를 입력해주세요");
-					    $("#origin").focus();
-					     return false;
-				
-				}else if(originValidator($("#origin").val())==false){
-						alert("한글만 입력 가능합니다");
-					    $("#origin").focus();
-					     return false;
-		
-				}else if($("#manufac").val()==""){
-						alert("제조사를 입력해주세요");
-					    $("#manufac").focus();
-					     return false;
-			
-				}else if(manufacValidator($("#manufac").val())==false){
-						alert("한글만 입력 가능합니다");
-					    $("#manufac").focus();
-					     return false;
-		
-				}else if($("#quantity").val()==""){
-						alert("수량을 입력해주세요");
-					    $("#quantity").focus();
-					     return false;
-			
-				}else if(quantityValidator($("#quantity").val())==false){
-						alert("3자리 숫자만 가능합니다");
-					    $("#quantity").focus();
-					     return false;
-	
-				}else if($("#mfile").val()==""){
-						alert("메인이미지를 등록해주세요");
-					    $("#mfile").focus();
-					     return false;
-		
-				}else if($("#dfile").val()==""){
-						alert("상세이미지를 등록해주세요");
-					    $("#dfile").focus();
-					     return false;
-	
-				}else if(nameckVal == "N")  {
-		                alert("상품명 중복확인을 해주세요!");
-		                return false;
-	                
-	            }else if(nameckVal == "Y") {
-	                $(".productRegForm").submit();          
-	            }
-				
-				
-			});
-			
-			
-			function nameck(){
-	            $.ajax({
-	            url : "/nameck",
-	            type : "post",
-	            dataType : "json",
-	            data : {"name" : $("#name").val()},
-	            success : function(data){
-	                if(data == 1){
-	                    alert("중복된 상품명입니다.");
-	                }else if(data == 0){
-	                    $("#nmck").attr("value", "Y");
-	                    if( $("#name").val()=="") {
-	                        alert("상품명 입력해주세요.");
-	                        $("#name").focus();
-	                        return false;
-	                    
-	                    }else if(nameValidator($("#name").val())==false) {
-	                    	alert("허용되지 않은 양식입니다");
-	                    	$("#name").focus();
-	                        return false;
-	                        
-	                    }else {
-		                    alert("사용가능한 상품명입니다.");	                    	
-	                    }
-	
-			                }
-			            }
-			        }) 
-			    }
-			
-			function nameValidator(args) {
-				if(/^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9\s]+$/.test(args)) {
-					return true;
-				}
-				return false;
-			}
-			
-			function priceValidator(args) {
 
-			    if (/^[0-9]{0,8}$/.test(args)) {
-			        return true;
-			    }
-			    return false;
-			}
-			
-			function discountValidator(args) {
+                }else if(nameValidator($("#name").val())==false) {
+                    alert("허용되지 않은 양식입니다");
+                    $("#name").focus();
+                    return false;
 
-			    if (/^[0-9]{0,3}$/.test(args)) {
-			        return true;
-			    }
-			    return false;
-			}
-			
-			function originValidator(args) {
-				if(/^[가-힣]+$/.test(args)) {
-					return true;
-				}
-				return false;
-			}
-			
-			function manufacValidator(args) {
-				if(/^[가-힣]+$/.test(args)) {
-					return true;
-				}
-				return false;
-			}
-			
-			function quantityValidator(args) {
+                }else {
+                    alert("사용가능한 상품명입니다.");
+                }
 
-			    if (/^[0-9]{0,3}$/.test(args)) {
-			        return true;
-			    }
-			    return false;
-			}
-		</script>
+                    }
+                }
+            })
+        }
+
+    function nameValidator(args) {
+        if(/^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9\s]+$/.test(args)) {
+            return true;
+        }
+        return false;
+    }
+
+    function priceValidator(args) {
+
+        if (/^[0-9]{0,8}$/.test(args)) {
+            return true;
+        }
+        return false;
+    }
+
+    function discountValidator(args) {
+
+        if (/^[0-9]{0,3}$/.test(args)) {
+            return true;
+        }
+        return false;
+    }
+
+    function originValidator(args) {
+        if(/^[가-힣]+$/.test(args)) {
+            return true;
+        }
+        return false;
+    }
+
+    function manufacValidator(args) {
+        if(/^[가-힣]+$/.test(args)) {
+            return true;
+        }
+        return false;
+    }
+
+    function quantityValidator(args) {
+
+        if (/^[0-9]{0,3}$/.test(args)) {
+            return true;
+        }
+        return false;
+    }
+</script>
 </body>
 </html>

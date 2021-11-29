@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class SchCondition {
 
-	String cate, schkind, keyword, min, max, order, fur, size, age, weight;
+	String cate, schKind, keyword, min, max, order, fur, size, age, weight;
 	
 	Integer page=1, total, limit = 20, pageLimit = 5;
 	
@@ -14,22 +14,22 @@ public class SchCondition {
 		if(cate!=null) {
 			if(cate.equals("")) {
 				cate = null;
-			}			
+			}
 		}
 		
 		return cate;
 		
 	}
 	
-	public String getSchkind() {
+	public String getSchKind() {
 		
-		if(schkind!=null) {
-			if(schkind.equals("")) {
-				schkind = null;
+		if(schKind !=null) {
+			if(schKind.equals("")) {
+				schKind = null;
 			}			
 		}
 		
-		return schkind;
+		return schKind;
 		
 	}
 	

@@ -1,4 +1,4 @@
-package dog.domain.settle;
+package dog.domain.settle.mapper;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -14,11 +14,8 @@ import dog.domain.settle.SettleVO;
 public interface SettleMapper {
 	
 	SettleVO checkoutByDay();
-	
 	SettleVO checkoutByWeek();
-	
 	SettleVO checkoutByMonth();
-	
 	SettleVO checkoutByYear();
 	
 	ArrayList<SettleVO> viewDay(Map map);
@@ -38,9 +35,7 @@ public interface SettleMapper {
 	
 	/*
 	ArrayList<SettleVO> viewDay(String day);
-	
 	ArrayList<SettleVO> viewMonth(String month);
-	
 	ArrayList<SettleVO> viewYear(String year);
 	*/
 

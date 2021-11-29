@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import dog.domain.item.mapper.DogMapp;
+import dog.domain.order.mapper.OrderMapper;
 import dog.domain.item.ItemVO;
 import dog.domain.member.MemberVO;
 import dog.domain.order.OrderVO;
@@ -22,7 +22,7 @@ import dog.domain.item.PageInfo;
 public class OrderController {
 
 	@Resource
-	DogMapp mapper;
+	OrderMapper mapper;
 	
 	@RequestMapping("/order/orderlist")
 	ModelAndView orderlist(OrderVO vo, HttpSession session, PageInfo pageInfo) {

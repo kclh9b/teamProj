@@ -37,7 +37,7 @@
       <operations public="false" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="5" language="java" name="dog.domain.settle.SettleMapper" project="teamProj3"
+  <interface id="5" language="java" name="dog.domain.settle.mapper.SettleMapper" project="teamProj3"
     file="/teamProj3/src/main/java/dog/mapper/SettleMapper.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="522" y="620"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 

@@ -1,4 +1,4 @@
-package dog.domain.member;
+package dog.domain.member.mapper;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;

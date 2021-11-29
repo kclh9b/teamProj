@@ -27,16 +27,7 @@
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
-  </class>  
-  <class id="4" language="java" name="dog.domain.item.CheckoutAction" project="teamProj3"
-    file="/teamProj3/src/main/java/dog/service/CheckoutAction.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1003" y="113"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
+  </class>
   <class id="5" language="java" name="dog.domain.member.MemberVO" project="teamProj3"
     file="/teamProj3/src/main/java/dog/model/MemberVO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1000" y="513"/>    
@@ -46,7 +37,7 @@
       <operations public="false" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="6" language="java" name="dog.domain.member.MemberMapp" project="teamProj3"
+  <interface id="6" language="java" name="dog.domain.member.mapper.MemberMapp" project="teamProj3"
     file="/teamProj3/src/main/java/dog/mapper/MemberMapp.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="752" y="865"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 

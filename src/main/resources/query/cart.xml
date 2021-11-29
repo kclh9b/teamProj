@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org/DTD Mapper3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="dog.domain.item.mapper.ItemMapper">
+<mapper namespace="dog.domain.cart.mapper.CartMapper">
 	<!-- 
 	<select id="getCart" parameterType="memberVO" resultType="cartVO">
 		select * from cart where uid = #{uid}
@@ -17,17 +17,25 @@ PUBLIC "-//mybatis.org/DTD Mapper3.0//EN"
 		insert into cart(cno, uid, activeyn) values(#{cno}, #{mv.uid}, 'y')
 	</insert>
 	-->
+
+	<select id="getCartList" parameterType="memberVO" resultType="cartItemVO">
+		select * from cartitemv where uid = #{uid}
+	</select>
+
+	<insert id="addCartItem" parameterType="Map"><!-- , regdate, now() -->
+		insert into cartitem(uid, ino, name, quantity) values(#{mv.uid}, #{iv.ino}, #{iv.name}, #{iv.quantity})
+	</insert>
 	
 	<select id="checkCartItem" parameterType="Map" resultType="cartItemVO">
 		select * from cartitemv where uid = #{mv.uid} and ino = #{iv.ino}
 	</select>
 	
-	<insert id="addCartItem" parameterType="Map"><!-- , regdate, now() -->
-		insert into cartitem(uid, ino, name, quantity) values(#{mv.uid}, #{iv.ino}, #{iv.name}, #{iv.quantity})
-	</insert>
-	
 	<update id="addUpdateCartItem" parameterType="Map">
 		update cartitem set quantity = quantity + ${iv.quantity} where uid = #{mv.uid} and ino = #{iv.ino}
+	</update>
+
+	<update id="updateCartItem" parameterType="Map">
+		update cartitem set quantity = quantity + ${add} where uid = #{mv.uid} and ino = #{ino}
 	</update>
 	
 	<delete id="delCartItem" parameterType="Map">
@@ -42,20 +50,6 @@ PUBLIC "-//mybatis.org/DTD Mapper3.0//EN"
 		delete from cartitem where uid = #{uid}
 	</delete>
 	
-	
-	<!-- 
-	<insert id="addCart" parameterType="itemVO">
-	
-		insert into cart(cno, uid, activeyn) values ()
-		
-		
-	</insert>
-	-->
-	
-	<select id="getCartList" parameterType="memberVO" resultType="cartItemVO">
-		select * from cartitemv where uid = #{uid}
-	</select>
-	
 	<select id="getItemCheckout" parameterType="Map" resultType="cartItemVO">
 		select * from cartitemv where ino in(
         <foreach collection="list" item="list" index="index" separator=",">
@@ -63,9 +57,5 @@ PUBLIC "-//mybatis.org/DTD Mapper3.0//EN"
         </foreach>
     	) and uid = #{mv.uid}
 	</select>
-	
-	<update id="updateCartItem" parameterType="Map">
-		update cartitem set quantity = quantity + ${add} where uid = #{mv.uid} and ino = #{ino}
-	</update>
 	
 </mapper>

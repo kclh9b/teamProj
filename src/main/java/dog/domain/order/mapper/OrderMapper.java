@@ -1,4 +1,4 @@
-package dog.domain.item.mapper;
+package dog.domain.order.mapper;
 
 import java.util.List;
 import java.util.Map;
@@ -11,11 +11,7 @@ import dog.domain.order.OrderVO;
 import dog.domain.order.OrderitemVO;
 
 @Mapper
-public interface DogMapp  {
-	
-	List<ItemVO> productList(ItemVO vo);
-	
-	int productTotal(ItemVO vo);
+public interface OrderMapper {
 				
 	List<OrderVO> orderList(OrderVO vo);
 	
@@ -33,49 +29,19 @@ public interface DogMapp  {
 	
 	int userorderTotal(MemberVO vo);
 	
-	List<OrderVO> useroino(MemberVO vo);
-	
-//	List<OrderitemVO> userorderList(OrderitemVO vo);
-	
-	List<OrderitemVO> orderitemList();
-	
-	ItemVO productDetail(ItemVO vo);
-	
 	OrderVO orderDetail(OrderVO vo);
 
 	OrderitemVO orderitemDetailList(OrderitemVO vo);
 	
-//	OrderVO userorderDetail(OrderVO vo);
-	
-	List<OrderitemVO> orderitemCancel(OrderVO vo);
-	
 	List<OrderitemVO> orderitemDetail(OrderVO vo);
 	
-//	List<OrderitemVO> userorderitemDetail(OrderVO vo);
-	
-	int productInsert(ItemVO vo);
-	
-	int productModify(ItemVO vo);
-	
-	int productDelete(ItemVO vo);
-	
 	int updateItemstate(OrderitemVO vo);
-	
-//	int updateDelivery(OrderitemVO vo);
 	
 	int updatePaystate(OrderVO vo);
 	
 	int updateDno(OrderVO vo);
 	
-	int addQuantity(ItemVO vo);
-	
-	int minusQuantity(OrderitemVO vo);
-	
-	int productReceive(ItemVO vo);
-	
 	void updateStates(OrderVO vo);
-	
-	int updateRefundState(OrderVO vo);
 	
 	
 	
@@ -91,16 +57,10 @@ public interface DogMapp  {
 	
 	int updateRefundprice(OrderitemVO vo);
 	
-	int updateQuantity(OrderitemVO vo);
-	
 	int updateCanceldate(OrderVO vo);
 
 	int updateRefunddate(OrderVO vo);
 	
 	int updateRefundokdate(OrderVO vo);
-	
-	int ckname(ItemVO vo) throws Exception;
-	
-	
-	//void orderCancel(ItemVO vo);
+
 }

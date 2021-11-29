@@ -81,16 +81,7 @@
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="false" package="true" protected="true" private="true" static="true"/>    
     </display>  
-  </class>  
-  <class id="10" language="java" name="dog.domain.item.AddCart" project="teamProj3"
-    file="/teamProj3/src/main/java/dog/service/AddCart.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="703" y="636"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
+  </class>
   <class id="11" language="java" name="dog.domain.member.MemberVO" project="teamProj3"
     file="/teamProj3/src/main/java/dog/model/MemberVO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="518" y="961"/>    

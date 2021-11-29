@@ -4,66 +4,8 @@ PUBLIC "-//mybatis.org/DTD Mapper3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="dog.domain.item.mapper.DogMapp">
-	<!-- 회원가입 -->
-	<select id="productList" resultType="itemVO" parameterType="itemVO">
-		
-		select * from itemv 
-		
-		<if test="searchType == 'n'.toString()">where name like '%${sch}%' </if>
-		<if test="searchType == 'i'.toString()">where ino like '%${sch}%' </if>
-		<if test="searchType == 'g'.toString()">where gname like '%${sch}%' </if>
-		
-		order by ino desc limit #{start}, #{limit}
-		
-		<!-- <where> name like concat('%', #{sch}, '%') </where> -->
-		
-	</select>
-	
-	<select id="productTotal" resultType="Integer" parameterType="itemVO">
-		select count(*) from itemv
-		
-		<if test="searchType == 'n'.toString()">where name like '%${sch}%' </if>
-		<if test="searchType == 'i'.toString()">where ino like '%${sch}%' </if>
-		<if test="searchType == 'g'.toString()">where gname like '%${sch}%' </if>
-		
-	</select>
-	
-	<select id="ckname" parameterType="itemVO" resultType="Integer">
-        select count(*) from item where name = #{name}
-    </select>
-	
-	<select id="productDetail" resultType="itemVO" parameterType="itemVO">
-		select * from itemv where ino = #{ino}
-	</select>
-	
-	<insert id="productInsert" parameterType="itemVO">
-		insert into item 
-		(ino,      cateid,    name,    price,   discount,    origin,    manufac,    quantity,    main_img,    detail_img,    size,    fur,     age,    fatyn,   regdate) values
-		(#{ino}, #{cateid}, #{name}, #{price}, #{discount}, #{origin}, #{manufac}, #{quantity}, #{main_img}, #{detail_img}, #{size}, #{fur}, #{age}, #{fatyn}, now())
-		
-		<selectKey keyProperty="ino" resultType="Integer" order="BEFORE">
-			
-			select max(ino)+1 from item
-			
-		</selectKey>
-		
-	</insert>
-	
-	<update id="productModify" parameterType="itemVO">
-		update item set 
-		ino = #{ino}, cateid = #{cateid}, name = #{name}, price = #{price}, discount = #{discount}, origin = #{origin}, manufac = #{manufac}, quantity = #{quantity}, size = #{size}, fur = #{fur}, age = #{age}, fatyn = #{fatyn}  
-		where ino = #{ino}
-	</update>
-	
-	<update id="productDelete" parameterType="itemVO">
-		update item set available = 'n' where ino = #{ino}
-	</update>
-	
-	
-<!-- 주문  -->	
-	
-	
+<mapper namespace="dog.domain.order.mapper.OrderMapper">
+	<!-- 주문  -->
 	<select id="orderList" resultType="orderVO" parameterType="orderVO">
 		select * from ordertable
 		

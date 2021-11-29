@@ -1,4 +1,4 @@
-package dog.domain.item.mapper;
+package dog.domain.checkout.mapper;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -9,7 +9,7 @@ import dog.domain.order.OIListVO;
 
 @Mapper
 public interface CheckoutMapper {
-	
+
 	//서버 날짜 가져옴
 	String getDate();
 	
@@ -30,7 +30,5 @@ public interface CheckoutMapper {
 	
 	//장바구니 구매시 장바구니에서 삭제
 	int delCartItem(Map map);
-	
-	
 	
 }

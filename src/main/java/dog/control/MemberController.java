@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import dog.domain.member.MemberMapp;
+import dog.domain.member.mapper.MemberMapp;
 import dog.domain.board.CboardVO;
 import dog.domain.member.MemberVO;
 import dog.domain.board.QnaVO;

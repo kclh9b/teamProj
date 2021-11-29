@@ -4,47 +4,85 @@ PUBLIC "-//mybatis.org/DTD Mapper3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="dog.domain.item.mapper.ItemMapper">
-	
-	<select id="itemList" resultType="itemVO" parameterType="Map">
-	
+
+	<!-- 어드민 ===============================================================-->
+	<!-- 상품 등록-->
+	<insert id="save" parameterType="itemVO">
+		insert into item
+		(ino,      cateid,    name,    price,   discount,    origin,    manufac,    quantity,    main_img,    detail_img,    size,    fur,     age,    fatyn,   regdate) values
+		(#{ino}, #{cateid}, #{name}, #{price}, #{discount}, #{origin}, #{manufac}, #{quantity}, #{main_img}, #{detail_img}, #{size}, #{fur}, #{age}, #{fatyn}, now())
+		<selectKey keyProperty="ino" resultType="Integer" order="BEFORE">
+			select max(ino)+1 from item
+		</selectKey>
+	</insert>
+
+	<!-- 상품명 중복체크-->
+	<select id="ckname" parameterType="itemVO" resultType="Integer">
+		select count(*) from item where name = #{name}
+	</select>
+
+	<!-- 상품 수정-->
+	<update id="modi" parameterType="itemVO">
+		update item set
+		ino = #{ino}, cateid = #{cateid}, name = #{name}, price = #{price}, discount = #{discount}, origin = #{origin}, manufac = #{manufac}, quantity = #{quantity}, size = #{size}, fur = #{fur}, age = #{age}, fatyn = #{fatyn}
+		where ino = #{ino}
+	</update>
+
+	<!-- 상품 삭제-->
+	<update id="delete" parameterType="itemVO">
+		update item set available = 'n' where ino = #{ino}
+	</update>
+
+	<!-- 관리자 상품 목록 조회-->
+	<select id="adminGetItems" resultType="itemVO" parameterType="itemVO">
 		select * from itemv
-		
-		where cateid like '%${cate}%' 
-		
+		<if test="searchType == 'n'.toString()">where name like '%${sch}%' </if>
+		<if test="searchType == 'i'.toString()">where ino like '%${sch}%' </if>
+		<if test="searchType == 'g'.toString()">where gname like '%${sch}%' </if>
+		order by ino desc limit #{start}, #{limit}
+		<!-- <where> name like concat('%', #{sch}, '%') </where> -->
+	</select>
+
+	<!-- 상품 총 갯수-->
+	<select id="itemCnt" resultType="Integer" parameterType="itemVO">
+		select count(*) from itemv
+		<if test="searchType == 'n'.toString()">where name like '%${sch}%' </if>
+		<if test="searchType == 'i'.toString()">where ino like '%${sch}%' </if>
+		<if test="searchType == 'g'.toString()">where gname like '%${sch}%' </if>
+	</select>
+
+	<!-- 관리자 상품 조회-->
+	<select id="adminGetItem" resultType="itemVO" parameterType="itemVO">
+		select * from itemv where ino = #{ino}
+	</select>
+	<!-- 어드민 ===============================================================-->
+
+	<select id="itemList" resultType="itemVO" parameterType="Map">
+		select * from itemv
+		where cateid like '%${cate}%'
+
 		<if test="keyword!=null">
-		
-		and ${schkind} like '%${keyword}%'
-		
+		and ${schKind} like '%${keyword}%'
 		</if>
-		
+
 		<if test="min!=null">
-		
-		and <![CDATA[calprice >= #{min}]]> 
-		
+		and <![CDATA[calprice >= #{min}]]>
 		</if>
-		
+
 		<if test="max!=null">
-		
-		and <![CDATA[calprice <= #{max}]]> 
-		
+		and <![CDATA[calprice <= #{max}]]>
 		</if>
-		
+
 		<if test="size!=null">
-		
-		and <![CDATA[size like '%${size}%']]> 
-		
+		and <![CDATA[size like '%${size}%']]>
 		</if>
 		
 		<if test="fur!=null">
-		
-		and <![CDATA[fur like '%${fur}%']]> 
-		
+		and <![CDATA[fur like '%${fur}%']]>
 		</if>
 		
 		<if test="age!=null">
-		
-		and <![CDATA[age like '%${age}%']]> 
-		
+		and <![CDATA[age like '%${age}%']]>
 		</if>
 		
 		and available = 'y' 
@@ -65,53 +103,35 @@ PUBLIC "-//mybatis.org/DTD Mapper3.0//EN"
 				order by regdate desc 
 			</otherwise>
 		</choose>
-		
 
 		limit #{page}, #{limit}
-		
-		
 	</select>
 	
 	<select id="getItemCnt" resultType="Integer" parameterType="Map">
-	
 		select count(*) from itemv
-		
-		where cateid like '%${cate}%' 
-		
+		where cateid like '%${cate}%'
 		<if test="keyword!=null">
-		
 		and ${schkind} like '%${keyword}%'
-		
 		</if>
 		
 		<if test="min!=null">
-		
-		and <![CDATA[calprice >= #{min}]]> 
-		
+		and <![CDATA[calprice >= #{min}]]>
 		</if>
 		
 		<if test="max!=null">
-		
-		and <![CDATA[calprice <= #{max}]]> 
-		
+		and <![CDATA[calprice <= #{max}]]>
 		</if>
 		
 		<if test="size!=null">
-		
-		and <![CDATA[size like '%${size}%']]> 
-		
+		and <![CDATA[size like '%${size}%']]>
 		</if>
 		
 		<if test="fur!=null">
-		
-		and <![CDATA[fur like '%${fur}%']]> 
-		
+		and <![CDATA[fur like '%${fur}%']]>
 		</if>
 		
 		<if test="age!=null">
-		
-		and <![CDATA[age like '%${age}%']]> 
-		
+		and <![CDATA[age like '%${age}%']]>
 		</if>
 		
 		and available = 'y' 
