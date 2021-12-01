@@ -21,9 +21,9 @@
 			<c:when test="${onNav.equals('n') }">
 				<div class="schBox">
 					<c:if test="${custom.equals('y') }">
-						<jsp:include page="custom.jsp"/>
+						<jsp:include page="sub_custom.jsp"/>
 					</c:if>
-					<jsp:include page="search.jsp"/>
+					<jsp:include page="sub_search.jsp"/>
 				</div>
 			</c:when>
 			<c:otherwise>
@@ -32,7 +32,7 @@
 		</c:choose>
 	</form>
 	<div class="itemCntOrderBox">
-		<span class="itemCnt">총 ${schCondition.total }개 상품</span>
+		<span class="itemCnt">총 ${pageInfo.total }개 상품</span>
 		<span class="orderButton">
 			<input class="<c:if test="${schCondition.order.equals('new') || schCondition.order==null}">active</c:if>" type="button" value="신상품" onclick="order('new')">
 			<input class="<c:if test="${schCondition.order.equals('sellcnt') }">active</c:if>" type="button" value="판매량" onclick="order('sellcnt')">
@@ -57,15 +57,15 @@
 	</ul>
 	
 	<div class="pageBox">
-		<c:if test="${schCondition.totalPage!=0 }">
-			<c:if test="${schCondition.startPage>1  }">
-				<input type="button" value="<" onclick="goPage(${schCondition.startPage-1})">
+		<c:if test="${pageInfo.totalPage!=0 }">
+			<c:if test="${pageInfo.startPage>1  }">
+				<input type="button" value="<" onclick="goPage(${pageInfo.startPage-1})">
 			</c:if>
-			<c:forEach var="i" begin="${schCondition.startPage}" end="${schCondition.endPage}" step="1">
-				<input class="pageButton <c:if test="${i==schCondition.page }">active</c:if><c:if test="${i==1 &&schCondition.page==null}">active</c:if>" type="button" value="${i }" onclick="goPage(${i})">
+			<c:forEach var="i" begin="${pageInfo.startPage}" end="${pageInfo.endPage}" step="1">
+				<input class="pageButton <c:if test="${i==pageInfo.page }">active</c:if><c:if test="${i==1 &&pageInfo.page==null}">active</c:if>" type="button" value="${i }" onclick="goPage(${i})">
 			</c:forEach>
-			<c:if test="${schCondition.endPage<schCondition.totalPage  }">
-				<input type="button" value=">" onclick="goPage(${schCondition.endPage+1})">
+			<c:if test="${pageInfo.endPage<pageInfo.totalPage  }">
+				<input type="button" value=">" onclick="goPage(${pageInfo.endPage+1})">
 			</c:if>
 		</c:if>
 	</div>
@@ -74,7 +74,7 @@
 </body>
 <script>
 
-//cate, schkind, keyword, min, max, order
+//cate, schKind, keyword, min, max, order
 	function sch(url) {
 		var frm = document.getElementsByTagName("form");
 		var select = document.getElementsByTagName("select");
@@ -82,7 +82,7 @@
 		url = url + "cate="+select[0].value;
 		
 		if(input[0].value!="") {
-			url = url+"&schkind="+select[1].value+"&keyword="+input[0].value;
+			url = url+"&schKind="+select[1].value+"&keyword="+input[0].value;
 		}
 		if(input[1].value!="") {
 			url = url+"&min="+input[1].value;

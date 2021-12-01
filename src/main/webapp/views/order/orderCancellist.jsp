@@ -84,20 +84,20 @@
 	</table>
 		<div id="paging">
 			<c:if test="${pageInfo.startPage>1 }">
-				<a href="?nowPage=${pageInfo.startPage -1 }"><</a>
+				<a href="?page=${pageInfo.startPage -1 }"><</a>
 			</c:if>
 			<c:forEach begin="${pageInfo.startPage }" end="${pageInfo.endPage }" var="i">
 				<c:choose>
-					<c:when test="${pageInfo.nowPage == i }">
+					<c:when test="${pageInfo.page == i }">
 						[${i }]
 					</c:when>
 					<c:otherwise>
-						<a href="?nowPage=${i }&searchType=${orderVO.searchType }&day=${orderVO.day }&sch=${orderVO.sch }">${i }</a>
+						<a href="?page=${i }&searchType=${orderVO.searchType }&day=${orderVO.day }&sch=${orderVO.sch }">${i }</a>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
 			<c:if test="${pageInfo.endPage<pageInfo.totalPage}">
-				<a href="?nowPage=${pageInfo.endPage +1 }">></a>
+				<a href="?page=${pageInfo.endPage +1 }">></a>
 			</c:if>		
 		</div>
 		

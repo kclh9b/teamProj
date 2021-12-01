@@ -55,7 +55,7 @@ PUBLIC "-//mybatis.org/DTD Mapper3.0//EN"
 	</select>
 	
 	<update id="updateItemstate" parameterType="orderitemVO">
-		update orderitemv
+		update orderitem
 			set itemstate = #{itemstate}
 		where oino = #{oino}
 	</update>
@@ -229,7 +229,7 @@ PUBLIC "-//mybatis.org/DTD Mapper3.0//EN"
 	</update>
 	
 	<update id="updateRefundprice" parameterType="OrderitemVO">
-		update orderitemv 
+		update orderitem
 			set refundprice = #{refundprice}
 			where oino = #{oino} and ino = #{ino}
 	</update>

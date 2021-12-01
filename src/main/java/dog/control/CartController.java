@@ -19,7 +19,7 @@ public class CartController {
     @RequestMapping("/item/addCart")
     String addCart() {
         System.out.println("addCart 진입");
-        return "item/cartResult";
+        return "cart/result";
     }
 
     @RequestMapping("/item/addCartAction")
@@ -33,7 +33,7 @@ public class CartController {
     @RequestMapping("/mypage/cart")
     String myCart(HttpSession session,  Model mm) {
         csi.getCart(session, mm);
-        return "item/myCart";
+        return "cart/myCart";
     }
 
     @RequestMapping(value="/updateCart")

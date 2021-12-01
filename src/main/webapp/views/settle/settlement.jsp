@@ -15,8 +15,8 @@
 <style>
 </style>
 <body>
-<jsp:include page="header.jsp"/>
-<jsp:include page="adminPage.jsp"/>
+<jsp:include page="../header.jsp"/>
+<jsp:include page="../adminPage.jsp"/>
 <c:set var="order" value=""/>
 <c:forEach items="${list }" var="list">
 	<c:set var="order" value="${order + list.cnt}"/>
@@ -113,7 +113,7 @@
 		</table>
 	</div>
 </div>
-<jsp:include page="footer.jsp"/>
+<jsp:include page="../footer.jsp"/>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script>

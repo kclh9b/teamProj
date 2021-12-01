@@ -9,7 +9,6 @@ import dog.domain.board.mapper.ReviewReplyMapp;
 import dog.domain.item.mapper.ItemMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,36 +35,30 @@ public class ItemServiceImpl implements ItemService{
     private final CommentMapp cmmapp;
     private final ItemMapper im;
 
-    public ItemMapper getIm() {
-        return im;
-    }
-
     //어드민 ==============================================================
     @Override
-    public ModelAndView save(HttpServletRequest request , ItemVO vo) {
+    public ItemVO save(HttpServletRequest request , Model mm, ItemVO vo) {
 
         ModelAndView mav = new ModelAndView("alert");
 
         vo.setMain_img(vo.getMfile().getOriginalFilename());
         vo.setDetail_img(vo.getDfile().getOriginalFilename());
 
-        if(checkExtension(vo)) {
-            mav.addObject("msg", "등록 실패 이미지 파일만 업로드 해주세요");
-            mav.addObject("url", "productlist");
-            return mav;
+        if(checkExtension(vo)) { //이미지 확장자가 아니라면
+            mm.addAttribute("msg", "등록 실패 이미지 파일만 업로드 해주세요");
+            mm.addAttribute("url", "productlist");
         }
 
         fileUpload(request, vo.getMfile());
         fileUpload(request, vo.getDfile());
 
         int cnt = im.save(vo);
-        System.out.println("itemSave cnt :"+cnt);
-
-        mav.addObject("msg", "등록되었습니다");
-        mav.addObject("url", "productlist");
-        log.info("{} 등록", vo.getName());
-
-        return mav;
+        if(cnt!=0) {
+            mm.addAttribute("msg", "등록되었습니다");
+            mm.addAttribute("url", "productlist");
+            log.info("상품번호:{}, 상품명:\'{}\' 등록", vo.getIno(), vo.getName());
+        }
+        return vo;
     }
 
     @Override
@@ -74,56 +67,76 @@ public class ItemServiceImpl implements ItemService{
     }
 
     @Override
-    public ModelAndView modi(ItemVO vo) {
-        ModelAndView mav = new ModelAndView("alert");
+    public ItemVO modi(Model mm, ItemVO vo) {
         int cnt = im.modi(vo);
         System.out.println("itemModi cnt :"+cnt);
-        mav.addObject("msg", "수정되었습니다");
-        mav.addObject("url", "productdetail?ino="+vo.getIno());
-        log.info("{} 수정", vo.getName());
+        mm.addAttribute("msg", "수정되었습니다");
+        mm.addAttribute("url", "productdetail?ino="+vo.getIno());
+        log.info("상품번호:{}, 상품명:\'{}\' 수정", vo.getIno(), vo.getName());
 
-        return mav;
-    }
-
-    @Override
-    public ItemVO adminGetItem(ItemVO vo) {
-        ModelAndView mav = new ModelAndView("product/productdetail");
-        mav.addObject("pro", im.adminGetItem(vo));
         return vo;
     }
 
     @Override
-    public ModelAndView adminGetItems(ItemVO vo, HttpSession session, PageInfo pageInfo) {
-        ModelAndView mav = new ModelAndView("product/productlist");
-        String uid = (String)session.getAttribute("uid");
-        if(!uid.equals("admin")) {
-            ModelAndView alert = new ModelAndView("alert");
-            alert.addObject("msg", "접근 권한이 없습니다");
-            alert.addObject("url", "/");
-            return alert;
+    public ItemVO delete(Model mm, ItemVO vo) {
+        int cnt = im.delete(vo);
+        vo = im.adminGetItem(vo);
+        if(cnt!=0) {
+            mm.addAttribute("msg", "삭제되었습니다");
+            mm.addAttribute("url", "productlist");
+            log.info("상품번호:{}, 상품명:\'{}\' 삭제", vo.getIno(), vo.getName());
         }
-        mav.addObject("pro", im.adminGetItems(vo));
-        pageInfo.setTotal(im.itemCnt(vo));
-        return mav;
+        return vo;
     }
 
     @Override
-    public ModelAndView delete(ItemVO vo) {
-        ModelAndView mav = new ModelAndView("alert");
-        int cnt = im.delete(vo);
-        System.out.println("deleteReg cnt :"+cnt);
-        mav.addObject("msg", "삭제되었습니다");
-        mav.addObject("url", "productlist");
-        log.info("{} 삭제", vo.getName());
-
-        return mav;
+    public List<ItemVO> adminGetItems(HttpSession session, Model mm, ItemVO vo, PageInfo pageInfo) {
+        String uid = (String)session.getAttribute("uid");
+        if(!uid.equals("admin")) {
+            ModelAndView alert = new ModelAndView("alert");
+            mm.addAttribute("msg", "접근 권한이 없습니다");
+            mm.addAttribute("url", "/");
+            return null;
+        }
+        List<ItemVO> items = im.adminGetItems(vo);
+        mm.addAttribute("pro", items);
+        pageInfo.setTotal(im.itemCnt(vo));
+        return items;
     }
+
+    @Override
+    public ItemVO adminGetItem(Model mm, ItemVO vo) {
+        mm.addAttribute("pro", im.adminGetItem(vo));
+        return vo;
+    }
+
+    @Override
+    public List<RecItemVO> getRecItems(Model mm) {
+        ArrayList<RecItemVO> arr = im.getRecInos();
+        mm.addAttribute("recList", im.recItemAllList());
+        mm.addAttribute("inos", im.getInos());
+        mm.addAttribute("recinos", arr);
+        return arr;
+    }
+
+    @Override
+    public RecItemList modiRecItems(Model mm, RecItemList ril) {
+        int result = im.updateRecInos(ril.getArr());
+        if(result!=0) {
+            mm.addAttribute("msg", "변경되었습니다.");
+            mm.addAttribute("url", "/adminRecommend");
+        }
+        return ril;
+    }
+
     //어드민 ==============================================================
 
 
     @Override
-    public String getItems(Model mm, SchCondition sc, HttpSession session,
-                           @RequestParam(value="custom", defaultValue="") String custom, @RequestParam(value="onNav", defaultValue="") String onNav) {
+    public List<ItemVO> getItems(Model mm, SchCondition sc, HttpSession session,
+                                 @RequestParam(value="custom", defaultValue="") String custom,
+                                 @RequestParam(value="onNav", defaultValue="") String onNav,
+                                 PageInfo pageInfo) {
         Map<String, Object> para = new HashMap<>();
         para.put("cate", sc.getCate());
         para.put("schKind",sc.getSchKind());
@@ -134,15 +147,15 @@ public class ItemServiceImpl implements ItemService{
         para.put("fur", sc.getFur());
         para.put("size", sc.getSize());
         para.put("age", sc.getAge());
-        para.put("page", sc.getPage()-1);
-        para.put("limit", sc.getLimit());
+        para.put("page", pageInfo.getPage()-1);
+        para.put("limit", pageInfo.getLimit());
 
         String url1 = "";
         if(custom.equals("y")) {
-            url1 = "custom.jsp";
+            url1 = "sub_custom.jsp";
             mm.addAttribute("url1", url1);
         }else {
-            url1 = "dummy.jsp";
+            url1 = "sub_dummy.jsp";
             mm.addAttribute("url1", url1);
         }
         String url2 = "";
@@ -150,24 +163,24 @@ public class ItemServiceImpl implements ItemService{
             String cateNum = sc.getCate().substring(0,1);
             switch(cateNum) {
                 case "1" :
-                    url2 = "food.jsp";
+                    url2 = "sub_food.jsp";
                     mm.addAttribute("url2", url2);
                     break;
                 case "2" :
-                    url2 = "care.jsp";
+                    url2 = "sub_care.jsp";
                     mm.addAttribute("url2", url2);
                     break;
                 case "3" :
-                    url2 = "toy.jsp";
+                    url2 = "sub_toy.jsp";
                     mm.addAttribute("url2", url2);
                     break;
                 case "4" :
-                    url2 = "outdoor.jsp";
+                    url2 = "sub_outdoor.jsp";
                     mm.addAttribute("url2", url2);
                     break;
             }
         }else if(onNav.equals("n")) {
-            url2 = "search.jsp";
+            url2 = "sub_search.jsp";
             mm.addAttribute("url2", url2);
         }
         mm.addAttribute("onNav", onNav);
@@ -199,29 +212,27 @@ public class ItemServiceImpl implements ItemService{
 
 
         //페이징=================================
-        sc.setTotal(im.getItemCnt(para));
+        pageInfo.setTotal(im.getItemCnt(para));
 
-        mm.addAttribute("pageCnt", (int)Math.ceil(sc.getTotal()/20.0));
+        mm.addAttribute("pageCnt", (int)Math.ceil(pageInfo.getTotal()/(double)pageInfo.getLimit()));
 
 
-        if(sc.getPage()!=null) {
-            para.put("page", (sc.getPage()-1)*20);
+        if(pageInfo.getPage()!=null) {
+            para.put("page", (pageInfo.getPage()-1)*pageInfo.getLimit());
         }
 
-        mm.addAttribute("itemList", im.itemList(para));
-
+        ArrayList<ItemVO> items = im.itemList(para);
+        mm.addAttribute("itemList", items);
         mm.addAttribute("custom", custom);
 
-
-        System.out.println("itemlist/~진입");
-
-        return "item/itemList";
+        return items;
     }
 
     @Override
-    public String getItem(Model mm, ItemVO iv, HttpSession session, ReviewVO vo1 , QnaVO vo2) {
+    public ItemVO getItem(Model mm, ItemVO iv, HttpSession session, ReviewVO vo1 , QnaVO vo2) {
         String id = (String)session.getAttribute("uid");
-        mm.addAttribute("item", im.itemDetail(iv));
+        ItemVO vo = im.itemDetail(iv);
+        mm.addAttribute("item", vo);
         mm.addAttribute("id", id);
         mm.addAttribute("black", session.getAttribute("black"));
 
@@ -236,26 +247,7 @@ public class ItemServiceImpl implements ItemService{
             qnaVO.setQncm(cmmapp.bringcm(qnaVO));
         }
         mm.addAttribute("rp", qnlist);
-        return "item/item";
-    }
-
-    @Override
-    public ArrayList<RecItemVO> getRecItems(Model mm) {
-        ArrayList<RecItemVO> arr = im.getRecInos();
-        mm.addAttribute("recList", im.recItemAllList());
-        mm.addAttribute("inos", im.getInos());
-        mm.addAttribute("recinos", arr);
-        return arr;
-    }
-
-    @Override
-    public RecItemList modiRecItems(Model mm, RecItemList ril) {
-        int result = im.updateRecInos(ril.getArr());
-        if(result!=0) {
-            mm.addAttribute("msg", "변경되었습니다.");
-            mm.addAttribute("url", "/adminRecommend");
-        }
-        return ril;
+        return vo;
     }
 
     Boolean checkExtension(ItemVO vo) {
@@ -269,9 +261,9 @@ public class ItemServiceImpl implements ItemService{
         if(!imgExt.contains(vo.getMfile().getContentType().toLowerCase().trim())
                 || !imgExt.contains(vo.getDfile().getContentType().toLowerCase().trim())) {
             return true;
-        }else {
-            return false;
         }
+        return false;
+
     }
 
     String fileUpload(HttpServletRequest request, MultipartFile ff) {

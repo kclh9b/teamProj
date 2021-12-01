@@ -7,8 +7,6 @@ public class SchCondition {
 
 	String cate, schKind, keyword, min, max, order, fur, size, age, weight;
 	
-	Integer page=1, total, limit = 20, pageLimit = 5;
-	
 	public String getCate() {
 		
 		if(cate!=null) {
@@ -129,42 +127,6 @@ public class SchCondition {
 		
 		return weight;
 		
-	}
-	
-
-	
-	//페이징==============================
-	public int getTotalPage() {
-		
-		int res = total/limit;
-		
-		if(total%limit > 0) {
-			res++;
-		}
-		
-		return res;
-	}
-	
-	
-	public int getStart() {
-		
-
-		return (page-1)*limit;
-	}
-	
-	public int getStartPage() {
-		return (page-1)/pageLimit*pageLimit+1;
-	}
-	
-	public int getEndPage() {
-		
-		int res = getStartPage()+pageLimit-1;
-		
-		if(res>getTotalPage()) {
-			res = getTotalPage();
-		}
-		
-		return res;
 	}
 	
 }

@@ -8,7 +8,7 @@ import lombok.Data;
 @Alias(value = "pageInfo")
 public class PageInfo {
 
-	int total, limit = 20, pageLimit = 5, nowPage = 1;
+	Integer total, limit = 20, pageLimit = 5, page = 1;
 	
 	public int getTotalPage() {
 		
@@ -23,11 +23,11 @@ public class PageInfo {
 	
 	public int getStart() {
 		
-		return (nowPage-1)*limit; 
+		return (page -1)*limit;
 	}
 	
 	public int getStartPage() {
-		return (nowPage-1)/pageLimit*pageLimit+1;
+		return (page -1)/pageLimit*pageLimit+1;
 	}
 	
 	public int getEndPage() {

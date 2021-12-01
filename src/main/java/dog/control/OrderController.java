@@ -100,7 +100,7 @@ public class OrderController {
 	@RequestMapping("/user/UserOrderlist")
 	ModelAndView Userorderlist(HttpSession session, OrderVO vo, OrderitemVO ivo, MemberVO mvo, PageInfo pageInfo) {
 		
-		ModelAndView mav = new ModelAndView("user/UserOrderlist");
+		ModelAndView mav = new ModelAndView("order/UserOrderlist");
 		
 //		MemberVO mem = new MemberVO();
 //		mem.setUid((String)session.getAttribute("uid"));
@@ -120,7 +120,7 @@ public class OrderController {
 	@RequestMapping("/user/UserOrderdetail")
 	ModelAndView Userorderdetail(OrderVO vo, HttpSession session) {
 		
-		ModelAndView mav = new ModelAndView("user/UserOrderdetail");
+		ModelAndView mav = new ModelAndView("order/UserOrderdetail");
 		
 		MemberVO mem = new MemberVO();
 		mem.setUid((String)session.getAttribute("uid"));
@@ -134,7 +134,7 @@ public class OrderController {
 	@RequestMapping("/user/UserOrdercancel")
 	ModelAndView Userordercancel(OrderitemVO vo, OrderVO ovo, ItemVO ivo) {
 		
-		ModelAndView mav = new ModelAndView("user/UserOrdercancel");
+		ModelAndView mav = new ModelAndView("order/UserOrdercancel");
 //		mapper.orderCancel(ivo);
 		
 		mav.addObject("order", mapper.orderDetail(ovo)); // ordertable
@@ -147,7 +147,7 @@ public class OrderController {
 	@RequestMapping("/user/UserOrderrefund")
 	ModelAndView UserOrderrefund(OrderitemVO vo, OrderVO ovo, ItemVO ivo) {
 		
-		ModelAndView mav = new ModelAndView("user/UserOrderrefund");
+		ModelAndView mav = new ModelAndView("order/UserOrderrefund");
 //		mapper.orderCancel(ivo);
 		
 		mav.addObject("order", mapper.orderDetail(ovo)); // ordertable

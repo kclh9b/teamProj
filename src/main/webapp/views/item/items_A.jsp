@@ -77,20 +77,20 @@
 	</table>
 		<div id="paging">
 			<c:if test="${pageInfo.startPage>1 }">
-				<a href="?nowPage=${pageInfo.startPage -1 }"><</a>
+				<a href="?page=${pageInfo.startPage -1 }"><</a>
 			</c:if>
 			<c:forEach begin="${pageInfo.startPage }" end="${pageInfo.endPage }" var="i">
 				<c:choose>
-					<c:when test="${pageInfo.nowPage == i }">
+					<c:when test="${pageInfo.page == i }">
 						[${i }]
 					</c:when>
 					<c:otherwise>
-						<a href="?nowPage=${i }&searchType=${itemVO.searchType }&day=${itemVO.day }&sch=${itemVO.sch }">${i }</a>
+						<a href="?page=${i }&searchType=${itemVO.searchType }&day=${itemVO.day }&sch=${itemVO.sch }">${i }</a>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
 			<c:if test="${pageInfo.endPage<pageInfo.totalPage}">
-				<a href="?nowPage=${pageInfo.endPage +1 }">></a>
+				<a href="?page=${pageInfo.endPage +1 }">></a>
 			</c:if>		
 		</div>	
 </div>
@@ -103,15 +103,15 @@
 		
 		function goPage(pageNum) {
 			var url =  decodeURI(window.location.search);
-			if(url.indexOf("nowPage")==-1) {
-				url = url + "&nowPage="+pageNum
+			if(url.indexOf("page")==-1) {
+				url = url + "&page="+pageNum
 			}else {
-				var pageIndex = url.indexOf("nowPage")-1;
+				var pageIndex = url.indexOf("page")-1;
 				var lastParaIndex = url.lastIndexOf("&");
 				if(pageIndex==lastParaIndex) {
-					url = url.slice(0,pageIndex)+"&nowPage="+pageNum;
+					url = url.slice(0,pageIndex)+"&page="+pageNum;
 				}else {
-					url = url.slice(0,pageIndex)+"&nowPage="+pageNum + url.slice(lastParaIndex)
+					url = url.slice(0,pageIndex)+"&page="+pageNum + url.slice(lastParaIndex)
 				}
 			}
 			location.href = url;

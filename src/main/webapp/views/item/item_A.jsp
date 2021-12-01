@@ -61,30 +61,30 @@
 		</div>
 </div>
 <jsp:include page="../footer.jsp"/>		
-		<script>
-		 $( document ).ready(function(){
-			if($("#fur").text() == "l") {
-				$("#fur").text("장모종");
-			}
-			if($("#fur").text() == "s") {
-				$("#fur").text("단모종");
-			}
-			if($("#fatyn").text() == "y") {
-				$("#fatyn").text("비만견");
-			}
-			if($("#fatyn").text() == "n") {
-				$("#fatyn").text("일반견");
-			}
-			if($("#size").text() == "대") {
-				$("#size").text("대형견");
-			}
-			if($("#size").text() == "중") {
-				$("#size").text("중형견");
-			}
-			if($("#size").text() == "소") {
-				$("#size").text("소형견");
-			}
-		});
-		</script>
+<script>
+    $( document ).ready(function(){
+        if($("#fur").text() == "l") {
+            $("#fur").text("장모종");
+        }
+        if($("#fur").text() == "s") {
+            $("#fur").text("단모종");
+        }
+        if($("#fatyn").text() == "y") {
+            $("#fatyn").text("비만견");
+        }
+        if($("#fatyn").text() == "n") {
+            $("#fatyn").text("일반견");
+        }
+        if($("#size").text() == "대") {
+            $("#size").text("대형견");
+        }
+        if($("#size").text() == "중") {
+            $("#size").text("중형견");
+        }
+        if($("#size").text() == "소") {
+            $("#size").text("소형견");
+    }
+});
+</script>
 </body>
 </html>

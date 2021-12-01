@@ -14,10 +14,10 @@
 </div>
 <div>
 	<span class="schTitle">검색조건</span>
-	<select name="schkind">
+	<select name="schKind">
 		<option value="name" >상품명</option>
-		<%-- <option value="ino" <c:if test="${sc.schkind.equals('ino')}">selected</c:if>>상품코드</option>--%>
-		<option value="manufac" <c:if test="${schCondition.schkind.equals('manufac')}">selected</c:if>>제조사</option>
+		<%-- <option value="ino" <c:if test="${sc.schKind.equals('ino')}">selected</c:if>>상품코드</option>--%>
+		<option value="manufac" <c:if test="${schCondition.schKind.equals('manufac')}">selected</c:if>>제조사</option>
 	</select>
 	&nbsp;<input type="text" name="keyword" value="${schCondition.keyword}" placeholder="검색어" id="detailKeyword">
 </div>
