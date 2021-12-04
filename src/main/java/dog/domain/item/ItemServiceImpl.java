@@ -46,7 +46,7 @@ public class ItemServiceImpl implements ItemService{
 
         if(checkExtension(vo)) { //이미지 확장자가 아니라면
             mm.addAttribute("msg", "등록 실패 이미지 파일만 업로드 해주세요");
-            mm.addAttribute("url", "productlist");
+            mm.addAttribute("url", "/admin/item/save");
         }
 
         fileUpload(request, vo.getMfile());
@@ -55,7 +55,7 @@ public class ItemServiceImpl implements ItemService{
         int cnt = im.save(vo);
         if(cnt!=0) {
             mm.addAttribute("msg", "등록되었습니다");
-            mm.addAttribute("url", "productlist");
+            mm.addAttribute("url", "/admin/item/" + vo.getIno());
             log.info("상품번호:{}, 상품명:\'{}\' 등록", vo.getIno(), vo.getName());
         }
         return vo;
@@ -71,7 +71,7 @@ public class ItemServiceImpl implements ItemService{
         int cnt = im.modi(vo);
         System.out.println("itemModi cnt :"+cnt);
         mm.addAttribute("msg", "수정되었습니다");
-        mm.addAttribute("url", "productdetail?ino="+vo.getIno());
+        mm.addAttribute("url", "/admin/item/" + vo.getIno());
         log.info("상품번호:{}, 상품명:\'{}\' 수정", vo.getIno(), vo.getName());
 
         return vo;
@@ -82,8 +82,8 @@ public class ItemServiceImpl implements ItemService{
         int cnt = im.delete(vo);
         vo = im.adminGetItem(vo);
         if(cnt!=0) {
-            mm.addAttribute("msg", "삭제되었습니다");
-            mm.addAttribute("url", "productlist");
+            mm.addAttribute("msg", String.format("\'%s\' 상품이 삭제되었습니다", vo.getName()));
+            mm.addAttribute("url", "/admin/item");
             log.info("상품번호:{}, 상품명:\'{}\' 삭제", vo.getIno(), vo.getName());
         }
         return vo;

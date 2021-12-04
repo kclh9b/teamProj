@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../css/style_list.css"></link>
+<link rel="stylesheet" href="../../css/style_list.css"></link>
 <style>
 .inputArea { margin: 5px 0; border: 1px solid lightgray; width: 500px; height: 40px; padding: 10px;}
 select { width:100px; }
@@ -27,7 +27,7 @@ input[type="radio"] {width:50px;}
 		<span id="essential"> * 필수입력사항</span>
 		<span id="option"> * 선택입력사항</span>
 	</div>
-	<form action="productReg" method="post" enctype="multipart/form-data" class="productRegForm">
+	<form action="save" method="post" enctype="multipart/form-data" class="productRegForm">
 		<table class="basic">
 		<tr>
 			<td id="title">
@@ -303,7 +303,7 @@ input[type="radio"] {width:50px;}
 
     function nameck(){
         $.ajax({
-        url : "/nameck",
+        url : "/admin/item/nameck",
         type : "post",
         dataType : "json",
         data : {"name" : $("#name").val()},

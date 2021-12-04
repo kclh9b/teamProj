@@ -6,7 +6,7 @@
 <div class="outerWrapper">
 	<div class="innerWrapper">
 		<h1 class=""><a href="<c:url value="/"/>">dog과함께</a></h1>
-		<form action="/itemlist" name="frm">
+		<form action="/item" name="frm">
 			<div class="sch">
 				<input type="hidden" name="custom" value="n">
 				<input type="hidden" name="onNav" value="n">
@@ -44,8 +44,8 @@
 		
 		<div class="nav">
 			<ul class="cate">
-				<li><a href="<c:url value="/itemlist?custom=y&onNav=n&cate=" />">맞춤상품</a></li>
-				<li class="cate"><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=101" />">사료</a>
+				<li><a href="<c:url value="/item?custom=y&onNav=n&cate=" />">맞춤상품</a></li>
+				<li class="cate"><a href="<c:url value="/item?custom=n&onNav=y&cate=101" />">사료</a>
 					<div class="navInner">
 						<div class="innerTitle">사료</div>
 						<table class="cateInner">
@@ -53,21 +53,21 @@
 								<col width="20%"><col width="20%"><col width="20%"><col width="20%"><col width="20%">
 							</colgroup>
 							<tr>
-								<td><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=101" />">퍼피용</a></td>
-								<td><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=102" />">성견용</a></td>
-								<td><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=103" />">노견용</a></td>
-								<td><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=104" />">소형견용</a></td>
-								<td><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=105" />">중형견용</a></td>
+								<td><a href="<c:url value="/item?custom=n&onNav=y&cate=101" />">퍼피용</a></td>
+								<td><a href="<c:url value="/item?custom=n&onNav=y&cate=102" />">성견용</a></td>
+								<td><a href="<c:url value="/item?custom=n&onNav=y&cate=103" />">노견용</a></td>
+								<td><a href="<c:url value="/item?custom=n&onNav=y&cate=104" />">소형견용</a></td>
+								<td><a href="<c:url value="/item?custom=n&onNav=y&cate=105" />">중형견용</a></td>
 							</tr>
 							<tr>
-								<td><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=106" />">대형견용</a></td>
-								<td><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=107" />">비만견용</a></td>
-								<td><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=108" />">간식</a></td>
+								<td><a href="<c:url value="/item?custom=n&onNav=y&cate=106" />">대형견용</a></td>
+								<td><a href="<c:url value="/item?custom=n&onNav=y&cate=107" />">비만견용</a></td>
+								<td><a href="<c:url value="/item?custom=n&onNav=y&cate=108" />">간식</a></td>
 							</tr>
 						</table>
 					</div>
 				</li>
-				<li class="cate"><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=201" />">관리용품</a>
+				<li class="cate"><a href="<c:url value="/item?custom=n&onNav=y&cate=201" />">관리용품</a>
 					<div class="navInner">
 						<div class="innerTitle">관리용품</div>
 						<table class="cateInner">
@@ -75,15 +75,15 @@
 								<col width="20%"><col width="20%"><col width="20%"><col width="20%"><col width="20%">
 							</colgroup>
 							<tr>
-								<td><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=201" />">배변판/패드</a></td>
-								<td><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=202" />">기저귀</a></td>
-								<td><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=203" />">돌돌이</a></td>
-								<td><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=204" />">이발기구</a></td>
+								<td><a href="<c:url value="/item?custom=n&onNav=y&cate=201" />">배변판/패드</a></td>
+								<td><a href="<c:url value="/item?custom=n&onNav=y&cate=202" />">기저귀</a></td>
+								<td><a href="<c:url value="/item?custom=n&onNav=y&cate=203" />">돌돌이</a></td>
+								<td><a href="<c:url value="/item?custom=n&onNav=y&cate=204" />">이발기구</a></td>
 							</tr>
 						</table>
 					</div>
 				</li>
-				<li class="cate"><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=301" />">장난감</a>
+				<li class="cate"><a href="<c:url value="/item?custom=n&onNav=y&cate=301" />">장난감</a>
 					<div class="navInner">
 						<div class="innerTitle">장난감</div>
 						<table class="cateInner">
@@ -91,16 +91,16 @@
 								<col width="20%"><col width="20%"><col width="20%"><col width="20%"><col width="20%">
 							</colgroup>
 							<tr>
-								<td><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=301" />">봉제장난감</a></td>
-								<td><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=302" />">고무</a></td>
-								<td><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=303" />">공</a></td>
-								<td><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=304" />">원반</a></td>
-								<td><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=305" />">중대형견용</a></td>
+								<td><a href="<c:url value="/item?custom=n&onNav=y&cate=301" />">봉제장난감</a></td>
+								<td><a href="<c:url value="/item?custom=n&onNav=y&cate=302" />">고무</a></td>
+								<td><a href="<c:url value="/item?custom=n&onNav=y&cate=303" />">공</a></td>
+								<td><a href="<c:url value="/item?custom=n&onNav=y&cate=304" />">원반</a></td>
+								<td><a href="<c:url value="/item?custom=n&onNav=y&cate=305" />">중대형견용</a></td>
 							</tr>
 						</table>
 					</div>
 				</li>
-				<li class="cate"><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=401" />">산책용품</a>
+				<li class="cate"><a href="<c:url value="/item?custom=n&onNav=y&cate=401" />">산책용품</a>
 					<div class="navInner">
 						<div class="innerTitle">산책용품</div>
 						<table class="cateInner">
@@ -108,11 +108,11 @@
 								<col width="20%"><col width="20%"><col width="20%"><col width="20%"><col width="20%">
 							</colgroup>
 							<tr>
-								<td><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=401" />">자동줄</a></td>
-								<td><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=402" />">목줄</a></td>
-								<td><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=403" />">하네스</a></td>
-								<td><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=404" />">이동가방</a></td>
-								<td><a href="<c:url value="/itemlist?custom=n&onNav=y&cate=405" />">유모차</a></td>
+								<td><a href="<c:url value="/item?custom=n&onNav=y&cate=401" />">자동줄</a></td>
+								<td><a href="<c:url value="/item?custom=n&onNav=y&cate=402" />">목줄</a></td>
+								<td><a href="<c:url value="/item?custom=n&onNav=y&cate=403" />">하네스</a></td>
+								<td><a href="<c:url value="/item?custom=n&onNav=y&cate=404" />">이동가방</a></td>
+								<td><a href="<c:url value="/item?custom=n&onNav=y&cate=405" />">유모차</a></td>
 							</tr>
 						</table>
 					</div>

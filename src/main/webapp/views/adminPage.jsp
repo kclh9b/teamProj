@@ -6,8 +6,8 @@
 <a href="" id="title">쇼핑몰 관리</a>
 	<ul>
 		<li><a href="<c:url value="/member/MemberList"/>" id="a">회원관리</a></li>
-		<li><a href="<c:url value="/product/productlist"/>" id="b">상품목록</a></li>
-		<li><a href="<c:url value="/product/productForm"/>" id="c">상품등록</a></li>
+		<li><a href="<c:url value="/admin/item"/>" id="b">상품목록</a></li>
+		<li><a href="<c:url value="/admin/item/save"/>" id="c">상품등록</a></li>
 		<li><a href="<c:url value="/order/orderlist"/>" id="d">주문목록</a></li>
 		<li><a href="<c:url value="/order/orderCancellist"/>" id="e">취소목록</a></li>
 		<li><a href="<c:url value="/order/orderRefundlist"/>" id="f">반품/환불목록</a></li>

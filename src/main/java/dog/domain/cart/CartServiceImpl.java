@@ -62,22 +62,22 @@ public class CartServiceImpl implements CartService{
             map.put("list", cil.getArr());
             if(cm.delCartItem(map)!=0) {
                 mm.addAttribute("msg", "삭제되었습니다.");
-                mm.addAttribute("url", "/mypage/cart");
+                mm.addAttribute("url", "/cart");
             }
         }else if(action.equals("2")) {
             if(cm.delAllCartItem(mv)!=0) {
                 mm.addAttribute("msg", "삭제되었습니다.");
-                mm.addAttribute("url", "/mypage/cart");
+                mm.addAttribute("url", "/cart");
             }
         }else if(action.equals("3")) {
             map.put("ino", ino);
             map.put("add", add);
             if(cm.updateCartItem(map)!=0) {
-                mm.addAttribute("url", "/mypage/cart");
-                return "redirect:mypage/cart";
+                mm.addAttribute("url", "/cart");
+                return "redirect:/cart";
             }else {
                 mm.addAttribute("msg", "업데이트 실패.");
-                mm.addAttribute("url", "/mypage/cart");
+                mm.addAttribute("url", "/cart");
             }
         }
         return "alert";

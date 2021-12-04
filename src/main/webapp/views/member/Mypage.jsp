@@ -52,8 +52,8 @@ if(session.getAttribute("uid").equals("admin")) {
 <tr>
 <td colspan="3" align="center">
 <a class="btn3" href="<c:url value="/member/MemberList"/>">회원관리</a>
-<a class="btn3" href="<c:url value="/product/productlist"/>">상품목록</a>
-<a class="btn3" href="<c:url value="/product/productForm"/>">상품등록</a>
+<a class="btn3" href="<c:url value="/admin/item"/>">상품목록</a>
+<a class="btn3" href="<c:url value="/admin/item/save"/>">상품등록</a>
 <a class="btn3" href="<c:url value="/order/orderlist"/>">주문목록</a>
 </td>
 </tr>

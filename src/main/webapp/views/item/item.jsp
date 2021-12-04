@@ -433,8 +433,8 @@
 		
 		// ajax process
 		$.ajax({
-			url:"addCartAction",
-			method:"get",
+			url:"/cart/add",
+			method:"post",
 			data:formData,
 			dataType:"html",
 			success: eventSuccess,
@@ -444,7 +444,7 @@
 		function eventSuccess(data)
 		{
 			//여기서 팝업된 창의 주소를 변경하자.
-			w.location.href = "addCart";
+			w.location.href = "/cart/add";
 		}
 		
 	}

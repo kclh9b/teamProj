@@ -51,13 +51,16 @@
 		</table>
 		
 		<div class="orderlist">
-			<a href="productlist">목록으로</a>	
+			<a href="/admin/item">목록으로</a>
 		</div>
+		<form action="${pro.ino}/delete" method="post" id="del">
+		    <input type="hidden" name="_method" value="delete"/>
+            <div class="orderlist">
+                <a href="javascript:void(0);" onclick="delConfirm()">삭제</a>
+            </div>
+		</form>
 		<div class="orderlist">
-			<a href="productdeleteReg?ino=${pro.ino }">삭제</a>	
-		</div>
-		<div class="orderlist">
-			<a href="productmodifyForm?ino=${pro.ino}">수정</a>
+			<a href="${pro.ino}/modi">수정</a>
 		</div>
 </div>
 <jsp:include page="../footer.jsp"/>		
@@ -83,8 +86,15 @@
         }
         if($("#size").text() == "소") {
             $("#size").text("소형견");
+        }
+    })
+    function delConfirm() {
+        if(confirm('해당 상품을 제외하시겠습니까?')) {
+            document.getElementById('del').submit();
+        }else {
+            return false;
+        }
     }
-});
 </script>
 </body>
 </html>

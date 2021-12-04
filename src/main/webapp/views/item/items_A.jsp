@@ -54,7 +54,7 @@
 				<td>${pr.ino}</td>
 				<td>${pr.gname}</td>
 				<td>${pr.sname}</td>
-				<td><a href="productdetail?ino=${pr.ino }" id="click">${pr.name }</a></td>
+				<td><a href="item/${pr.ino }" id="click">${pr.name }</a></td>
 				<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${pr.price }" /></td>
 				<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${pr.calprice }" /></td>
 				<td>${pr.discount }%</td>

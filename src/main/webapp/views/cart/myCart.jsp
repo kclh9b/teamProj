@@ -18,7 +18,7 @@
 <jsp:include page="../header.jsp"/>
 <div class="cartWrapper">
 	<h2>장바구니</h2>
-	<form name="cartfrm" action="/checkout">
+	<form name="cartfrm" action="/checkout" method="post">
 		
 		<table class="cartTable" >
 			<colgroup>
@@ -136,7 +136,7 @@ function otherSubmit(index, ino, add) {
 		}
 		input1.value = "1";
 		if(confirm('선택한 상품을 삭제하시겠습니까?')){
-			document.cartfrm.action='/updateCart';			
+			document.cartfrm.action='/cart/update';
 		}else {
 			return;
 		}
@@ -148,7 +148,7 @@ function otherSubmit(index, ino, add) {
 			return;
 		}
 		if(confirm('장바구니를 비우시겠습니까?')){
-			document.cartfrm.action='/updateCart';			
+			document.cartfrm.action='/cart/update';
 		}else {
 			return;
 		}
@@ -172,7 +172,7 @@ function otherSubmit(index, ino, add) {
 		input3.value  = add;
 		document.cartfrm.appendChild(input3);
 		
-		document.cartfrm.action='/updateCart';
+		document.cartfrm.action='/cart/update';
 	}
 	document.cartfrm.appendChild(input1);
 	document.cartfrm.submit();

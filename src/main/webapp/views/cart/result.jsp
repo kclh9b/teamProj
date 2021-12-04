@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page isErrorPage="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -12,7 +13,7 @@
 <div class="cartResultWrapper">
 	<h2>장바구니에 추가되었습니다</h2>
 	
-	<button class="locationBtn" onclick="closeWindow()">쇼핑 계속하기</button> <button class="locationBtn" onclick="send('<c:url value="/mypage/cart"/>')">장바구니 이동</button>
+	<button class="locationBtn" onclick="closeWindow()">쇼핑 계속하기</button> <button class="locationBtn" onclick="send('<c:url value="/cart"/>')">장바구니 이동</button>
 </div>
 </body>
 <script>

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../css/style_list.css"></link>
+<link rel="stylesheet" href="<c:url value="/css/style_list.css"/>"></link>
 <style>
 .inputArea { margin:10px 0; }
 select { width:100px; }
@@ -22,7 +22,8 @@ input[type="radio"] {width:50px;}
 <jsp:include page="../adminPage.jsp"/>
 <div class="goods_list">
 	<h2>상품수정</h2>
-	<form action="productmodifyReg" method="post" enctype="multipart/form-data" class="productRegForm">
+	<form action="" method="post" class="productRegForm">
+	    <input type="hidden" name="_method" value="put"/>
 		<table class="basic">
 			<tr>
 				<td id="title">상품코드</td>

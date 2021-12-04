@@ -7,12 +7,11 @@ import dog.domain.item.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import dog.domain.board.QnaVO;
 import dog.domain.board.ReviewVO;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class ItemController {
@@ -22,56 +21,60 @@ public class ItemController {
 
 	//어드민 ==============================================================
 	//상품 등록 폼
-	@RequestMapping("/product/productForm")
+	@GetMapping("/admin/item/save")
 	String itemSaveForm() {
-		return "item/saveForm_A";
+		return "item/save_A";
 	}
 
 	//상품명 중복체크
 	@ResponseBody
-	@RequestMapping(value="/nameck")
+	@PostMapping(value="/admin/item/nameck")
 	public int nameCheck(ItemVO vo) throws Exception {
 		return isi.checkName(vo);
 	}
 
 	//상품 등록
-	@RequestMapping("/product/productReg")
+	@PostMapping("/admin/item/save")
 	String itemSave(HttpServletRequest request , Model mm, ItemVO vo) {
 		isi.save(request, mm, vo);
 		return "alert";
 	}
 
 	//상품 수정 폼
-	@RequestMapping("/product/productmodifyForm")
-	String itemModiForm(Model mm, ItemVO vo) {
+	@GetMapping("/admin/item/{ino}/modi")
+	String itemModiForm(Model mm, @PathVariable("ino") Integer ino) {
+		ItemVO vo = new ItemVO();
+		vo.setIno(ino);
 		isi.adminGetItem(mm, vo);
-		return "item/modiForm_A";
+		return "item/modi_A";
 	}
 
 	//상품 수정
-	@RequestMapping("/product/productmodifyReg")
+	@PutMapping("/admin/item/{ino}/modi")
 	String itemModi(Model mm, ItemVO vo) {
 		isi.modi(mm, vo);
 		return "alert";
 	}
 
 	//상품 삭제
-	@RequestMapping("/product/productdeleteReg")
-	String itemDelete(Model mm, ItemVO vo) {
+	@DeleteMapping("/admin/item/{ino}/delete")
+	String itemDelete(Model mm, @PathVariable("ino") Integer ino) {
+		ItemVO vo = new ItemVO();
+		vo.setIno(ino);
 		isi.delete(mm, vo);
 		return "alert";
 	}
 
 	//상품 목록 조회
-	@RequestMapping("/product/productlist")
-	String items(HttpSession session, Model mm, ItemVO vo, PageInfo pageInfo) {
+	@RequestMapping("/admin/item")
+	String adminItems(HttpSession session, Model mm, ItemVO vo, PageInfo pageInfo) {
 		isi.adminGetItems(session, mm, vo, pageInfo);
 		return "item/items_A";
 	}
 
 	//상품 조회
-	@RequestMapping("/product/productdetail")
-	String item(Model mm, ItemVO vo) {
+	@RequestMapping("/admin/item/{ino}")
+	String adminItem(Model mm, ItemVO vo) {
 		isi.adminGetItem(mm, vo);
 		return "item/item_A";
 	}
@@ -92,8 +95,8 @@ public class ItemController {
 	//어드민 ==============================================================
 
 
-	@RequestMapping("/itemlist")
-	String mainCate(Model mm, SchCondition sc, HttpSession session,
+	@GetMapping("/item")
+	String items(Model mm, SchCondition sc, HttpSession session,
 					@RequestParam(value="custom", defaultValue="") String custom,
 					@RequestParam(value="onNav", defaultValue="") String onNav,
 					PageInfo pageInfo) {
@@ -101,8 +104,8 @@ public class ItemController {
 		return "item/items";
 	}
 	
-	@RequestMapping("/item/{ino}")
-	String itemDetail(Model mm, ItemVO iv, HttpSession session, ReviewVO vo1 , QnaVO vo2) {
+	@GetMapping("/item/{ino}")
+	String item(Model mm, ItemVO iv, HttpSession session, ReviewVO vo1 , QnaVO vo2) {
 		isi.getItem(mm, iv, session, vo1, vo2);
 		return "item/item";
 	}
