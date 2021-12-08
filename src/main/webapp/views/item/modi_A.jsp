@@ -28,8 +28,8 @@ input[type="radio"] {width:50px;}
 			<tr>
 				<td id="title">상품코드</td>
 				<td>
-					<input type="hidden" id="ino" name="ino" value="${pro.ino }">
-					<span>${pro.ino }</span>
+					<input type="hidden" id="ino" name="ino" value="${item.ino }">
+					<span>${item.ino }</span>
 				</td>
 			</tr>
 		
@@ -52,43 +52,43 @@ input[type="radio"] {width:50px;}
 		<tr>
 			<td id="title">상품명</td>
 			<td>
-				<input type="hidden" id="name" name="name" value="${pro.name }">
-				<span>${pro.name }</span>
+				<input type="hidden" id="name" name="name" value="${item.name }">
+				<span>${item.name }</span>
 			</td>
 		</tr>
 		
 		<tr>
 			<td id="title">가격</td>
 			<td>
-				<input type="text" id="price" name="price" value="${pro.price }">
+				<input type="text" id="price" name="price" value="${item.price }">
 			</td>
 		</tr>	
 		
 		<tr>
 			<td id="title">할인율</td>
 			<td>
-				<input type="text" id="discount" name="discount" value="${pro.discount }">
+				<input type="text" id="discount" name="discount" value="${item.discount }">
 			</td>
 		</tr>
 		
 		<tr>
 			<td id="title">원산지</td>
 			<td>
-				<input type="text" id="origin" name="origin" value="${pro.origin }">
+				<input type="text" id="origin" name="origin" value="${item.origin }">
 			</td>
 		</tr>
 		
 		<tr>
 			<td id="title">제조사</td>
 			<td>
-				<input type="text" id="manufac" name="manufac" value="${pro.manufac }">
+				<input type="text" id="manufac" name="manufac" value="${item.manufac }">
 			</td>
 		</tr>
 		
 		<tr>	
 			<td id="title">수량</td>
 			<td>
-				<input type="text" id="quantity" name="quantity" value="${pro.quantity }">
+				<input type="text" id="quantity" name="quantity" value="${item.quantity }">
 			</td>
 		</tr>
 		
@@ -140,7 +140,7 @@ input[type="radio"] {width:50px;}
 			var main_cate = "";
 			var rtn_cateid = "";
 			
-			req_cateid = "" + ${pro.cateid};
+			req_cateid = "" + ${item.cateid};
 			
 			main_cate = req_cateid.substring(0, 1);
 					
@@ -163,10 +163,10 @@ input[type="radio"] {width:50px;}
 				
 			categoryChange(rtn_cateid);	
 			
-			$("input:radio[name='size']:radio[value='${pro.size}']").prop('checked', true);
-			$("input:radio[name='fur']:radio[value='${pro.fur}']").prop('checked', true);
-			$("input:radio[name='age']:radio[value='${pro.age}']").prop('checked', true);
-			$("input:radio[name='fatyn']:radio[value='${pro.fatyn}']").prop('checked', true);
+			$("input:radio[name='size']:radio[value='${item.size}']").prop('checked', true);
+			$("input:radio[name='fur']:radio[value='${item.fur}']").prop('checked', true);
+			$("input:radio[name='age']:radio[value='${item.age}']").prop('checked', true);
+			$("input:radio[name='fatyn']:radio[value='${item.fatyn}']").prop('checked', true);
 			
 		});
 		

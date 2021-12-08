@@ -47,7 +47,7 @@ input[type="radio"] {width:50px;}
 				</select>
 			</td>
 		</tr>
-				
+
 		<tr>
 			<td id="title">
 			<span id="essential">*</span>
@@ -57,17 +57,17 @@ input[type="radio"] {width:50px;}
 				<button type="button" id="nmck" onclick="nameck();" value="N">중복확인</button>
 			</td>
 		</tr>
-		
+
 		<tr>
 			<td id="title">
 				<span id="essential">*</span>
 				가격
-			</td>	
+			</td>
 			<td>
 				<input type="text" id="price" name="price" placeholder="8자리숫자">
 			</td>
-		</tr>	
-		
+		</tr>
+
 		<tr>
 			<td id="title">
 				<span id="essential">*</span>
@@ -77,27 +77,27 @@ input[type="radio"] {width:50px;}
 				<input type="text" id="discount" name="discount" placeholder="3자리숫자">
 			</td>
 		</tr>
-		
+
 		<tr>
 			<td id="title">
-				<span id="essential">*</span>			
+				<span id="essential">*</span>
 				원산지
 			</td>
 			<td>
 				<input type="text" id="origin" name="origin" placeholder="한글만">
 			</td>
 		</tr>
-		
+
 		<tr>
 			<td id="title">
-				<span id="essential">*</span>			
+				<span id="essential">*</span>
 				제조사
 			</td>
 			<td>
 				<input type="text" id="manufac" name="manufac" placeholder="한글만">
 			</td>
 		</tr>
-		
+
 		<tr>
 			<td id="title">
 				<span id="essential">*</span>
@@ -107,27 +107,27 @@ input[type="radio"] {width:50px;}
 				<input type="text" id="quantity" name="quantity" placeholder="3자리숫자">
 			</td>
 		</tr>
-		
+
 		<tr>
 			<td id="title">
-				<span id="essential">*</span>			
+				<span id="essential">*</span>
 				메인이미지
 			</td>
 			<td>
 				<input type="file" id="mfile" name="mfile">
 			</td>
 		</tr>
-		
+
 		<tr>
 			<td id="title">
-				<span id="essential">*</span>				
+				<span id="essential">*</span>
 				상세이미지
 			</td>
 			<td>
 				<input type="file" id="dfile" name="dfile">
 			</td>
 		</tr>
-		
+
 	 	<tr>
 	 		<td id="title">
 				<span id="option">*</span>
@@ -139,7 +139,7 @@ input[type="radio"] {width:50px;}
 				<input type="radio" id="size" name="size" value="대">대형견
 			</td>
 		</tr>
-		
+
 		<tr>
 			<td id="title">
 				<span id="option">*</span>
@@ -150,7 +150,7 @@ input[type="radio"] {width:50px;}
 				<input type="radio" id="fur" name="fur" value="s">단모종
 			</td>
 		</tr>
-		
+
 		<tr>
 			<td id="title">
 				<span id="option">*</span>
@@ -161,10 +161,10 @@ input[type="radio"] {width:50px;}
 				<input type="radio" id="age" name="age" value="성견">성견
 				<input type="radio" id="age" name="age" value="노견">노견
 			</td>
-		</tr>	
-		
+		</tr>
+
 		</table>
-		
+
 		<div class="sb">
 			<input type="button" id="btn_sb" value="등록하기">
 		</div>

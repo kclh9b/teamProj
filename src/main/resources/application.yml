@@ -7,7 +7,11 @@ spring :
         view :
             prefix : /views/
             suffix : .jsp
-            
+    thymeleaf :
+            cache : false
+            prefix : /
+            view-names : thymeleaf/*
+
     servlet :
         multipart :
             max-file-size : 10MB

@@ -22,8 +22,9 @@ public class ItemController {
 	//어드민 ==============================================================
 	//상품 등록 폼
 	@GetMapping("/admin/item/save")
-	String itemSaveForm() {
-		return "item/save_A";
+	String itemSaveForm(Model mm) {
+		mm.addAttribute("item", new ItemVO());
+		return "thymeleaf/item/save_A";
 	}
 
 	//상품명 중복체크

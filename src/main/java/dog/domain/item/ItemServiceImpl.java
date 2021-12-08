@@ -106,7 +106,7 @@ public class ItemServiceImpl implements ItemService{
 
     @Override
     public ItemVO adminGetItem(Model mm, ItemVO vo) {
-        mm.addAttribute("pro", im.adminGetItem(vo));
+        mm.addAttribute("item", im.adminGetItem(vo));
         return vo;
     }
 
