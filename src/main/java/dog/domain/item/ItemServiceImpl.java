@@ -19,10 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -34,6 +31,7 @@ public class ItemServiceImpl implements ItemService{
     private final QnaMapp qnmapper;
     private final CommentMapp cmmapp;
     private final ItemMapper im;
+
 
     //어드민 ==============================================================
     @Override
@@ -69,7 +67,6 @@ public class ItemServiceImpl implements ItemService{
     @Override
     public ItemVO modi(Model mm, ItemVO vo) {
         int cnt = im.modi(vo);
-        System.out.println("itemModi cnt :"+cnt);
         mm.addAttribute("msg", "수정되었습니다");
         mm.addAttribute("url", "/admin/item/" + vo.getIno());
         log.info("상품번호:{}, 상품명:\'{}\' 수정", vo.getIno(), vo.getName());
@@ -99,7 +96,7 @@ public class ItemServiceImpl implements ItemService{
             return null;
         }
         List<ItemVO> items = im.adminGetItems(vo);
-        mm.addAttribute("pro", items);
+        mm.addAttribute("items", items);
         pageInfo.setTotal(im.itemCnt(vo));
         return items;
     }

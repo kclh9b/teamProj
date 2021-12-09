@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<link rel="stylesheet" th:href="${/css/style_list.css}" href="../../css/style_list.css"/>
+<link rel="stylesheet" th:href="@{/css/style_list.css}" href="../../css/style_list.css"/>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <body>
     <th:block th:replace="~{/thymeleaf/fragment/header :: header}"></th:block>
     <th:block th:replace="~{/thymeleaf/fragment/admin :: admin}"></th:block>
@@ -8,52 +9,51 @@
         <h2>상품 상세</h2>
         <table class="basic">
             <tr>
-                <td class="title">상품코드</td><td class="contents">${item.ino}</td>
+                <td class="title">상품코드</td><td class="contents" th:text="${item.ino}">상품번호</td>
             </tr><tr>
-                <td class="title">카테고리</td><td class="contents">${item.cateid}</td>
+                <td class="title">카테고리</td><td class="contents" th:text="${item.cateid}">카테고리</td>
              </tr><tr>
-                <td class="title">상품명</td><td class="contents">${item.name}</td>
+                <td class="title">상품명</td><td class="contents" th:text="${item.name}">상품명</td>
             </tr><tr>
-                <td class="title">원가</td><td class="contents"><fmt:formatNumber type="number" maxFractionDigits="3" value="${item.price}" /></td>
+                <td class="title">원가</td><td class="contents" th:text="|${#numbers.formatInteger(item.price, 0, 'COMMA')}원|">원가</td>
              </tr><tr>
-                <td class="title">가격</td><td class="contents"><fmt:formatNumber type="number" maxFractionDigits="3" value="${item.calprice}" /></td>
+                <td class="title">가격</td><td class="contents" th:text="|${#numbers.formatInteger(item.calprice, 0, 'COMMA')}원|">가격</td>
             </tr><tr>
-                <td class="title">할인율</td><td class="contents">${item.discount}</td>
+                <td class="title">할인율</td><td class="contents" th:text="${item.discount}">할인율</td>
              </tr><tr>
-                <td class="title">원산지</td><td class="contents">${item.origin}</td>
+                <td class="title">원산지</td><td class="contents" th:text="${item.origin}">원산지</td>
             </tr><tr>
-                <td class="title">제조사</td><td class="contents">${item.manufac}</td>
+                <td class="title">제조사</td><td class="contents" th:text="${item.manufac}">제조사</td>
             </tr><tr>
-                <td class="title">수량</td><td class="contents">${item.quantity}</td>
+                <td class="title">수량</td><td class="contents" th:text="|${#numbers.formatInteger(item.quantity, 0, 'COMMA')}개|">수량</td>
             </tr><tr>
-                <td class="title">메인이미지</td><td class="contents"><img src="<c:url value="/up/item/${item.main_img }" />" alt="" width="300px"></td>
+                <td class="title">메인이미지</td><td class="contents"><img th:src="@{/up/item/}+${item.main_img}" src="../up/item/main_img" alt="" width="300px"></td>
             </tr><tr>
-                <td class="title">상세이미지</td><td class="contents"><img src="<c:url value="/up/item/${item.detail_img }" />" alt="" ></td>
+                <td class="title">상세이미지</td><td class="contents"><img th:src="@{/up/item/}+${item.detail_img}" src="/up/item/detail_img" alt=""></td>
             </tr><tr>
-                <td class="title">강아지사이즈</td><td id="size">${item.size}</td>
+                <td class="title">강아지사이즈</td><td th:text="${item.size}">사이즈</td>
             </tr><tr>
-                <td class="title">강아지털길이</td><td id="fur">${item.fur}</td>
+                <td class="title">강아지털길이</td><td th:text="${item.fur}">털길이</td>
             </tr><tr>
-                <td class="title">강아지나이</td><td class="contents">${item.age}</td>
+                <td class="title">강아지나이</td><td class="contents" th:text="${item.age}">나이</td>
             </tr><tr>
-                <td class="title">등록날짜</td><td class="contents">${item.regdate}</td>
+                <td class="title">등록날짜</td><td class="contents" th:text="${item.regdate}">등록날짜</td>
             </tr>
         </table>
 
         <div class="orderlist">
-            <a href="/admin/item">목록으로</a>
+            <a href="/admin/item" th:href="@{/admin/item}" >목록으로</a>
         </div>
-        <form action="${item.ino}/delete" method="post" id="del">
+        <form action="ino/delete" th:action="@{{ino}/delete(ino='${item.ino}')}" method="post" id="del">
             <input type="hidden" name="_method" value="delete"/>
             <div class="orderlist">
                 <a href="javascript:void(0);" onclick="delConfirm()">삭제</a>
             </div>
         </form>
         <div class="orderlist">
-            <a href="${item.ino}/modi">수정</a>
+            <a href="ino/modi" th:href="@{{ino}/modi(ino=${item.ino})}">수정</a>
         </div>
     </div>
     <th:block th:replace="~{/thymeleaf/fragment/footer :: footer}"></th:block>
 </body>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </html>

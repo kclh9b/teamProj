@@ -9,6 +9,7 @@
     .name_input_1 {display: none; color:green}
     .name_input_2 {display: none; color:red;}
 </style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <body>
     <th:block th:replace="~{/thymeleaf/fragment/header :: header}"></th:block>
     <th:block th:replace="~{/thymeleaf/fragment/admin :: admin}"></th:block>
@@ -20,8 +21,7 @@
                 <tr>
                     <td class="title">상품코드</td>
                     <td>
-                        <input type="hidden" id="ino" name="ino" value="${pro.ino }">
-                        <span>${pro.ino }</span>
+                        <input type="text" th:field="*{ino}" readonly>
                     </td>
                 </tr>
 
@@ -35,7 +35,7 @@
                             <option value="c">장난감</option>
                             <option value="d">산책용품</option>
                         </select>
-                        <select id="good" name="cateid">
+                        <select id="good" th:field="*{cateid}">
                             <option value="">소분류</option>
                         </select>
                     </td>
@@ -44,69 +44,69 @@
                 <tr>
                     <td class="title">상품명</td>
                     <td>
-                        <input type="hidden" id="name" name="name" value="${pro.name }">
-                        <span>${pro.name }</span>
+                        <input type="text" th:field="*{name}" readonly>
                     </td>
                 </tr>
 
                 <tr>
                     <td class="title">가격</td>
                     <td>
-                        <input type="text" id="price" name="price" value="${pro.price }">
+                        <input type="text" th:field="*{price}">
                     </td>
                 </tr>
 
                 <tr>
                     <td class="title">할인율</td>
                     <td>
-                        <input type="text" id="discount" name="discount" value="${pro.discount }">
+                        <input type="text" th:field="*{discount}">
                     </td>
                 </tr>
 
                 <tr>
                     <td class="title">원산지</td>
                     <td>
-                        <input type="text" id="origin" name="origin" value="${pro.origin }">
+                        <input type="text" th:field="*{origin}">
                     </td>
                 </tr>
 
                 <tr>
                     <td class="title">제조사</td>
                     <td>
-                        <input type="text" id="manufac" name="manufac" value="${pro.manufac }">
+                        <input type="text" th:field="*{manufac}">
                     </td>
                 </tr>
 
                 <tr>
                     <td class="title">수량</td>
                     <td>
-                        <input type="text" id="quantity" name="quantity" value="${pro.quantity }">
+                        <input type="text" th:field="*{quantity}">
                     </td>
                 </tr>
 
                 <tr>
                     <td class="title">강아지사이즈</td>
                     <td>
-                        <input type="radio" id="size" name="size" value="소">소형견
-                        <input type="radio" id="size" name="size" value="중">중형견
-                        <input type="radio" id="size" name="size" value="대">대형견
+                        <th:block th:each="size : ${sizes}">
+                            <input  type="radio" class="size" th:field="*{size}" th:value="${size.value}" th:text="${size.key}">
+                        </th:block>
                     </td>
                 </tr>
 
                 <tr>
                     <td class="title">털길이</td>
                     <td>
-                        <input type="radio" id="fur" name="fur" value="l">장모종
-                        <input type="radio" id="fur" name="fur" value="s">단모종
+                        <th:block th:each="fur : ${furs}">
+                            <input  type="radio" class="fur" th:field="*{fur}" th:value="${fur.value}" th:text="${fur.key}">
+                        </th:block>
                     </td>
                 </tr>
 
                 <tr>
                     <td class="title">강아지나이</td>
                     <td>
-                        <input type="radio" id="age" name="age" value="자견">자견
-                        <input type="radio" id="age" name="age" value="성견">성견
-                        <input type="radio" id="age" name="age" value="노견">노견
+                        <th:block th:each="age : ${ages}">
+                            <input  type="radio" class="fur" th:field="*{age}" th:value="${age.value}" th:text="${age.key}">
+                        </th:block>
                     </td>
                 </tr>
 
@@ -120,8 +120,7 @@
     </div>
     <th:block th:replace="~{/thymeleaf/fragment/footer :: footer}"></th:block>
 </body>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
+<script th:inline="javascript">
     $(".back").click(function (){
         history.back();
     });
@@ -133,7 +132,7 @@
         var main_cate = "";
         var rtn_cateid = "";
 
-        req_cateid = "" + ${pro.cateid};
+        req_cateid = "" + /*[[${item.cateid}]]*/ "test";
 
         main_cate = req_cateid.substring(0, 1);
 
@@ -156,10 +155,10 @@
 
         categoryChange(rtn_cateid);
 
-        $("input:radio[name='size']:radio[value='${pro.size}']").prop('checked', true);
-        $("input:radio[name='fur']:radio[value='${pro.fur}']").prop('checked', true);
-        $("input:radio[name='age']:radio[value='${pro.age}']").prop('checked', true);
-        $("input:radio[name='fatyn']:radio[value='${pro.fatyn}']").prop('checked', true);
+        $("input:radio[class='size']:radio[value='${item.size}']").prop('checked', true);
+        $("input:radio[class='fur']:radio[value='${item.fur}']").prop('checked', true);
+        $("input:radio[class='age']:radio[value='${item.age}']").prop('checked', true);
+        $("input:radio[class='fatyn']:radio[value='${item.fatyn}']").prop('checked', true);
 
     });
 
@@ -191,7 +190,7 @@
             }
 
 
-         }
+        }
         else if(e.value == "b" || e == "b") {
             var d = clean;
             var val = [201, 202, 203, 204];
@@ -368,6 +367,5 @@
         }
         return false;
     }
-
-    </script>
+</script>
 </html>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <link rel="stylesheet" th:href="@{/css/style_list.css}" href="../../css/style_list.css"/>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
     .inputArea { margin: 5px 0; border: 1px solid lightgray; width: 500px; height: 40px; padding: 10px;}
     select { width:100px; }
@@ -164,7 +165,6 @@
     </div>
     <th:block th:replace="~{/thymeleaf/fragment/footer :: footer}"></th:block>
 </body>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script th:inline="javascript">
     function categoryChange(e) {
         var x = ["소분류"];

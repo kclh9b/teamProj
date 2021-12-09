@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/css/style_list.css}" href="../../css/style_list.css"/>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<body>
+    <th:block th:replace="~{/thymeleaf/fragment/header :: header}"></th:block>
+    <th:block th:replace="~{/thymeleaf/fragment/admin :: admin}"></th:block>
+
+    <div class="goods_list">
+        <h2>상품 목록</h2>
+        <div class="search">
+            <form action="">
+                <select name="searchType">
+                    <option value="n">상품명</option>
+                    <option value="i">상품코드</option>
+                    <option value="g">대분류</option>
+                </select>
+                <input type="text" name="sch" id="sch">
+                <input type="submit" value="검색" id="search">
+            </form>
+        </div>
+        <table class="basic">
+            <thead>
+            <tr>
+                <th>번호</th>
+                <th>상품코드</th>
+                <th>대분류</th>
+                <th>소분류</th>
+                <th width="230">상품명</th>
+                <th>원가</th>
+                <th>가격</th>
+                <th>할인율</th>
+                <th>수량</th>
+                <th>등록날짜</th>
+                <th>삭제</th>
+                <th>판매량</th>
+                <th>평점</th>
+                <th>리뷰갯수</th>
+            </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="item : ${items}">
+                    <td th:text="${pageInfo.start+itemStat.index+1 }"></td>
+                    <td th:text="${item.ino}">상품코드</td>
+                    <td th:text="${item.gname}">대분류</td>
+                    <td th:text="${item.sname}">소분류</td>
+                    <td><a th:href="@{item/{ino}(ino=${item.ino})}" th:text="${item.name}" id="click">상품명</a></td>
+                    <td th:text="${#numbers.formatInteger(item.price, 0, 'COMMA')}">원가</td>
+                    <td th:text="${#numbers.formatInteger(item.calprice, 0, 'COMMA')}">판매가</td>
+                    <td th:text="|${item.discount}%|">할인율</td>
+                    <td th:text="${item.quantity}">수량</td>
+                    <td th:text="${item.regdate}">등록날짜</td>
+                    <td th:if="${item.available == 'n'}" th:text="'○'"></td>
+                    <td th:unless="${item.available == 'n'}"></td>
+                    <td th:text="${item.sellcnt}">판매량</td>
+                    <td th:text="${item.r_avg}">평점</td>
+                    <td th:text="${item.r_cnt}">리뷰갯수</td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="paging">
+            <th:block th:if="${pageInfo.startPage>1 }">
+                <a th:href="@{item(page=${pageInfo.startPage -1})}" th:text="'<'"><</a>
+            </th:block>
+            <th:block th:each="page : ${#numbers.sequence(pageInfo.startPage,pageInfo.endPage)}">
+                <span th:if="${pageInfo.page == page }" th:text="|[${page}]|"></span>
+                <a th:unless="${pageInfo.page == page }" th:href="@{item(page=${page}, serachType=${itemVO.searchType}, day=${itemVO.day}, sch=${itemVO.sch})}" th:text="${page}"></a>
+            </th:block>
+            <th:block th:if="${pageInfo.endPage<pageInfo.totalPage}">
+                <a th:href="@{item(page=${pageInfo.endPage +1})}" th:text="'>'"></a>
+            </th:block>
+        </div>
+    </div>
+
+    <th:block th:replace="~{/thymeleaf/fragment/footer :: footer}"></th:block>
+</body>
+<script>
+    $("#search").click(function(){
+        if($("#sch").val() == '') {
+            alert("검색어를 입력해주세요");
+        }
+    });
+
+    function goPage(pageNum) {
+        var url =  decodeURI(window.location.search);
+        if(url.indexOf("page")==-1) {
+            url = url + "&page="+pageNum
+        }else {
+            var pageIndex = url.indexOf("page")-1;
+            var lastParaIndex = url.lastIndexOf("&");
+            if(pageIndex==lastParaIndex) {
+                url = url.slice(0,pageIndex)+"&page="+pageNum;
+            }else {
+                url = url.slice(0,pageIndex)+"&page="+pageNum + url.slice(lastParaIndex)
+            }
+        }
+        location.href = url;
+    }
+</script>
+</html>
