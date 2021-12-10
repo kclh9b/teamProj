@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="outdoor">
+    <h3>산책용품</h3>
+    <div class="topNav">
+        <table class="topNavTable">
+            <colgroup><col width="20%"><col width="20%"><col width="20%"><col width="20%"><col width="20%"></colgroup>
+            <tr>
+                <td><a th:href="@{item(custom='n', onNav='y', cate=401)}" href="item?custom=n&onNav=y&cate=401" th:classappend="${schCondition.cate} eq '401' ? 'active'">자동줄</a></td>
+                <td><a th:href="@{item(custom='n', onNav='y', cate=402)}" href="item?custom=n&onNav=y&cate=402" th:classappend="${schCondition.cate} eq '402' ? 'active'">목줄</a></td>
+                <td><a th:href="@{item(custom='n', onNav='y', cate=403)}" href="item?custom=n&onNav=y&cate=403" th:classappend="${schCondition.cate} eq '403' ? 'active'">하네스</a></td>
+                <td><a th:href="@{item(custom='n', onNav='y', cate=404)}" href="item?custom=n&onNav=y&cate=404" th:classappend="${schCondition.cate} eq '404' ? 'active'">이동가방</a></td>
+                <td><a th:href="@{item(custom='n', onNav='y', cate=405)}" href="item?custom=n&onNav=y&cate=405" th:classappend="${schCondition.cate} eq '405' ? 'active'">유모차</a></td>
+            </tr>
+        </table>
+    </div>
+</th:block>
+</html>

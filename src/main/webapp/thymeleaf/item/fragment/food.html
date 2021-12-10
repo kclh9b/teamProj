@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="food">
+    <h3>사료</h3>
+    <div class="topNav">
+        <table class="topNavTable">
+            <colgroup><col width="20%"><col width="20%"><col width="20%"><col width="20%"><col width="20%"></colgroup>
+            <tr>
+                <td><a th:href="@{item(custom='n', onNav='y', cate=101)}" href="item?custom=n&onNav=y&cate=101" th:classappend="${schCondition.cate} eq '101' ? 'active'">퍼피용</a></td>
+                <td><a th:href="@{item(custom='n', onNav='y', cate=102)}" href="item?custom=n&onNav=y&cate=102" th:classappend="${schCondition.cate} eq '102' ? 'active'">성견용</a></td>
+                <td><a th:href="@{item(custom='n', onNav='y', cate=103)}" href="item?custom=n&onNav=y&cate=103" th:classappend="${schCondition.cate} eq '103' ? 'active'">노견용</a></td>
+                <td><a th:href="@{item(custom='n', onNav='y', cate=104)}" href="item?custom=n&onNav=y&cate=104" th:classappend="${schCondition.cate} eq '104' ? 'active'">소형견용</a></td>
+                <td><a th:href="@{item(custom='n', onNav='y', cate=105)}" href="item?custom=n&onNav=y&cate=105" th:classappend="${schCondition.cate} eq '105' ? 'active'">중형견용</a></td>
+            </tr>
+            <tr>
+                <td><a th:href="@{item(custom='n', onNav='y', cate=106)}" href="item?custom=n&onNav=y&cate=106" th:classappend="${schCondition.cate} eq '106' ? 'active'">대형견용</a></td>
+                <td><a th:href="@{item(custom='n', onNav='y', cate=107)}" href="item?custom=n&onNav=y&cate=107" th:classappend="${schCondition.cate} eq '107' ? 'active'">비만견용</a></td>
+                <td><a th:href="@{item(custom='n', onNav='y', cate=108)}" href="item?custom=n&onNav=y&cate=108" th:classappend="${schCondition.cate} eq '108' ? 'active'">간식</a></td>
+            </tr>
+        </table>
+    </div>
+</th:block>
+</html>

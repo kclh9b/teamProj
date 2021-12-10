@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="search">
+    <div>
+        <span class="schTitle">상품분류</span>
+        <select name="cate">
+            <option value="" >전체</option>
+            <option value="1__" th:selected="${schCondition.cate} eq '1__'">사료</option>
+            <option value="2__" th:selected="${schCondition.cate} eq '2__'">관리용품</option>
+            <option value="3__" th:selected="${schCondition.cate} eq '3__'">장난감</option>
+            <option value="4__" th:selected="${schCondition.cate} eq '4__'">산책용품</option>
+        </select>
+    </div>
+    <div>
+        <span class="schTitle">검색조건</span>
+        <select name="schKind">
+            <option value="name" >상품명</option>
+            <option value="manufac" th:selected="${schCondition.schKind} eq 'manufac'">제조사</option>
+        </select>
+        &nbsp;<input type="text" name="keyword" th:value="${schCondition.keyword}" placeholder="검색어" id="detailKeyword">
+    </div>
+    <div>
+        <span class="schTitle">판매가격대</span>
+        <input type="text" name="min" th:value="${schCondition.min}" placeholder="최소가격" id="min"> ~ <input type="text" name="max" th:value="${schCondition.max}"  placeholder="최대가격" id="max">
+        <input type="hidden" name="onNav" value="n">
+        <div style="width:100px; margin:0 auto; margin-top:25px;">
+            <input type="button" value="검색" class="schSubmit" onclick="goDetailSearch()">
+        </div>
+    </div>
+</th:block>
+</html>

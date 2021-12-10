@@ -41,7 +41,7 @@
 		</span>
 	</div>
 	<ul class="itemList">
-	<c:forEach items="${itemList }" var="il" varStatus="no">
+	<c:forEach items="${items }" var="il" varStatus="no">
 		<li>
 			<div class="thum">
 				<a href="/item/${il.ino }"><img src="<c:url value="up/item/${il.main_img }"/>"alt="메인이미지"></a>

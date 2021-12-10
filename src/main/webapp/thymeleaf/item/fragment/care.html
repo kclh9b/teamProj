@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="care">
+    <h3>관리용품</h3>
+    <div class="topNav">
+        <table class="topNavTable">
+            <colgroup><col width="20%"><col width="20%"><col width="20%"><col width="20%"><col width="20%"></colgroup>
+            <tr>
+                <td><a th:href="@{item(custom='n', onNav='y', cate=201)}" href="item?custom=n&onNav=y&cate=201" th:classappend="${schCondition.cate} eq '201' ? 'active'">배변판/패드</a></td>
+                <td><a th:href="@{item(custom='n', onNav='y', cate=202)}" href="item?custom=n&onNav=y&cate=202" th:classappend="${schCondition.cate} eq '202' ? 'active'">기저귀</a></td>
+                <td><a th:href="@{item(custom='n', onNav='y', cate=203)}" href="item?custom=n&onNav=y&cate=203" th:classappend="${schCondition.cate} eq '203' ? 'active'">돌돌이</a></td>
+                <td><a th:href="@{item(custom='n', onNav='y', cate=204)}" href="item?custom=n&onNav=y&cate=204" th:classappend="${schCondition.cate} eq '204' ? 'active'">이발기구</a></td>
+            </tr>
+        </table>
+    </div>
+</th:block>
+</html>

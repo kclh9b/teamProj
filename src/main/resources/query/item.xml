@@ -111,7 +111,7 @@ PUBLIC "-//mybatis.org/DTD Mapper3.0//EN"
 		select count(*) from itemv
 		where cateid like '%${cate}%'
 		<if test="keyword!=null">
-		and ${schkind} like '%${keyword}%'
+		and ${schKind} like '%${keyword}%'
 		</if>
 		
 		<if test="min!=null">

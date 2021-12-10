@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="custom">
+    <div class="customWrapper">
+        <table class="customCdt">
+            <colgroup>
+                <col width="100px">
+                <col width="190px">
+                <col width="100px">
+            </colgroup>
+            <tr>
+                <td>
+                    <span class="schTitle">사이즈</span>
+                </td>
+                <td>
+                    <select name="size">
+                        <option value="n">선택</option>
+                        <th:block th:each="size: ${sizes}">
+                            <option th:selected="${size.value} eq ${sizeData}" th:value="${size.value}" th:text="${size.key}"></option>
+                        </th:block>
+                    </select>
+                </td>
+                <td>
+                    <span class="schTitle">털 길이</span>
+                </td>
+                <td>
+                    <select name="fur">
+                        <option value="n">선택</option>
+                        <th:block th:each="fur: ${furs}">
+                            <option th:selected="${fur.value} eq ${furData}" th:value="${fur.value}" th:text="${fur.key}"></option>
+                        </th:block>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span class="schTitle">나이</span>
+                </td>
+                <td>
+                    <select name="age">
+                        <option value="n">선택</option>
+                        <th:block th:each="age: ${ages}">
+                            <option th:selected="${age.value} eq ${ageData}" th:value="${age.value}" th:text="${age.key}"></option>
+                        </th:block>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+</th:block>
+</html>

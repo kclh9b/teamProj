@@ -160,19 +160,23 @@ public class ItemServiceImpl implements ItemService{
             String cateNum = sc.getCate().substring(0,1);
             switch(cateNum) {
                 case "1" :
-                    url2 = "sub_food.jsp";
+//                    url2 = "sub_food.jsp";
+                    url2 = "food";
                     mm.addAttribute("url2", url2);
                     break;
                 case "2" :
-                    url2 = "sub_care.jsp";
+//                    url2 = "sub_care.jsp";
+                    url2 = "care";
                     mm.addAttribute("url2", url2);
                     break;
                 case "3" :
-                    url2 = "sub_toy.jsp";
+//                    url2 = "sub_toy.jsp";
+                    url2 = "toy";
                     mm.addAttribute("url2", url2);
                     break;
                 case "4" :
-                    url2 = "sub_outdoor.jsp";
+//                    url2 = "sub_outdoor.jsp";
+                    url2 = "outdoor";
                     mm.addAttribute("url2", url2);
                     break;
             }
@@ -219,7 +223,7 @@ public class ItemServiceImpl implements ItemService{
         }
 
         ArrayList<ItemVO> items = im.itemList(para);
-        mm.addAttribute("itemList", items);
+        mm.addAttribute("items", items);
         mm.addAttribute("custom", custom);
 
         return items;

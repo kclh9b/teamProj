@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http:www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/css/style_itemList.css}" href="../../css/style_itemList.css"/>
+<link rel="stylesheet" th:href="@{/css/style_itemListCate.css}" href="../../css/style_itemListCate.css"/>
+<body>
+    <th:block th:replace="~{/thymeleaf/fragment/header :: header}"></th:block>
+
+    <div class="itemWrapper">
+        <form action="" th:action name="detailFrm">
+            <input type="hidden" name="custom" th:value="${custom }">
+            <div th:if="${onNav} eq 'n'" class="schBox">
+                <th:block th:replace="~{/thymeleaf/item/fragment/custom :: custom}"></th:block>
+                <th:block th:replace="~{/thymeleaf/item/fragment/search :: search}"></th:block>
+            </div>
+            <th:block th:unless="${onNav} eq 'n'" th:with="frag=|/thymeleaf/item/fragment/${url2}|">
+                <th:block th:replace="${frag}"/>
+            </th:block>
+        </form>
+        <div class="itemCntOrderBox">
+            <span class="itemCnt" th:text="|총 ${pageInfo.total}개 상품|">총 x개 상품</span>
+            <span class="orderButton">
+            <input th:classappend="((${schCondition.order} eq 'new') or (${schCondition.order} eq null)) ? 'active'" type="button" value="신상품" onclick="order('new')">
+            <input th:classappend="(${schCondition.order} eq 'sellcnt') ? 'active'" type="button" value="판매량" onclick="order('sellcnt')">
+            <input th:classappend="(${schCondition.order} eq 'high') ? 'active'" type="button" value="높은가격" onclick="order('high')">
+            <input th:classappend="(${schCondition.order} eq 'row') ? 'active'" type="button" value="낮은가격" onclick="order('row')">
+		</span>
+        </div>
+        <ul class="itemList">
+            <li th:each="item : ${items}">
+                <div class="thum">
+                    <a th:href="@{item/{ino}(ino=${item.ino})}" href="item/ino" ><img th:src="@{/up/item/} + ${item.main_img}" src="/up/item/main_img" alt="메인이미지"></a>
+                </div>
+                <div>
+                    <div class="itemName">
+                        <a th:href="@{item/{ino}(ino=${item.ino})}" href="item/ino" th:text="${item.name}">상품명</a>
+                    </div>
+                    <strong th:text="|${#numbers.formatInteger(item.calprice, 0, 'COMMA')}원|">판매가격</strong> <span th:text="(${item.discount} neq 0) ? |${item.discount}%|">할인율%</span>
+                </div>
+            </li>
+        </ul>
+
+        <div class="pageBox">
+            <th:block th:if="${pageInfo.totalPage} neq 0">
+                <input th:if="${pageInfo.startPage} &gt; 1" type="button" value="<" th:onclick="goPage([[${pageInfo.startPage}]]-1)">
+                <th:block th:each="page : ${#numbers.sequence(pageInfo.startPage, pageInfo.endPage)}">
+                    <input type="button" class="pageButton" th:classappend="(${pageInfo.page} eq ${page}) ? 'active'" th:value="${page}" th:onclick="goPage([[${page}]])">
+                </th:block>
+                <input th:if="${pageInfo.endPage} &lt; ${pageInfo.totalPage}" type="button" value=">" th:onclick="goPage([[${pageInfo.endPage}]]+1)">
+            </th:block>
+        </div>
+    </div>
+
+    <th:block th:replace="~{/thymeleaf/fragment/footer :: footer}"></th:block>
+</body>
+<script th:inline="javascript">
+
+//cate, schKind, keyword, min, max, order
+	function sch(url) {
+		var frm = document.getElementsByTagName("form");
+		var select = document.getElementsByTagName("select");
+		var input = document.getElementsByTagName("input");
+		url = url + "cate="+select[0].value;
+
+		if(input[0].value!="") {
+			url = url+"&schKind="+select[1].value+"&keyword="+input[0].value;
+		}
+		if(input[1].value!="") {
+			url = url+"&min="+input[1].value;
+		}
+		if(input[2].value!="") {
+			url = url+"&max="+input[2].value;
+		}
+		location.href = url;
+
+	}
+
+	function order(order) {
+
+		var url =  decodeURI(window.location.search);
+		if(url.indexOf("order")!=-1){
+			if(url.indexOf("new")!=-1) {
+				url = url.replace("new", order);
+			}else if(url.indexOf("sellcnt")!=-1) {
+				url = url.replace("sellcnt", order);
+			}else if(url.indexOf("high")!=-1){
+				url = url.replace("high", order);
+			}else if(url.indexOf("row")!=-1){
+				url = url.replace("row", order);
+			}
+		}else {
+			if(url!="") {
+				url = url + "&order="+order
+			}else {
+				url = url + "?order="+order
+			}
+		}
+		location.href = url;
+	}
+
+
+	function goPage(pageNum) {
+		var url =  decodeURI(window.location.search);
+		if(url.indexOf("page")==-1) {
+			url = url + "&page="+pageNum
+		}else {
+			var pageIndex = url.indexOf("page")-1;
+			var lastParaIndex = url.lastIndexOf("&");
+			if(pageIndex==lastParaIndex) {
+				url = url.slice(0,pageIndex)+"&page="+pageNum;
+			}else {
+				url = url.slice(0,pageIndex)+"&page="+pageNum + url.slice(lastParaIndex)
+			}
+		}
+		location.href = url;
+	}
+
+	function goDetailSearch() {
+		var keyword = document.getElementById("detailKeyword").value;
+		var min = document.getElementById("min").value;
+		var max = document.getElementById("max").value;
+		var num_check=/^[0-9]*$/;
+		if(document.getElementById("weight")!= null) {
+			var weight = document.getElementById("weight").value;
+			if(weight!="") {
+				if(num_check.test(weight)){
+					if( weight.length < 1 || weight.length > 2 ){
+					alert("1~2글자만 입력할수 있습니다.");
+					detailFrm.weight.value="";
+					detailFrm.weight.focus();
+					return false;
+					}
+				}else {
+					alert ( "숫자만 입력할 수 있습니다." );
+					detailFrm.weight.value=""
+					detailFrm.weight.focus();
+
+					return;
+				}
+			}
+		}
+
+		if(min!="") {
+			if(num_check.test(min)){
+			}else {
+				alert ( "숫자만 입력할 수 있습니다." );
+				detailFrm.min.value=""
+				detailFrm.min.focus();
+				return;
+			}
+		}
+		if(max!="") {
+			if(num_check.test(max)){
+			}else {
+				alert ( "숫자만 입력할 수 있습니다." );
+				detailFrm.max.value=""
+				detailFrm.max.focus();
+				return;
+			}
+		}
+		document.detailFrm.submit();
+	}
+</script>
+</html>
