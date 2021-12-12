@@ -165,7 +165,7 @@ public class ItemController {
 	@GetMapping("/item/{ino}")
 	String item(Model mm, ItemVO iv, HttpSession session, ReviewVO vo1, QnaVO vo2) {
 		isi.getItem(mm, iv, session, vo1, vo2);
-		return "item/item";
+		return "thymeleaf/item/item";
 	}
 
 }

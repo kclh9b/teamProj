@@ -206,29 +206,29 @@
 									<tr class="reviewRow">
 										<td class="star">문의 제목</td>											
 										
-						<c:if test="${vo.open=='n' }">						
-						<c:if test="${uid!=vo.uid && uid!='admin'}">
-						<td class="td123"><div class="reviewTitleBox">
-							비밀글 입니다.
-							</div>
-							</td>
-						</c:if>
-						
-						<c:if test="${uid==vo.uid || uid=='admin'}">
-							<td class="td123"><div class="reviewTitleBox">
-							<a href="javascript:void(0)" onclick="openReview(event)">${vo.title }</a>
-							</div>
-							</td>	
-						</c:if>
-						
-						</c:if>
-						
-						<c:if test="${vo.open=='y' }">							
-						<td class="td123"><div class="reviewTitleBox">
-							<a href="javascript:void(0)" onclick="openReview(event)">${vo.title }</a>
-							</div>
-							</td>	
-						</c:if>					
+                                        <c:if test="${vo.open=='n' }">
+                                        <c:if test="${uid!=vo.uid && uid!='admin'}">
+                                        <td class="td123"><div class="reviewTitleBox">
+                                            비밀글 입니다.
+                                            </div>
+                                            </td>
+                                        </c:if>
+
+                                        <c:if test="${uid==vo.uid || uid=='admin'}">
+                                            <td class="td123"><div class="reviewTitleBox">
+                                            <a href="javascript:void(0)" onclick="openReview(event)">${vo.title }</a>
+                                            </div>
+                                            </td>
+                                        </c:if>
+
+                                        </c:if>
+
+                                        <c:if test="${vo.open=='y' }">
+                                        <td class="td123"><div class="reviewTitleBox">
+                                            <a href="javascript:void(0)" onclick="openReview(event)">${vo.title }</a>
+                                            </div>
+                                            </td>
+                                        </c:if>
 						
 										
 										<td>${vo.uid }</td>

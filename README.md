@@ -6,7 +6,7 @@ sts로 프로젝트 마무리 후 IntelliJ로 리팩토링중입니다.
   + language : java 8.0
   + framework : SpringBoot 2.5.2
   + ORM framework : MyBatis
-  + view template : jsp
+  + view template : jsp, thymeleaf
 
 
 - 작업내역
