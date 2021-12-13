@@ -21,11 +21,15 @@
 
         <div class="smenu">
             <ul class="slist">
-                <li><a th:href="@{/member/MemberLogin}">로그인</a></li>
-                <li><a th:href="@{/member/MemberReg}">회원가입</a></li>
-                <li><a th:href="@{/member/MemberLogout}">로그아웃</a></li>
-                <li><a th:href="@{/member/Mypage}">마이페이지</a></li>
-                <li><a th:href="@{/mypage/cart}">내 장바구니</a></li>
+                <th:block th:if="${session.uid} eq null">
+                    <li><a th:href="@{/member/MemberLogin}">로그인</a></li>
+                    <li><a th:href="@{/member/MemberReg}">회원가입</a></li>
+                </th:block>
+                <th:block th:unless="${session.uid} eq null">
+                    <li><a th:href="@{/member/MemberLogout}">로그아웃</a></li>
+                    <li><a th:href="@{/member/Mypage}">마이페이지</a></li>
+                    <li><a th:href="@{/cart}">내 장바구니</a></li>
+                </th:block>
                 <li id="comu"><a th:href="@{/board/list}">커뮤니티</a>
                     <ul class="clist">
                         <li><a th:href="@{/board/list}">Notice</a></li>

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,7 +24,15 @@ public class CartServiceImpl implements CartService{
         MemberVO mv = new MemberVO();
         mv.setUid((String)session.getAttribute("uid"));
 
-        mm.addAttribute("cl", cm.getCartList(mv));
+        ArrayList<CartItemVO> cartList = cm.getCartList(mv);
+
+        int totalPrice = 0;
+        for(CartItemVO cart : cartList) {
+            totalPrice += cart.totalPrice;
+        }
+
+        mm.addAttribute("cartList", cartList);
+        mm.addAttribute("totalPrcie", totalPrice);
         mm.addAttribute("black", session.getAttribute("black"));
     }
 

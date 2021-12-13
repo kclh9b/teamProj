@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/css/style_checkoutResult.css}" href="../../css/style_checkoutResult.css"/>
+<body>
+    <th:block th:replace="~{/thymeleaf/fragment/header :: header}"/>
+
+    <div class="resultWrapper">
+        <div class="resultBox">
+            <h2 style="text-align:center;">주문이 완료되었습니다</h2>
+
+            <input type="button" class="locationBtn" value="쇼핑 계속하기" th:onclick="'location.href=\''+ @{/} + '\''">
+            <input type="button" class="locationBtn" value="장바구니 이동" th:onclick="'location.href=\''+ @{/cart} + '\''"/>
+            <input type="button" class="locationBtn" value="주문내역 이동" th:onclick="'location.href=\''+ @{/user/UserOrderlist} + '\''">
+        </div>
+    </div>
+
+    <th:block th:replace="~{/thymeleaf/fragment/footer :: footer}"/>
+</body>
+</html>

@@ -3,8 +3,9 @@
 sts로 프로젝트 마무리 후 IntelliJ로 리팩토링중입니다.
 
 + 작업환경
-  + language : java 8.0
+  + language : java 8
   + framework : SpringBoot 2.5.2
+  + Database : mysql 5.5
   + ORM framework : MyBatis
   + view template : jsp, thymeleaf
 
@@ -19,8 +20,9 @@ sts로 프로젝트 마무리 후 IntelliJ로 리팩토링중입니다.
 
 * 리팩토링
   * 객체 및 기능별 directory 정리, 도메인 구분
-  * 상품, 장바구니
-    * Controller와 Service 분리
+  * 상품, 장바구니, 결제
+    * Controller, Service 분리
     * resource에 따른 url 계층 구성
     * HttpMethod(Get, Post, Put, Delete) 구성
+    * jsp -> thymeleaf 변경
     

@@ -21,7 +21,7 @@ public class CartController {
     @GetMapping("/cart/add")
     String addCart() {
         System.out.println("addCart 진입");
-        return "cart/result";
+        return "thymeleaf/cart/result";
     }
 
     @PostMapping("/cart/add")
@@ -35,7 +35,7 @@ public class CartController {
     @GetMapping("/cart")
     String myCart(HttpSession session,  Model mm) {
         csi.getCart(session, mm);
-        return "cart/myCart";
+        return "thymeleaf/cart/myCart";
     }
 
     @PostMapping("cart/update")

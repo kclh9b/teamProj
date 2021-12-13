@@ -22,7 +22,7 @@ public class CheckoutController {
     @RequestMapping("/checkout")
     String checkoutForm(HttpSession session, CartItemList il, Model mm, @RequestParam("state") String state) {
         cosi.getCheckoutInfo(session, il, mm, state);
-        return "checkout/checkout";
+        return "thymeleaf/checkout/checkout";
     }
 
     @RequestMapping(value="/checkoutAction", method= RequestMethod.POST)
@@ -34,6 +34,6 @@ public class CheckoutController {
 
     @RequestMapping("/checkoutResult")
     String checkoutResult() {
-        return "checkout/result";
+        return "thymeleaf/checkout/result";
     }
 }

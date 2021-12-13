@@ -28,7 +28,7 @@
 				%>
 					<li><a href="<c:url value="/member/MemberLogout"/>">로그아웃</a></li>
 					<li><a href="<c:url value="/member/Mypage"/>">마이페이지</a></li>
-					<li><a href="<c:url value="/mypage/cart"/>">내 장바구니</a></li>
+					<li><a href="<c:url value="/cart"/>">내 장바구니</a></li>
 				<%} %>
 					<li id="comu"><a href="<c:url value="/board/list"/>">커뮤니티</a>
 						<ul class="clist">

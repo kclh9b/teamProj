@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/css/style_main.css}" href="../../css/style_main.css"/>
+<body>
+    <th:block th:replace="~{/thymeleaf/fragment/header :: header}"/>
+
+    <div class="content">
+        <div class="" style="width: 1200px; margin: 0 auto;">
+            <div class="new">
+                <h2>신상품</h2>
+                <ul class="itemList">
+                    <th:block th:each="newItem, newItemStat : ${newList}">
+                        <li th:if="${newItemStat.index} le 2">
+                            <div class="thum">
+                                <a th:href="@{/item/{ino}(ino=${newItem.ino})}" href="/item/ino"><img th:src="@{/up/item/} + ${newItem.main_img}" src="/up/item/main_img" alt="메인이미지"></a>
+                            </div>
+                            <div>
+                                <div class="itemName">
+                                    <a th:href="@{/item/{ino}(ino=${newItem.ino})}" href="/item/ino" th:text="${newItem.name }">상품명</a>
+                                </div>
+                                <strong th:text="|${#numbers.formatInteger(newItem.calprice, 0, 'COMMA')}원|">판매가</strong><span th:text="(${newItem.discount} neq 0) ? | ${newItem.discount}%|">할인율%</span>
+                            </div>
+                        </li>
+                    </th:block>
+                </ul>
+            </div>
+            <div class="notice">
+                <h2>공지사항</h2>
+
+                <table>
+                    <tr>
+                        <th class="th123">번호</th>
+                        <th class="th123">제목</th>
+                        <th class="th123">작성일</th>
+                    </tr>
+                    <tr th:each="notice : ${board}">
+                        <td>
+                            <span class="spc3" th:text="${noticeStat.index}+1">번호</span>
+                        </td>
+                        <td>
+                            <span class="spc1"><a th:href="@{/board/detail(notno=${notice.notno})}" href="/board/detail?notno=notno" id="ahover" th:text="${notice.title }">게시판 제목</a></span>
+                        </td>
+                        <td>
+                            <span class="spc2" th:text="${notice.regdate}">작성 날짜</span>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+            </div>
+        </div>
+
+        <div class="recommend">
+            <h2>추천상품</h2>
+            <ul class="itemList">
+                <li th:each="recItem : ${recList}">
+                    <div class="thum">
+                        <a th:href="@{/item/{ino}(ino=${recItem.ino})}" href="/item/ino"><img th:src="@{/up/item/{main}(main=${recItem.main_img})}" src="/up/item/main_img" alt="메인이미지"></a>
+                    </div>
+                    <div>
+                        <div class="itemName">
+                            <a th:href="@{/item/{ino}(ino=${recItem.ino})}" href="/item/ino" th:text="${recItem.name}">상품명</a>
+                        </div>
+                        <strong th:text="|${#numbers.formatInteger(recItem.calprice, 0, 'COMMA')}원|">판매가</strong><span th:text="(${recItem.discount} neq 0) ? | ${recItem.discount}%|">할인율%</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="hot">
+            <h2>인기상품</h2>
+            <ul class="itemList">
+                <th:block th:each="sellcntItem, sellcntItemStat : ${sellcntList}">
+                    <li th:if="${sellcntItemStat.index} le 9">
+                        <div class="thum">
+                            <a th:href="@{/item/{ino}(ino=${sellcntItem.ino})}" href="/item/ino"><img th:src="@{/up/item/} + ${sellcntItem.main_img}" src="/up/item/main_img" alt="메인이미지"></a>
+                        </div>
+                        <div>
+                            <div class="itemLabel" th:classappned="|rank${sellcntItemStat.index+1}|" th:text="|${sellcntItemStat.index+1}위|">순위</div>
+                            <div class="itemName">
+                                <a th:href="@{/item/{ino}(ino=${sellcntItem.ino})}" href="/item/ino" th:text="${sellcntItem.name}">상품명</a>
+                            </div>
+                            <strong th:text="|${#numbers.formatInteger(sellcntItem.calprice, 0, 'COMMA')}원|">판매가</strong><span th:text="(${sellcntItem.discount} neq 0) ? | ${sellcntItem.discount}%|">할인율%</span>
+                        </div>
+                    </li>
+                </th:block>
+            </ul>
+        </div>
+    </div>
+
+    <th:block th:replace="~{/thymeleaf/fragment/footer :: footer}"/>
+</body>
+</html>

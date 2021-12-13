@@ -66,7 +66,7 @@ public class WelcomeController {
 
 		getIp(request);
 
-		return "index";
+		return "thymeleaf/index";
 	}
 
 	private String getIp(HttpServletRequest request) {
