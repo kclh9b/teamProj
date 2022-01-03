@@ -20,7 +20,19 @@
             <span class="essential"> * 필수입력사항</span>
             <span class="option"> * 선택입력사항</span>
         </div>
-        <form action="save" th:action th:object="${item}" method="post" enctype="multipart/form-data" class="productRegForm">
+        <form action="save" th:action th:object="${saveItem}" method="post" enctype="multipart/form-data" class="productRegForm">
+            <div class="error-field" th:errors="*{cateid}">카테고리 오류</div>
+            <div class="error-field" th:errors="*{name}">상품명 오류</div>
+            <div class="error-field" th:errors="*{price}">가격 오류</div>
+            <div class="error-field" th:errors="*{discount}">할인율 오류</div>
+            <div class="error-field" th:errors="*{origin}">할인율 오류</div>
+            <div class="error-field" th:errors="*{manufac}">제조사 오류</div>
+            <div class="error-field" th:errors="*{quantity}">수량 오류</div>
+            <div class="error-field" th:errors="*{mfile}">업로드1 오류</div>
+            <div class="error-field" th:errors="*{dfile}">업로드2 오류</div>
+            <div class="error-field" th:errors="*{size}">사이즈 오류</div>
+            <div class="error-field" th:errors="*{fur}">털길이 오류</div>
+            <div class="error-field" th:errors="*{age}">나이 오류</div>
             <table class="basic">
                 <tr>
                     <td class="title">
@@ -204,7 +216,7 @@
     }
 
     $("#btn_sb").on("click",function(){
-        var nameckVal = $("#nmck").val();
+/*        var nameckVal = $("#nmck").val();
         var selectChk = $('select option:selected').val();
 
         if(selectChk == 'x') {
@@ -289,6 +301,8 @@
         }else if(nameckVal == "Y") {
             $(".productRegForm").submit();
         }
+        */
+        $(".productRegForm").submit();
 
 
     });

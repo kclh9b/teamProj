@@ -10,7 +10,7 @@
       <operations public="false" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="dog.control.SettelController" project="teamProj3" 
+  <class id="2" language="java" name="dog.web.control.SettelController" project="teamProj3"
     file="/teamProj3/src/main/java/dog/control/SettelController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="553" y="286"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 

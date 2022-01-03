@@ -1,4 +1,4 @@
-package dog.control;
+package dog.web.control;
 
 
 import javax.annotation.Resource;

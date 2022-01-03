@@ -37,7 +37,7 @@ public class ItemServiceImpl implements ItemService{
     @Override
     public ItemVO save(HttpServletRequest request , Model mm, ItemVO vo) {
 
-        ModelAndView mav = new ModelAndView("alert");
+        log.info("service 실행");
 
         vo.setMain_img(vo.getMfile().getOriginalFilename());
         vo.setDetail_img(vo.getDfile().getOriginalFilename());

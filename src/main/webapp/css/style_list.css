@@ -1,4 +1,8 @@
 @charset "UTF-8";
+.error-field {
+    border-color: #dc3545;
+    color: #dc3545;
+}
 .goods_list {
 	width: 1200px;
 	margin: 0 auto;

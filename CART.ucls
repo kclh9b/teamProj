@@ -19,7 +19,7 @@
       <operations public="false" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="dog.control.ItemController" project="teamProj3" 
+  <class id="3" language="java" name="dog.web.control.ItemController" project="teamProj3"
     file="/teamProj3/src/main/java/dog/control/ItemController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="506" y="228"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 

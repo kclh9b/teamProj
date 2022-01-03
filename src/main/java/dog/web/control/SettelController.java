@@ -1,4 +1,4 @@
-package dog.control;
+package dog.web.control;
 
 import java.util.ArrayList;
 import java.util.Collections;

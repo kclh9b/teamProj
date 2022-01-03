@@ -1,4 +1,4 @@
-package dog.control;
+package dog.web.control;
 
 import java.util.HashMap;
 import java.util.List;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.4" icons="true" always-add-relationships="true" generalizations="true" realizations="true" 
   associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="dog.control.WelcomeController" project="teamProj3"
+  <class id="1" language="java" name="dog.web.control.WelcomeController" project="teamProj3"
     file="/teamProj3/src/main/java/dog/control/MainController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="662" y="15"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 

@@ -1,4 +1,4 @@
-package dog.control;
+package dog.web.control;
 
 import dog.domain.cart.CartItemList;
 import dog.domain.checkout.CheckoutService;

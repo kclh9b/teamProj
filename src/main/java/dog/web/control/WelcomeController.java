@@ -1,4 +1,4 @@
-package dog.control;
+package dog.web.control;
 
 
 import java.util.ArrayList;
@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import dog.domain.board.mapper.BoardMapp;
 import dog.domain.item.mapper.ItemMapper;
 import dog.domain.item.RecItemVO;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Slf4j
 @Controller

@@ -1,26 +1,39 @@
-package dog.control;
+package dog.web.control;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import dog.domain.item.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import dog.web.form.ItemSaveForm;
+import dog.web.validation.ItemSaveValidator;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import dog.domain.board.QnaVO;
 import dog.domain.board.ReviewVO;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+@Slf4j
 @Controller
+@RequiredArgsConstructor
 public class ItemController {
 
-	@Autowired
-	private ItemService isi;
+	private final ItemService isi;
+	private final ItemSaveValidator itemSaveValidator;
+
+	@InitBinder("saveItem")
+	private void init(WebDataBinder dataBinder) {
+		dataBinder.addValidators(itemSaveValidator);
+	}
 
 	private static class Size {
 		static Map<String, String> sizes = new LinkedHashMap<>();
@@ -66,8 +79,7 @@ public class ItemController {
 	//어드민 ==============================================================
 	//상품 등록 폼
 	@GetMapping("/admin/item/save")
-	String itemSaveForm(Model mm) {
-		mm.addAttribute("item", new ItemVO());
+	String itemSaveForm(@ModelAttribute("saveItem") ItemSaveForm item) {
 //		return "item/save_A";
 		return "thymeleaf/item/save_A";
 	}
@@ -81,7 +93,18 @@ public class ItemController {
 
 	//상품 등록
 	@PostMapping("/admin/item/save")
-	String itemSave(HttpServletRequest request, Model mm, ItemVO vo) {
+	String itemSave(HttpServletRequest request, Model mm, @Validated @ModelAttribute("saveItem") ItemSaveForm item, BindingResult bindingResult) {
+
+		if (bindingResult.hasErrors()) {
+			log.error("errors = {}", bindingResult);
+			return  "thymeleaf/item/save_A";
+		}
+
+		ItemVO vo = new ItemVO();
+		BeanUtils.copyProperties(item, vo);
+//		ItemVO vo = new ItemVO(item.getCateid(), item.getPrice(), item.getDiscount(), item.getQuantity(),
+//				item.getName(), item.getOrigin(), item.getManufac(), item.getMain_img(), item.getDetail_img(), item.getSize(), item.getFur(),
+//				item.getAge(), item.getFatyn(), item.getMfile(), item.getDfile());
 		isi.save(request, mm, vo);
 		return "alert";
 	}

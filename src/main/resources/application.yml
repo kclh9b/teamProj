@@ -3,6 +3,8 @@ server :
     
 
 spring :
+    messages :
+        basename : messages, errors
     mvc :
         view :
             prefix : /views/
